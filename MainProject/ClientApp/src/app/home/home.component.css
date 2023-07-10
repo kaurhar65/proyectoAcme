@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&display=swap');
+
+.empresa {
+  font-family: 'Caprasimo', cursive;
+  font-size: 80px;
+}
+.mainpage {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    gap: 10px 10%;
+
+}
+.izquierda {
+  color: white;
+  max-width: 55%;
+  padding-left: 20px;
+}
+.derecha {
+  padding: 20px;
+  background-color: white;
+  border-radius: 15px;
+  min-width: 45%;
+  padding-right: 20px;
+  /* margin-top: 12%; */
+}
+
+
+/* caja registro/login */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  /*border: 1px solid red;*/
+}
+
+
+.box {
+  background-color: white;
+  border-radius: 10px;
+  padding: 25px;
+  width: 375px;
+  max-width: 100%;
+  margin-top: 12%;
+}
+
+  .box h1 { /*título*/
+    font-size: 35px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+  .box form label {
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 7px;
+    padding-left: 25px;
+  }
+
+  .box form div {
+    display: flex;
+    align-items: center;
+  }
+
+    .box form div i {
+      font-size: 15px;
+      padding-left: 10px;
+      color: #b0b0b0;
+    }
+
+
+
+    .box form div input {
+      font-size: 12px;
+      padding: 10px;
+      min-width: 0;
+      flex: 1;
+      border: 1px solid;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+      .box form div input::placeholder {
+        opacity: 1;
+        color: #b0b0b0;
+        font-size: 12px;
+      }
+
+  /*.box a {
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 12px;
+    display: block;
+  }*/
+
+
+  .box form .forgot {
+    margin-top: 10px;
+    float: right;
+  }
+
+    .box form .forgot:hover {
+      color: #722F37;
+    }
+
+.regi {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: #913831;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 250px;
+  width: 15vw;
+  min-width: 15vw;
+  text-decoration: none;
+  text-align: center;
+}
+.logi {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: lightgray;
+  color: black;
+  border: none;
+  padding: 15px;
+  border-radius: 250px;
+  width: 15vw;
+  min-width: auto;
+  text-decoration: none;
+  text-align: center;
+}
+  /*.box .sign-up {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: #913831;
+    color: white;
+    border: none;
+    width: 70%;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 250px
+  } */
+
+  .botones {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      
+  }
