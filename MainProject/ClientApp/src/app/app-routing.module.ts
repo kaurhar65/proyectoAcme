@@ -8,9 +8,10 @@ import { LoginComponent } from 'src/app/login/login.component';
 
 // Define las rutas
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'register', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  //{ path: 'registro', component: RegistroComponent },
+  { path:'**', component: HomeComponent },
+  { path:'', redirectTo: '/register', pathMatch: 'full' }
 ];
 
 @NgModule({
