@@ -649,9 +649,9 @@ The database contains the following tables:
 		This table maps users to roles in an N-to-M relationship.
 	- AspNetUserClaims  
 		This table maps users to claims in an N-to-M relationship.
-	- AspNetUserTokens
+	- AspNetUserTokens  
 		This table stores tokens and maps them to users, and is unused in the current implementation of the app, as the authorisation tokens are simply stored in memory.
-	- AspNetUserClaims
+	- AspNetUserClaims  
 		This table maps users to claims in an N-to-M relationship.
-	- AspNetUserLogins
+	- AspNetUserLogins  
 		This table maps users to external login providers, and is unused in the current implementation of the app.
