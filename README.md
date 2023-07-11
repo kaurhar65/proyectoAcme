@@ -552,7 +552,7 @@ The user management and authentication API works with the following elements:
 			- At least 6 characters.
 		- Email: string  
 			This property represents the Email property of the default **IdentityUser** class.
-		- Phone: string
+		- Phone: string  
 			This property represents the PhoneNumber property of the default **IdentityUser** class.
 	- **LoginModel** */Models/LoginModel.cs*  
 	This class represents the fields of the register form.  
@@ -652,7 +652,5 @@ The database contains the following tables:
 		This table maps users to claims in an N-to-M relationship.
 	- AspNetUserTokens  
 		This table stores tokens and maps them to users, and is unused in the current implementation of the app, as the authorisation tokens are simply stored in memory.
-	- AspNetUserClaims  
-		This table maps users to claims in an N-to-M relationship.
 	- AspNetUserLogins  
 		This table maps users to external login providers, and is unused in the current implementation of the app.
