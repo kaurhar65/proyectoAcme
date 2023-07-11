@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+
+
+/* NAVBAR */
+#navbar {
+    height: 30vh;
+    background-image: url("../../assets/bk-img.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0px 65%;
+    font-family: Raleway, sans-serif;
+}
+
+/* PARTE DE ARRIBA DEL MENÚ */
+#menu {
+    display: flex;
+    flex-direction: row;
+    height: 30%;
+}
+
+/* PARTE DERECHA DEL MENÚ */
+.menuRight {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 70%;
+    margin-left: auto;
+    justify-content: right;
+}
+
+.menuRight a {
+    margin-right: 1.5em;
+}
+
+.menuRight a:link, .menuRight a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+/* ANIMACIÓN UNDERLINE */
+.underline-animation {
+    display: inline-block;
+    position: relative; 
+}
+
+.underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transform-origin: bottom right;
+    transition: transform 0.2s ease-out;
+}
+
+.underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* PARTE IZQUIERDA DEL MENÚ */
+.menuLeft {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-family: Caprasimo, cursive;
+    font-size: xx-large;
+    padding-left: 2rem;
+}
+
+.menuLeft h2 {
+    margin-left: 1.5em;
+}
+
+/* PARTE DE ABAJO DEL MENÚ */
+#title {
+    height: 70%;
+    display: flex;
+    align-items: end;
+    margin-left: 2em;
+    color: white;
+}
