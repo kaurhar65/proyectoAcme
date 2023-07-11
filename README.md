@@ -25,35 +25,36 @@ The app has two database contexts, which point to the same Microsoft SQL Server 
 
 ###### Meeting room API structure
 
-The meeting room booking CRUD API works with the following elements:
+The meeting room booking CRUD API works with the following elements:  
+
 - **Entities**  
-	Those are classes that represent the database schema of the corresponding tables.  
+Those are classes that represent the database schema of the corresponding tables.  
 	- **Country** */Entities/Country.cs*  
 	This class represents the countries the meeting rooms are in.  
 	*Schema*  
-		- Id: int, autoincrement
-		- Name: string
+		- Id: int, autoincrement  
+		- Name: string  
 	- **City** */Entities/City.cs*  
 	This class represents the cities the meeting rooms are in.  
 	*Schema*  
-		- Id: int, autoincrement
-		- Name: string
+		- Id: int, autoincrement  
+		- Name: string  
 		- CountryId: int  
-			This field is a reference to the **Country** entity.
+		This field is a reference to the **Country** entity.  
 	- **Office** */Entities/Office.cs*  
 	This class represents the offices the meeting rooms are in.  
 	*Schema*  
 		- Id: int, autoincrement
 		- Name: string
 		- CityId: int  
-			This field is a reference to the **City** entity  
+		This field is a reference to the **City** entity.  
 	- **Room** */Entities/Room.cs*  
 	This class represents the meeting rooms.  
 	*Schema*  
 		- Id: int, autoincrement
 		- Name: string
 		- OfficeId: int  
-			This field is a reference to the **Office** entity
+		This field is a reference to the **Office** entity.  
 	- **Reservation** */Entities/Reservation.cs*  
 	This class represents the reservations of the meeting rooms.  
 	*Schema*  
@@ -62,9 +63,9 @@ The meeting room booking CRUD API works with the following elements:
 		- StartTime: DateTime
 		- EndTime: DateTime
 		- RoomId: int  
-			This field is a reference to the **Room** entity
+		This field is a reference to the **Room** entity.  
 		- UserId: int  
-			This field is a reference to the **IdentityUser** class
+		This field is a reference to the **IdentityUser** class.  
 					
 - **Controllers**  
 	Those are classes that specify the HTTP methods of the web API and their exposed endpoints.  
@@ -214,7 +215,7 @@ The meeting room booking CRUD API works with the following elements:
 					204 *(success)*  
 					404 *(city not found)*
 	- **OfficeController** *Controllers/OfficeController.cs*  
-	This class contains CRUD operations on the **Offices** DbSet.
+	This class contains CRUD operations on the **Offices** DbSet.  
 	*Methods*  
 		- **Get**  
 		All of the following methods require authorisation, with no particular user role.
@@ -535,7 +536,7 @@ The user management and authentication API works with the following elements:
 	This class represents the default user model and is **purely for internal use**.   
 	- **IdentityRole** *Microsoft.AspNetCore.Identity package dependency*  
 	This class represents the default user role and is **purely for internal use**.  
-	- **RegisterModel** */Models/RegisterModel.cs*
+	- **RegisterModel** */Models/RegisterModel.cs*  
 	This class represents the fields of the register form.  
 	*Schema*  
 	All fields are required.  
@@ -544,11 +545,11 @@ The user management and authentication API works with the following elements:
 		- Password: string  
 			For security reasons, this property is not stored in the database. Rather, the **IdentityUser** class contains a PasswordHash property that contains an automatically generated hash of the password, created using the **HMAC-SHA512** algorithm and an iteration count of 210,000, in accordance to OWASP recommendations.  
 			In order for the registration request to be successful, the password must contain:  
-				- At least one non alphanumeric character.  
-				- At least one digit.  
-				- At least one uppercase letter.  
-				- At least one lowercase letter.  
-				- At least 6 characters.
+			- At least one non alphanumeric character.
+			- At least one digit.
+			- At least one uppercase letter.
+			- At least one lowercase letter.
+			- At least 6 characters.
 		- Email: string  
 			This property represents the Email property of the default **IdentityUser** class.
 		- Phone: string
@@ -570,7 +571,7 @@ The user management and authentication API works with the following elements:
 - **Controllers**  
 	Those are classes that specify the HTTP methods of the authentication API and their exposed endpoints.  
 	
-	- **AuthenticationController** */Controllers/AuthenticationController.cs*
+	- **AuthenticationController** */Controllers/AuthenticationController.cs*  
 	This class contains HTTP request methods for authentication operations.  
 	*Methods*  
 		- **GetToken**  
