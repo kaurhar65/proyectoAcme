@@ -14,7 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReservationComponent } from './reservation/reservation.component';
-import { ReserveListComponent } from './reserve-list/reserve-list.component'
+import { ReserveListComponent} from './reserve-list/reservation.component';
 
 @NgModule({
   declarations: [
