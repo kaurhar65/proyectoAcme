@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-  <div>
-    <!-- Div "nav", aquí irá el buscador interno y el botton para guardar los combios-->
+<app-navbar></app-navbar>
+<div class="container">
+  <form>
+    <i class="fas fa-search"></i>
+    <input type="text" placeholder="Search by ID/City/Country">
+    <button type="submit"> Search </button>
+  </form>
+  <a href="https://www.google.com/search"> Need help? </a>
+  <div class="changes">
+    <button type="submit"> Save changes </button>
   </div>
-  <div>
-    <!-- la lista de las reservas-->
-  </div>
-
-</body>
-</html>
+</div>
+<app-reserve-list></app-reserve-list>

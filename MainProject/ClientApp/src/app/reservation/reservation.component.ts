@@ -5,3 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './reservation.component.html',
   styleUrls: ['./reservation.component.css']
 })
+
+export class ReservationComponent {
+
+}

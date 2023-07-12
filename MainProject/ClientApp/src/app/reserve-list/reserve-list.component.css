@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  width: 160px;
+  height: 170px;
+  display: flex;
+  align-items: center;
+}
+
+.general {
+  background-color: rgb(189, 186, 186);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 2%;
+  padding: 1% 4%;
+}
+
+.subGeneral {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8%;
+}
+
+.generalLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-right: 15px;
+}
+
+.generalCenter {
+  display: flex;
+  justify-content: center;
+  align-items: self-start;
+  padding: 3%;
+}
+
+.generalRight {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.generalRight button {
+    display: flex;
+    padding: 5px 20px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.generalRight button:hover {
+      color: rgb(7, 2, 14);
+      box-shadow: 0 4px 16px rgb(150, 147, 147);
+      transition: all 0.2s ease;
+      border: none;
+      outline: none;
+}

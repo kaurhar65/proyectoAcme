@@ -13,6 +13,8 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ReservationComponent } from './reservation/reservation.component';
+import { ReserveListComponent } from './reserve-list/reserve-list.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { AppRoutingModule } from './app-routing.module';
    // NavMenuComponent,
     HomeComponent,
     NavbarComponent,
+    ReservationComponent,
     LoginComponent,
+    ReserveListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
