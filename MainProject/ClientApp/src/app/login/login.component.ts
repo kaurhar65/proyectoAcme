@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  constructor () {}
   submitForm() {
     // Lógica de envío del formulario
     // Puedes usar servicios HTTP de Angular para enviar datos al servidor, por ejemplo:

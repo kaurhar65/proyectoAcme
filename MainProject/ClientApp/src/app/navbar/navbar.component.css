@@ -5,11 +5,12 @@
 /* NAVBAR */
 #navbar {
     height: 30vh;
-    background-image: url("../../assets/bk-img.png");
+    background-image: url("../../../../images/MicrosoftTeams-image.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0px 65%;
     font-family: Raleway, sans-serif;
+    width: 100%;
 }
 
 /* PARTE DE ARRIBA DEL MENÚ */
@@ -23,7 +24,7 @@
 .menuRight {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-end;
     width: 70%;
     margin-left: auto;
     justify-content: right;
@@ -66,10 +67,9 @@
 .menuLeft {
     width: 30%;
     display: flex;
-    align-items: center;
     color: white;
     font-family: Caprasimo, cursive;
-    font-size: xx-large;
+    font-size: 300%;
     padding-left: 2rem;
 }
 
@@ -81,7 +81,7 @@
 #title {
     height: 70%;
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     margin-left: 2em;
     color: white;
 }

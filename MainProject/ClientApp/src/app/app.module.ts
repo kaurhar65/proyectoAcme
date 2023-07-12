@@ -5,7 +5,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-//import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
@@ -14,12 +13,13 @@ import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReservationComponent } from './reservation/reservation.component';
-import { ReserveListComponent} from './reserve-list/reservation.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
+import { ReserveListComponent } from './reserve-list/reserve-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-   // NavMenuComponent,
+    MainpageComponent,
     HomeComponent,
     NavbarComponent,
     ReservationComponent,
