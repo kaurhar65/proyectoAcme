@@ -3,27 +3,20 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Importa los componentes que deseas enlazar a las rutas
 import { HomeComponent } from 'src/app/home/home.component';
-import { LoginComponent } from 'src/app/login/login.component';
-<<<<<<< HEAD
+import { LoginComponent } from './login/login.component';
+import { HelloUserComponent } from 'src/app/hello-user/hello-user.component';
+import { ReservasComponent } from './reservas/reservas.component';
 import { ReservationComponent } from './reservation/reservation.component';
-=======
-import { MainpageComponent } from './mainpage/mainpage.component';
->>>>>>> main
 //import { RegistroComponent } from './registro.component';
 
 // Define las rutas
 const routes: Routes = [
-  { path: 'register', component: HomeComponent },
+  { path: 'hello-user', component: HelloUserComponent },
   { path: 'login', component: LoginComponent },
-<<<<<<< HEAD
-  { path: 'reservation', component: ReservationComponent },
+  { path: 'reservas', component: ReservasComponent },
+  { path: 'reservation', component: ReservationComponent},
   { path: '**', component: HomeComponent },
-  { path: '', redirectTo: '/reservation', pathMatch: 'full' }
-=======
-  { path: 'home', component: MainpageComponent},
-  { path:'**', component: HomeComponent },
-  { path:'', redirectTo: '/register', pathMatch: 'full' }
->>>>>>> main
+  //{ path: 'registro', component: RegistroComponent },
 ];
 
 @NgModule({
