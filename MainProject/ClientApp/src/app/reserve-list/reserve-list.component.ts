@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'app-reserve-list',
   templateUrl: './reserve-list.component.html',

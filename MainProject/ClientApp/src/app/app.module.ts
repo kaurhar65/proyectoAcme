@@ -19,6 +19,7 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { RoomdetailsComponent } from './roomdetails/roomdetails.component';
 import { ReserveListComponent } from './reserve-list/reserve-list.component';
+import { PopupComponent } from './pop-up/pop-up.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ReserveListComponent } from './reserve-list/reserve-list.component';
     HelloUserComponent,
     ReservasComponent,
     ReserveListComponent,
+    PopupComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
