@@ -21,7 +21,6 @@ const routes: Routes = [
   { path: 'reservation', component: ReservationComponent},
   { path: '**', component: HomeComponent },
   { path:'', redirectTo: '/register', pathMatch: 'full' }
-  //{ path: 'registro', component: RegistroComponent },
 ];
 
 @NgModule({
