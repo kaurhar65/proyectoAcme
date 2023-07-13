@@ -5,15 +5,20 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, provideRouter } from '@angular/router';
 
 import { AppComponent } from './app.component';
+//import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { LoginComponent } from './login/login.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { HelloUserComponent } from './hello-user/hello-user.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ReservasComponent } from './reservas/reservas.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ReservationComponent } from './reservation/reservation.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { RoomdetailsComponent } from './roomdetails/roomdetails.component';
+import { ReserveListComponent } from './reserve-list/reserve-list.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +26,12 @@ import { RoomdetailsComponent } from './roomdetails/roomdetails.component';
     MainpageComponent,
     HomeComponent,
     NavbarComponent,
+    ReservationComponent,
     LoginComponent,
     RoomdetailsComponent,
+    HelloUserComponent,
+    ReservasComponent,
+    ReserveListComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -30,7 +39,7 @@ import { RoomdetailsComponent } from './roomdetails/roomdetails.component';
     FormsModule,
     ApiAuthorizationModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }

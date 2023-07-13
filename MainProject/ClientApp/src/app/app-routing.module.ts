@@ -6,16 +6,22 @@ import { HomeComponent } from 'src/app/home/home.component';
 import { LoginComponent } from 'src/app/login/login.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { RoomdetailsComponent } from './roomdetails/roomdetails.component';
+import { HelloUserComponent } from 'src/app/hello-user/hello-user.component';
+import { ReservasComponent } from './reservas/reservas.component';
+import { ReservationComponent } from './reservation/reservation.component';
 //import { RegistroComponent } from './registro.component';
 
 // Define las rutas
 const routes: Routes = [
-  { path: 'register', component: HomeComponent },
+  { path: 'hello-user', component: HelloUserComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: MainpageComponent},
   { path: 'room-detail/:id', component: RoomdetailsComponent, title: 'Detalles sala'},
-  { path:'**', component: HomeComponent },
+  { path: 'reservas', component: ReservasComponent },
+  { path: 'reservation', component: ReservationComponent},
+  { path: '**', component: HomeComponent },
   { path:'', redirectTo: '/register', pathMatch: 'full' }
+  //{ path: 'registro', component: RegistroComponent },
 ];
 
 @NgModule({

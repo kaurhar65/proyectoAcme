@@ -8,31 +8,26 @@
   </div>
   <div class="derecha box">
     <h1>Log In</h1>
-    <form #myForm="ngForm">
-      <label> Name</label>
-      <div>
-        <i class="textoDentro"></i>
-        <input type="text" placeholder="Please enter your name">
-      </div>
+    <form #myForm="ngForm">      
       <label>Email</label>
       <div>
         <i class="textoDentro"></i>
-        <input type="text" placeholder="Please enter your email">
+        <input type="text" [(ngModel)]="user.email" placeholder="Please enter your email">
       </div>
       <label>Password</label>
       <div>
         <i class="fa-solid fa-lock"></i>
-        <input type="password" placeholder="Please enter your password">
+        <input type="password" [(ngModel)]="user.password" placeholder="Please enter your password">
       </div>
       <!--<a href="#" class="forgot">Forgot Password</a>-->
 
       <div class="botones">
         <div class="registro">
           <!--<input type="submit" class="regi" value="Register">-->
-          <button type="button" routerLink="" class="regi">Register</button>
+          <button type="submit"  (click)="goToRegister()" class="regi">Register</button>
         </div>
         <div class="log">
-          <button type="button" (click)="submitForm()" class="logi">Login</button>
+          <button type="submit" class="logi">Login</button>
           <!--<input type="submit" class="logi" value="Login">-->
         </div>
       </div>
