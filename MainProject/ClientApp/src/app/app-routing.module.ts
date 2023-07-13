@@ -9,7 +9,6 @@ import { RoomdetailsComponent } from './roomdetails/roomdetails.component';
 import { HelloUserComponent } from 'src/app/hello-user/hello-user.component';
 import { ReservasComponent } from './reservas/reservas.component';
 import { ReservationComponent } from './reservation/reservation.component';
-//import { RegistroComponent } from './registro.component';
 
 // Define las rutas
 const routes: Routes = [
