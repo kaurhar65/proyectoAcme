@@ -1,0 +1,198 @@
+<app-navbar titulo="Make a reservation"></app-navbar>
+<div class="cajaFondo">
+  <div class="container">
+    <form action="especificar url a donde enviar form">
+      <div class="cajas">
+        <div class="col col1">
+          <div class="row divCountry">
+            <p>Select a country</p>
+            <select name="country">
+              <option disabled selected="">any country</option>
+              <option>Australia</option>
+              <option>Japan</option>
+              <option>Canada</option>
+              <option>Italy</option>
+              <option>France</option>
+              <option>Spain</option>
+              <option>Germany</option>
+              <option>United States</option>
+              <option>United Kingdom</option>
+              <option>Mexico</option>
+            </select>
+          </div>
+          <div class="row divDate">
+            <p>Select a day</p>
+            <input type="date" min="" name="date" id="date">
+          </div>
+        </div>
+        <div class="col col2">
+          <div class="row divOffice">
+            <p>Select an office</p>
+            <select name="office">
+              <option disabled selected="">any office</option>
+              <optgroup label="Australia">
+                <option>ACME Sydney</option>
+                <option>ACME Melbourne</option>
+              </optgroup>
+              <optgroup label="Japan">
+                <option>ACME Tokyo</option>
+              </optgroup>
+              <optgroup label="Canada">
+                <option>ACME Vancouver</option>
+                <option>ACME Toronto</option>
+              </optgroup>
+              <optgroup label="Italy">
+                <option>ACME Rome</option>
+                <option>ACME Milan</option>
+              </optgroup>
+              <optgroup label="France">
+                <option>ACME Paris</option>
+              </optgroup>
+              <optgroup label="Spain">
+                <option>ACME Barcelona</option>
+                <option>ACME Madrid</option>
+              </optgroup>
+              <optgroup label="Germany">
+                <option>ACME Berlin</option>
+                <option>ACME Munich</option>
+              </optgroup>
+              <optgroup label="United States">
+                <option>ACME New York City</option>
+              </optgroup>
+              <optgroup label="United Kingdom">
+                <option>ACME London</option>
+              </optgroup>
+              <optgroup label="Mexico">
+                <option>ACME Mexico City</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="row divTime1">
+            <p>Start time</p>
+            <input type="time" name="time" id="time">
+          </div>
+        </div>
+        <div class="col col3">
+          <div class="row divRoom">
+            <p>Select a room</p>
+            <select name="room">
+              <option disabled selected="">any room</option>
+              <optgroup label="Australia - ACME Sydney">
+                <option>Blue Mountains</option>
+                <option>Bondi</option>
+                <option>Darling Harbour</option>
+                <option>Opera House</option>
+                <option>Manly</option>
+              </optgroup>
+              <optgroup label="Australia - ACME Melbourne">
+                <option>Yarra</option>
+                <option>Flinders</option>
+                <option>St Kilda</option>
+                <option>Federation</option>
+                <option>Brighton</option>
+              </optgroup>
+              <optgroup label="Japan - ACME Tokyo">
+                <option>Fuji</option>
+                <option>Shibuya</option>
+                <option>Ginza</option>
+                <option>Shinjuku</option>
+                <option>Harajuku</option>
+              </optgroup>
+              <optgroup label="Canada - ACME Vancouver">
+                <option>Stanley Park</option>
+                <option>Capilano</option>
+                <option>Granville Island</option>
+                <option>Grouse Mountain</option>
+                <option>English Bay</option>
+              </optgroup>
+              <optgroup label="Canada - ACME Toronto">
+                <option>Ontario</option>
+                <option>CN Tower</option>
+                <option>Distillery</option>
+              </optgroup>
+              <optgroup label="Italy - ACME Rome">
+                <option>Tevere</option>
+                <option>Colosseo</option>
+                <option>Aventino</option>
+                <option>Trevi</option>
+                <option>Vatican</option>
+              </optgroup>
+              <optgroup label="Italy - ACME Milan">
+                <option>Navigli</option>
+                <option>Duomo</option>
+                <option>Brera</option>
+                <option>Porta Nuova</option>
+                <option>Sforza</option>
+              </optgroup>
+              <optgroup label="France - ACME Paris">
+                <option>Seine</option>
+                <option>Louvre</option>
+                <option>Eiffel</option>
+                <option>Montmartre</option>
+                <option>Versalles</option>
+              </optgroup>
+              <optgroup label="Spain - ACME Barcelona">
+                <option>Montjuïc</option>
+                <option>Tibidabo</option>
+                <option>Barceloneta</option>
+                <option>Gaudí</option>
+                <option>Sagrada Familia</option>
+              </optgroup>
+              <optgroup label="Spain - ACME Madrid">
+                <option>Retiro</option>
+                <option>Prado</option>
+                <option>Gran Via</option>
+                <option>Puerta del Sol</option>
+                <option>Reina Sofía</option>
+              </optgroup>
+              <optgroup label="Germany - ACME Berlin">
+                <option>Spree</option>
+                <option>Brandenburg</option>
+                <option>Tiergarten</option>
+                <option>Potsdamer</option>
+                <option>Reichstag</option>
+              </optgroup>
+              <optgroup label="Germany - ACME Munich">
+                <option>Isar</option>
+                <option>Englischer Garten</option>
+                <option>Marienplatz</option>
+                <option>Nymphenburg</option>
+                <option>Oktoberfest</option>
+              </optgroup>
+              <optgroup label="United States - ACME New York City">
+                <option>Empire</option>
+                <option>Central Park</option>
+                <option>Hudson</option>
+                <option>Liberty</option>
+                <option>Times Square</option>
+              </optgroup>
+              <optgroup label="United Kingdom - ACME London">
+                <option>Thames</option>
+                <option>Buckingham</option>
+                <option>Hyde</option>
+                <option>Tower</option>
+                <option>Westminster</option>
+              </optgroup>
+              <optgroup label="Mexico - ACME Mexico City">
+                <option>Chapultepec</option>
+                <option>Zócalo</option>
+                <option>Polanco</option>
+                <option>Reforma</option>
+                <option>Coyoacán</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="row divTime2">
+            <p>End time</p>
+            <input type="time" name="time" id="time">
+          </div>
+        </div>
+      </div>
+      <div class="subm">
+        <div class="row divSubmit">
+          <input class="submitReserve" type="submit" value="Reserve" name="submit" id="submitForm">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

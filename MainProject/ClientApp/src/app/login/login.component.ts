@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -6,12 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor () {}
-  submitForm() {
-    // Lógica de envío del formulario
-    // Puedes usar servicios HTTP de Angular para enviar datos al servidor, por ejemplo:
-    // this.http.post('tu_url_de_envio', this.myForm.value).subscribe(response => {
-    //   // Manejar la respuesta del servidor
-    // });
+  user = {
+    name: "",
+    email: "",
+    password: ""
   }
+  constructor(private router: Router) { } 
+  goToRegister() {
+    this.router.navigate(['register']);
+  }
+
+  login() {
+    alert(`${this.user.name}, ${this.user.email} and ${this.user.password}`)
+  }
+  
 }
