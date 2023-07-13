@@ -2,6 +2,13 @@
   font-family: 'Raleway', sans-serif;
 }
 
+.cajaFondo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  height: 70vh;
+}
 .container {
   display: flex;
   flex-direction: row;
@@ -27,8 +34,8 @@
 .imagen {
   border: 1px dotted;
   margin: 10px;
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -4,15 +4,16 @@
 .cajaFondo {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-color: #ffffff;
+    height: 70vh;
 }
 .container {
   background-color: #d6d6d6;
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   margin: 40px 60px;
   padding: 30px 20px;
+  position: static;
 }
 
 form {

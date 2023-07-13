@@ -64,6 +64,9 @@
 }
 
 /* PARTE IZQUIERDA DEL MENÚ */
+.linkHome:hover {
+    cursor: pointer;
+}
 .menuLeft {
     width: 30%;
     display: flex;
