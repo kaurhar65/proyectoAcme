@@ -14,15 +14,20 @@ import { LoginComponent } from './login/login.component';
 import { HelloUserComponent } from './hello-user/hello-user.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReservasComponent } from './reservas/reservas.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ReservationComponent } from './reservation/reservation.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
+import { ReserveListComponent } from './reserve-list/reserve-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-   // NavMenuComponent,
+    MainpageComponent,
     HomeComponent,
+    NavbarComponent,
+    ReservationComponent,
     LoginComponent,
-    HelloUserComponent,
-    ReservasComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -30,7 +35,9 @@ import { ReservasComponent } from './reservas/reservas.component';
     FormsModule,
     ApiAuthorizationModule,
     FormsModule,
-    AppRoutingModule,
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent, pathMatch: 'full' },
+    ])
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }

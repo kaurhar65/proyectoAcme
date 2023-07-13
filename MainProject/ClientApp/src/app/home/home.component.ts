@@ -12,6 +12,7 @@ export class HomeComponent {
     email: "",
     password: ""
   }
+
   constructor(private router: Router) { } 
   goToLogin() {
     this.router.navigate(['login']);

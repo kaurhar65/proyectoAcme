@@ -1,0 +1,76 @@
+
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  flex-direction: row;
+  margin:0%;
+  width:100%;
+  background-color:lightblue;
+}
+
+form {
+  background: #fff;
+  width: 400px;
+  height: 30px;
+  display: flex;
+  border: 0.5px solid black;
+}
+
+  form input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+  }
+
+  form button {
+    background: #913831;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    color: #fff;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  form .fa-search {
+    align-self: center;
+    padding-left: 10px;
+  }
+
+a {
+  text-decoration: none;
+  color: black;
+  padding: 5%;
+}
+@media (max-width: 600px) { /* Modifica el tamaño máximo según tus necesidades */
+  .container {
+    flex-wrap: nowrap ;
+  }
+
+  a {
+    display: none;
+  }
+
+  .changes {
+    padding-left: 5%;
+  }
+}
+.changes button {
+  background: #913831;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.changes{
+    align-items:center;
+    justify-content:center;
+    margin-left:auto;
+}
