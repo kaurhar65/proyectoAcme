@@ -15,6 +15,7 @@
   </div>
   <div class="generalRight">
     <button type="submit"> Delete </button>
-    <button type="submit"> Modify </button>
+    <button (click)="popup.openPopup()">Modify</button>
+    <app-pop-up #popup></app-pop-up>
   </div>
 </div>

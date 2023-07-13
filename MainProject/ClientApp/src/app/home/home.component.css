@@ -70,11 +70,11 @@
     align-items: center;
   }
 
-    .box form div i {
+   .box form div i {
       font-size: 15px;
       padding-left: 10px;
       color: #b0b0b0;
-    }
+   }
 
 
 
@@ -88,11 +88,11 @@
       margin-bottom: 20px;
     }
 
-      .box form div input::placeholder {
+  .box form div input::placeholder {
         opacity: 1;
         color: #b0b0b0;
         font-size: 12px;
-      }
+   }
 
   /*.box a {
     color: #b0b0b0;
@@ -107,9 +107,9 @@
     float: right;
   }
 
-    .box form .forgot:hover {
+  .box form .forgot:hover {
       color: #722F37;
-    }
+  }
 
 .regi {
   font-size: 12px;

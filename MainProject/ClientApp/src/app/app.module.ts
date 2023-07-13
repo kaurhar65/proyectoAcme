@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReservationComponent } from './reservation/reservation.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { ReserveListComponent } from './reserve-list/reserve-list.component';
+import { PopupComponent } from './pop-up/pop-up.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ReserveListComponent } from './reserve-list/reserve-list.component';
     NavbarComponent,
     ReservationComponent,
     LoginComponent,
-    ReserveListComponent
+    ReserveListComponent,
+    PopupComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

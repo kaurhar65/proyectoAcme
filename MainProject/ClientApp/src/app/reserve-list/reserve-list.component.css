@@ -42,17 +42,25 @@ img {
 
 .generalRight {
   display: flex;
-  position: relative;
+  position: static;
   flex-direction: column;
   justify-content: space-around;
 }
+@media (max-width: 600px) { 
 
-.generalRight button {
+  img {
+    display: none;
+  }
+
+}
+  .generalRight button {
     display: flex;
     padding: 5px 20px;
     text-align: center;
     letter-spacing: 2px;
-}
+    border: none;
+    outline: none;
+  }
 
 .generalRight button:hover {
       color: rgb(7, 2, 14);

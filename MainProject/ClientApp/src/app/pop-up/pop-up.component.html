@@ -1,0 +1,28 @@
+<div class="overlay" *ngIf="showPopup">
+  <div class="popup-content">
+    <div class="imagen">
+      <img src="office.jpg" alt="office">
+    </div>
+    <div class="right">
+      <div class="information">
+        <p> Reservation Id: 8902 </p>
+        <P> Room Name </P>
+        <p> Location, city, country </p>
+      </div>
+      <div class="changes">
+        <form action="">
+          <label for="Date"> Date: </label>
+          <input type="date" id="fecha" name="date">
+          <br>
+          <label for="time"> Time: </label>
+          <input type="time" id="tiempo" name="time">
+          <p> - </p>
+          <input type="time" id="tiempo" name="time">
+        </form>
+      </div>
+      <div class="last">
+        <button (click)="closePopup()">Modify</button>
+      </div>
+    </div>
+  </div>
+</div>
