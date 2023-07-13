@@ -16,7 +16,6 @@ const routes: Routes = [
   { path: 'reservas', component: ReservasComponent },
   { path: 'reservation', component: ReservationComponent},
   { path: '**', component: HomeComponent },
-  //{ path: 'registro', component: RegistroComponent },
 ];
 
 @NgModule({
