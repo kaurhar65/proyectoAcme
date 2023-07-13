@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, provideRouter } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { RoomdetailsComponent } from './roomdetails/roomdetails.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MainpageComponent } from './mainpage/mainpage.component';
     HomeComponent,
     NavbarComponent,
     LoginComponent,
+    RoomdetailsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

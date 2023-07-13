@@ -1,0 +1,43 @@
+#home {
+    padding: 2rem 0 0 4rem;
+    background-color: white;
+    height: 70vh;
+}
+
+#home h3 {
+    font-weight: bolder;
+}
+
+/* ESTILO DE LA LISTA DE SALAS */
+#roomList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+#roomList .roomCard:nth-child(odd) {
+    background-color: lightgray;
+}
+
+#roomList .roomCard:nth-child(even) {
+    background-color: lightslategray;
+}
+
+/* ESTILO DE LAS TARJETAS DE LAS SALAS */
+.roomCard p{
+    margin: 0;
+    padding: 1rem 0 1rem 1rem;
+}
+
+.roomCard img {
+    width: 100%;
+}
+
+.roomCard {
+    font-size: x-large;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: 30%;
+    height: 45%;
+}
