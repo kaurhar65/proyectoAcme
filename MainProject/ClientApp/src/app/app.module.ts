@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, provideRouter } from '@angular/router';
 
 import { AppComponent } from './app.component';
 //import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -17,6 +17,7 @@ import { ReservasComponent } from './reservas/reservas.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { RoomdetailsComponent } from './roomdetails/roomdetails.component';
 import { ReserveListComponent } from './reserve-list/reserve-list.component';
 
 @NgModule({
@@ -27,6 +28,7 @@ import { ReserveListComponent } from './reserve-list/reserve-list.component';
     NavbarComponent,
     ReservationComponent,
     LoginComponent,
+    RoomdetailsComponent,
     HelloUserComponent,
     ReservasComponent,
     ReserveListComponent,
