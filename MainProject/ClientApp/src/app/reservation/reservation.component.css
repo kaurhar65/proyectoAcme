@@ -11,7 +11,7 @@
 .container {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: row;
   width: 100%;
 }
@@ -51,11 +51,58 @@ form {
 a {
   text-decoration: none;
   color: black;
-  padding: 5%;
+  margin: 5%;
+}
+/* ANIMACIÓN UNDERLINE */
+a {
+  display: inline-block;
+  position: relative;
+}
+
+  a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.2s ease-out;
+  }
+
+  a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+.reserve-list {
+    margin: 0px 10px;
+}
+
+.changes button {
+  background: #913831;
+  border: 2px solid black;
+  color: #fff;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 130%;
+}
+  .changes button:hover {
+    background-color: whitesmoke;
+    color: black;
+  }
+
+.changes{
+    align-items:center;
+    justify-content:center;
+    margin-left:auto;
 }
 @media (max-width: 600px) { /* Modifica el tamaño máximo según tus necesidades */
   .container {
-    flex-wrap: nowrap ;
+    flex-wrap: nowrap;
   }
 
   a {
@@ -65,18 +112,4 @@ a {
   .changes {
     padding-left: 5%;
   }
-}
-.changes button {
-  background: #913831;
-  outline: none;
-  color: #fff;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-}
-
-.changes{
-    align-items:center;
-    justify-content:center;
-    margin-left:auto;
 }

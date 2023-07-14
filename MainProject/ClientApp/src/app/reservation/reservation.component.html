@@ -1,20 +1,20 @@
 
-<div class="body">
   <app-navbar titulo="My reservations" ></app-navbar>
-  <div class="bla">
-    <div class="container">
-      <form>
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Search by ID/City/Country">
-        <button type="submit"> Search </button>
-      </form>
-      <a href="https://www.google.com/search"> Need help? </a>
-      <div class="changes">
-        <button type="submit"> Save changes </button>
+  <div class="body">
+    <div class="bla">
+      <div class="container">
+        <form>
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search by ID/City/Country">
+          <button type="submit"> Search </button>
+        </form>
+        <a class="underline-animation" href="https://www.google.com/search"> Need help? </a>
+        <div class="changes">
+          <button type="submit"> Save changes </button>
+        </div>
       </div>
     </div>
-  </div>  
-  <app-reserve-list></app-reserve-list>
-  <app-reserve-list></app-reserve-list>
-</div>
+    <app-reserve-list class="reserve-list"></app-reserve-list>
+    <app-reserve-list class="reserve-list"></app-reserve-list>
+  </div>
 
