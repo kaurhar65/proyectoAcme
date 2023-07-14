@@ -18,6 +18,7 @@
     display: flex;
     flex-direction: row;
     height: 30%;
+    margin: 0em 1.5em;
 }
 
 /* PARTE DERECHA DEL MENÚ */
@@ -25,7 +26,7 @@
     display: flex;
     flex-direction: row;
     align-items: flex-end;
-    width: 70%;
+    width: 100%;
     margin-left: auto;
     justify-content: right;
 }
@@ -68,12 +69,12 @@
     cursor: pointer;
 }
 .menuLeft {
-    width: 30%;
+    width: 100%;
     display: flex;
     color: white;
     font-family: Caprasimo, cursive;
-    font-size: 300%;
-    padding-left: 2rem;
+    font-size: 350%;
+    padding-left: 2.5rem;
 }
 
 .menuLeft h2 {

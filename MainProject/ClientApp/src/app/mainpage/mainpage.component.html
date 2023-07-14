@@ -1,11 +1,13 @@
 <app-navbar titulo="Find your country"></app-navbar>
 <div id="home">
-    <h3>Popular now!</h3><br>
-    
-    <div id="roomList">
-        <div *ngFor="let room of rooms" routerLink="/room-detail/{{room.id}}" class="roomCard">
-            <img src="{{room.img}}" alt="{{room.name}}.png">
-            <p class="roomTitle"> {{room.id}}. {{room.name}} </p>
-        </div>
-    </div>
+  <div class="superiorHome">
+    <h3>Popular now!</h3>
+    <button routerLink="/reservas" class="reservas">Reserve a room</button>
+  </div>
+  <div id="roomList">
+      <div *ngFor="let room of rooms" routerLink="/room-detail/{{room.id}}" class="roomCard">
+          <img src="{{room.img}}" alt="{{room.name}}.png">
+          <p class="roomTitle"> {{room.id}}. {{room.name}} </p>
+      </div>
+  </div>
 </div>

@@ -1,5 +1,5 @@
 #home {
-    padding: 2rem 0 0 4rem;
+    padding: 2rem 4rem;
     background-color: white;
     height: 70vh;
 }
@@ -7,13 +7,28 @@
 #home h3 {
     font-weight: bolder;
 }
-
+.superiorHome {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.reservas {
+    border: 1px solid black;
+    width: 150px;
+    background-color: white;
+    height: 30px;
+}
+  .reservas:hover {
+    background-color: #e8e8e8;
+  }
 /* ESTILO DE LA LISTA DE SALAS */
 #roomList {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
+    gap: 40px;
 }
 
 #roomList .roomCard:nth-child(odd) {
@@ -35,9 +50,7 @@
 }
 
 .roomCard {
-    font-size: x-large;
-    margin-right: 2rem;
-    margin-bottom: 2rem;
+    font-size: 2.5vw;
     width: 30%;
     height: 45%;
 }
