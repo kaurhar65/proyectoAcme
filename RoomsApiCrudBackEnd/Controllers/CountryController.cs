@@ -1,3 +1,5 @@
+#pragma warning disable CS8602, CS8604
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 
