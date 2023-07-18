@@ -9,6 +9,7 @@ import { RoomdetailsComponent } from './roomdetails/roomdetails.component';
 import { HelloUserComponent } from 'src/app/hello-user/hello-user.component';
 import { ReservasComponent } from './reservas/reservas.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { AdminCountryComponent } from './admin-country/admin-country.component';
 
 // Define las rutas
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'home', component: MainpageComponent},
   { path: 'room-detail/:id', component: RoomdetailsComponent, title: 'Detalles sala'},
   { path: 'reservas', component: ReservasComponent },
-  { path: 'reservation', component: ReservationComponent},
+  { path: 'reservation', component: ReservationComponent },
+  { path: 'adminProfile', component: AdminCountryComponent },
   { path: '**', component: HomeComponent },
   { path:'', redirectTo: '/register', pathMatch: 'full' }
 ];
