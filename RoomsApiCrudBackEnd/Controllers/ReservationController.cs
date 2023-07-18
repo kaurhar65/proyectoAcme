@@ -64,12 +64,12 @@ namespace RoomsApiCrudIdentity.Controllers
                     _context.Rooms,
                     reservation => reservation.RoomId,
                     room => room.Id,
-                    (reservation, room) => new { Reservation = reservation, Room = room })
+                    (reservation, room) => new { reservation, Room = room })
                 .Join(
                     _context.Offices,
                     roomReservation => roomReservation.Room.OfficeId,
                     office => office.Id,
-                    (roomReservation, office) => new { Room = roomReservation.Room, Office = office })
+                    (roomReservation, office) => new { roomReservation.Room, Office = office })
                 .Where(
                     officeRoomReservation => officeRoomReservation.Room.OfficeId == officeId)
                 .ToListAsync();
@@ -88,7 +88,7 @@ namespace RoomsApiCrudIdentity.Controllers
                     _context.Rooms,
                     reservation => reservation.RoomId,
                     room => room.Id,
-                    (reservation, room) => new { Reservation = reservation, Room = room })
+                    (reservation, room) => new { reservation, Room = room })
                 .Join(
                     _context.Offices,
                     roomReservation => roomReservation.Room.OfficeId,
@@ -98,7 +98,7 @@ namespace RoomsApiCrudIdentity.Controllers
                     _context.Cities,
                     officeRoomReservation => officeRoomReservation.Office.CityId,
                     city => city.Id,
-                    (officeRoomReservation, city) => new { Office = officeRoomReservation.Office, City = city }
+                    (officeRoomReservation, city) => new { officeRoomReservation.Office, City = city }
                 )
                 .Where(
                     cityOfficeRoomReservation => cityOfficeRoomReservation.Office.CityId == cityId)
@@ -118,7 +118,7 @@ namespace RoomsApiCrudIdentity.Controllers
                     _context.Rooms,
                     reservation => reservation.RoomId,
                     room => room.Id,
-                    (reservation, room) => new { Reservation = reservation, Room = room })
+                    (reservation, room) => new { reservation, Room = room })
                 .Join(
                     _context.Offices,
                     roomReservation => roomReservation.Room.OfficeId,
@@ -134,7 +134,7 @@ namespace RoomsApiCrudIdentity.Controllers
                     _context.Countries,
                     cityOfficeRoomReservation => cityOfficeRoomReservation.City.CountryId,
                     country => country.Id,
-                    (cityOfficeRoomReservation, country) => new { City = cityOfficeRoomReservation.City, Country = country })
+                    (cityOfficeRoomReservation, country) => new { cityOfficeRoomReservation.City, Country = country })
                 .Where(
                     countryCityOfficeRoomReservation => countryCityOfficeRoomReservation.City.CountryId == countryId)
                 .ToListAsync();

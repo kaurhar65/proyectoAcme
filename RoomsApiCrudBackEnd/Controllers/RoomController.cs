@@ -65,12 +65,12 @@ namespace RoomsApiCrudIdentity.Controllers
                     _context.Offices,
                     room => room.OfficeId,
                     office => office.Id,
-                    (room, office) => new { Room = room, Office = office })
+                    (room, office) => new { room, Office = office })
                 .Join(
                     _context.Cities,
                     officeRoom => officeRoom.Office.CityId,
                     city => city.Id,
-                    (officeRoom, city) => new { Office = officeRoom.Office, City = city })
+                    (officeRoom, city) => new { officeRoom.Office, City = city })
                 .Where(
                     cityOfficeRoom => cityOfficeRoom.Office.CityId == cityId)
                 .ToListAsync();
@@ -89,7 +89,7 @@ namespace RoomsApiCrudIdentity.Controllers
                     _context.Offices,
                     room => room.OfficeId,
                     office => office.Id,
-                    (room, office) => new { Room = room, Office = office })
+                    (room, office) => new { room, Office = office })
                 .Join(
                     _context.Cities,
                     officeRoom => officeRoom.Office.CityId,
@@ -99,7 +99,7 @@ namespace RoomsApiCrudIdentity.Controllers
                     _context.Countries,
                     cityOfficeRoom => cityOfficeRoom.City.CountryId,
                     country => country.Id,
-                    (cityOfficeRoom, country) => new {City = cityOfficeRoom.City, Country = country }
+                    (cityOfficeRoom, country) => new { cityOfficeRoom.City, Country = country }
                     )
                 .Where(
                     countryCityOfficeRoom => countryCityOfficeRoom.City.CountryId == countryId)
