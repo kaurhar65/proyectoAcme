@@ -17,6 +17,8 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 import { RoomdetailsComponent } from './roomdetails/roomdetails.component';
 import { ReserveListComponent } from './reserve-list/reserve-list.component';
 import { PopupComponent } from './pop-up/pop-up.component';
+import { AdminCountryComponent } from './admin-country/admin-country.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { RequestService } from './services/request.service';
 import { AuthenticationService } from './services/authentication.service';
@@ -34,7 +36,8 @@ import { AuthenticationInterceptorService } from './services/authentication-inte
     HelloUserComponent,
     ReservasComponent,
     ReserveListComponent,
-    PopupComponent
+    PopupComponent,
+    AdminCountryComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -42,6 +45,7 @@ import { AuthenticationInterceptorService } from './services/authentication-inte
     FormsModule,
     FormsModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptorService, multi: true },
