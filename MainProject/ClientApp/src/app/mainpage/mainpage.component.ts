@@ -15,7 +15,8 @@ export class MainpageComponent {
       {id:2, name:"La mediana room", img:"https://i.pinimg.com/736x/8e/7d/bd/8e7dbdbf6bae48b3b63c637ffdce8bee.jpg"},
       {id:3, name:"La pequeña room", img:"https://i.pinimg.com/736x/c5/7e/9a/c57e9ac7b836d2f822b0d72190b25080--show-rooms-meeting-rooms.jpg"},
       {id:4, name:"Otra room", img:"https://i.pinimg.com/736x/c5/7e/9a/c57e9ac7b836d2f822b0d72190b25080--show-rooms-meeting-rooms.jpg"},
-      {id:5, name:"Y otra más", img:"https://i.pinimg.com/736x/c5/7e/9a/c57e9ac7b836d2f822b0d72190b25080--show-rooms-meeting-rooms.jpg"}
+      {id:5, name:"Y otra más", img:"https://i.pinimg.com/736x/c5/7e/9a/c57e9ac7b836d2f822b0d72190b25080--show-rooms-meeting-rooms.jpg"},
+      {id:6, name:"Y otra más", img:"https://i.pinimg.com/736x/c5/7e/9a/c57e9ac7b836d2f822b0d72190b25080--show-rooms-meeting-rooms.jpg"}
   ];
     return rooms;
   }

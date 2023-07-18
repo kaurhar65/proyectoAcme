@@ -2,7 +2,6 @@
 <div id="home">
   <div class="superiorHome">
     <h3>Popular now!</h3>
-    <button routerLink="/reservas" class="reservas">Reserve a room</button>
   </div>
   <div id="roomList">
       <div *ngFor="let room of rooms" routerLink="/room-detail/{{room.id}}" class="roomCard">
