@@ -1,3 +1,5 @@
+#pragma warning disable CS8602, CS8604
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -63,12 +65,12 @@ namespace RoomsApiCrudIdentity.Controllers
                     _context.Cities,
                     office => office.CityId,
                     city => city.Id,
-                    (office, city) => new { Office = office, City = city })
+                    (office, city) => new { office, City = city })
                 .Join(
                     _context.Countries,
                     cityOffice => cityOffice.City.CountryId,
                     country => country.Id,
-                    (cityOffice, country) => new { City = cityOffice.City, Country = country })
+                    (cityOffice, country) => new { cityOffice.City, Country = country })
                 .Where(
                     countryCityOffice => countryCityOffice.City.Id == countryId)
                 .ToListAsync();

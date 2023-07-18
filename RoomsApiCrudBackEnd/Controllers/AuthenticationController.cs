@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿#pragma warning disable CS8602, CS8604
+
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -32,7 +34,7 @@ namespace RoomsApiCrudIdentity.Controllers
                 audience: _configuration["Jwt:ValidAudience"],
                 expires: DateTime.Now.AddHours(1),
                 claims: authClaims,
-                signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
+                signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha512)
             );
         }
 
@@ -61,7 +63,8 @@ namespace RoomsApiCrudIdentity.Controllers
                 return Ok(new
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expiration = token.ValidTo
+                    //expiration = token.ValidTo
+                    expiration = 60
                 });
             }
 
