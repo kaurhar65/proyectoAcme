@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit{
   isOpen:boolean = false;
   @Input() titulo:string = "";
 
-  cities:any = [
+  cities: City[] = [
     {
       name: "Australia",
       rooms: [
@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit{
         "ACME Vancouver", "ACME Toronto"
       ]
     }
-  ]
+  ];
 
   isHomePage(titulo:string) {
     if (titulo == "Find your country") {
@@ -69,5 +69,15 @@ export class NavbarComponent implements OnInit{
   }
 
   ngOnInit(): void {
+  }
+}
+
+export class City {
+  name: string;
+  rooms: string[];
+
+  constructor (name:string, rooms:string[]) {
+    this.name = name;
+    this.rooms = rooms;
   }
 }
