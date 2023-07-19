@@ -16,7 +16,7 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { RoomdetailsComponent } from './roomdetails/roomdetails.component';
 import { ReserveListComponent } from './reserve-list/reserve-list.component';
-import { PopupComponent } from './pop-up/pop-up.component';
+import { PopUpComponent } from './pop-up/pop-up.component';
 import { AdminCountryComponent } from './admin-country/admin-country.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -36,7 +36,7 @@ import { AuthenticationInterceptorService } from './services/authentication-inte
     HelloUserComponent,
     ReservasComponent,
     ReserveListComponent,
-    PopupComponent,
+    PopUpComponent,
     AdminCountryComponent
   ],
   imports: [

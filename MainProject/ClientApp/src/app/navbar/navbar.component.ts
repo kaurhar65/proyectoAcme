@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -10,7 +12,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit{
   isOpen:boolean = false;
   @Input() titulo:string = "";
-
+  constructor(private router: Router, private authenticationService: AuthenticationService) { }
   cities:any = [
     {
       name: "Australia",
@@ -69,5 +71,13 @@ export class NavbarComponent implements OnInit{
   }
 
   ngOnInit(): void {
+  }
+  goToLogin() {
+    this.router.navigate(['login']);
+  }
+/* FUNCIONES BACKEND */
+  salir() {
+    this.authenticationService.logout().subscribe({ next() { } }),
+    this.goToLogin()
   }
 }
