@@ -49,6 +49,18 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.Configure<PasswordHasherOptions>(opt => opt.IterationCount = 210_000);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "MyCorsPolicy", policy =>
+    {
+        policy.AllowAnyOrigin()
+               //.AllowCredentials()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+               //.WithExposedHeaders("Access-Control-Allow-Origin");
+    });
+});
+
 // default scaffolded Identity
 //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 //    .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -79,6 +91,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseCors("MyCorsPolicy");
 
 app.UseAuthentication();
 

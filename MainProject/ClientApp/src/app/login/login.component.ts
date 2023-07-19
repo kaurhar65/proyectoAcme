@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Observable } from 'node_modules/rxjs';
+import { environment, apiControllers, apiUrls } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -8,17 +11,35 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   user = {
-    name: "",
-    email: "",
+    //email: "",
+    userName: "",
     password: ""
   }
-  constructor(private router: Router) { } 
+  constructor(private router: Router, private authenticationService: AuthenticationService) { } 
   goToRegister() {
     this.router.navigate(['register']);
   }
 
-  login() {
-    alert(`${this.user.name}, ${this.user.email} and ${this.user.password}`)
+  goToHome() {
+    this.router.navigate(['home']);
   }
+
+  login() {
+    let self = this;
+    //alert(`${this.user.userName} and ${this.user.password}`),
+      this.authenticationService.login(this.user.userName, this.user.password)
+        .subscribe({
+          next(response: any) {
+            //alert(JSON.stringify(response));
+            if (response["token"]) {
+              alert(`You have successfully logged in as ${self.user.userName}.`);
+              self.goToHome();
+            }
+          },
+          error(err: Error) {
+            alert(err.message)
+          }
+        });
+  };
   
 }

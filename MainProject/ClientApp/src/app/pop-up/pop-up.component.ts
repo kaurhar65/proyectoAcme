@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './pop-up.component.html',
   styleUrls: ['./pop-up.component.css']
 })
-export class PopupComponent {
+export class PopUpComponent {
   showPopup: boolean = false;
 
   openPopup() {
