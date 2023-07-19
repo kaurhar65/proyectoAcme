@@ -22,6 +22,7 @@ export class HomeComponent {
   }
 
   registerSubmit() {
+    let self = this;
     alert(`${this.user.name}, ${this.user.email} and ${this.user.password}`);
     this.requestService.post(`${environment.apiUrl}${apiControllers.authentication}${apiUrls.authentication.register}`,
       {
@@ -33,6 +34,10 @@ export class HomeComponent {
       .subscribe({
         next(response: any) {
           alert(JSON.stringify(response))
+          if (response["body"]) {
+            alert(`You have successfully registred.`);
+            self.goToLogin();
+          }
           },
         error(err: Error) {
           alert(err.message)
