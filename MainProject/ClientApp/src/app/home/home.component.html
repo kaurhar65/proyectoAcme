@@ -26,7 +26,7 @@
       </div>
       <div class="botones">
         <div class="registro">
-          <button type="button" (click)="registerSubmit()" class="regi">Register</button>
+          <button type="submit" (keydown.enter)="registerSubmit()" (click)="registerSubmit()" class="regi">Register</button>
         </div>
         <div class="log">
           <button type="button" (click)="goToLogin()" class="logi">Login</button>

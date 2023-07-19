@@ -41,9 +41,14 @@
 }
 
 /* ANIMACIÓN UNDERLINE */
+
+/* ANIMACIÓN DE COLOR BLANCO */
 .underline-animation {
     display: inline-block;
-    position: relative; 
+    position: relative;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .underline-animation::after {
@@ -60,6 +65,30 @@
 }
 
 .underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* ANIMACIÓN DE COLOR NEGRO */
+.underline-animation-black {
+    display: inline-block;
+    position: relative; 
+}
+
+.underline-animation-black::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.2s ease-out;
+}
+
+.underline-animation-black:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
 }
@@ -82,10 +111,102 @@
 }
 
 /* PARTE DE ABAJO DEL MENÚ */
+
+/* PARTE IZQUIERDA DEL MENÚ */
+
+/* TITULO DE LA IZQUIERDA */
 #title {
     height: 70%;
     display: flex;
+    justify-content: space-between;
     align-items: flex-end;
     margin-left: 4rem;
     color: white;
+}
+
+#homeTitle:hover {
+    cursor: pointer;
+}
+
+#homeTitle {
+    font-weight: bolder;
+    user-select: none;
+    padding: .5rem;
+    padding-bottom: 0;
+}
+
+#homeTitle:hover {
+    color: lightgray;
+}
+
+.opened {
+    padding: .5rem;
+    border: black solid 1px;
+    border-bottom: none;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+#homeTitle.opened:hover {
+    color: black;
+}
+
+/* MENU DESPLEGABLE DE LA IZQUIERDA */
+#littleMenu {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: black solid 1px;
+    border-top: none;
+    position: absolute;
+    width: 70%;
+    height: 55%;
+    margin-top: -.5rem;
+    padding: 1rem 0 0 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.city {
+    color: black;
+    font-size: 150%;
+    font-weight: bolder;
+    width: fit-content;
+}
+
+/* .city:hover {
+    font-size: 170%;
+} */
+
+.room {
+    font-weight: bolder;
+    color: black;
+    margin-left: 1rem;
+    width: fit-content;
+}
+
+.cityList {
+    display: flex;
+    flex-direction: column;
+}
+
+.city:hover, .room:hover {
+    cursor: pointer;
+}
+
+/* PARTE DERECHA DEL MENÚ */
+
+/* BOTTON RESERVAS */
+
+.reservas {
+    color: white;
+    padding: 0.5rem;
+    background-color: #913831;
+    border: black solid 2px;
+    margin-right: 4rem;
+    margin-bottom: 1rem;
+}
+
+.reservas:hover {
+    background-color: whitesmoke;
+    color: black;
 }

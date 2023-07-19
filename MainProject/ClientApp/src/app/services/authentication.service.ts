@@ -22,9 +22,7 @@ export class AuthenticationService {
   public login(userName: string, password: string): Observable<any> {
     return this.httpClient
       .post(
-        `${environment.apiUrl}\
-          ${apiControllers.authentication}\
-          ${apiUrls.authentication.login}`,
+        `${environment.apiUrl}${apiControllers.authentication}${apiUrls.authentication.login}`,
         {'userName': userName, 'password': password})
       .pipe(tap((res: any) => this.setSession(res)), shareReplay());
   }

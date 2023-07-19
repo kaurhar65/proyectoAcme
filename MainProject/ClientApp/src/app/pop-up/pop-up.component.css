@@ -43,6 +43,21 @@
   gap:30px;
 }
 
+.close {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+}
+
+.bye button {  
+  color: black;
+  font-weight: bold;
+  border:none;
+  outline:none;
+  background:none;
+
+}
+
 .information p {
   margin-bottom: 10px;
   font-size: medium;
@@ -79,7 +94,7 @@ label{
   margin-left:300px;
 }
 
-button{
+.last button{
     border:1px solid lightgrey;
     color:black;
     font-weight:bold;

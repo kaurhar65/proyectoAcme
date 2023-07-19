@@ -1,0 +1,59 @@
+<app-navbar titulo="You are in ADMIN profile !"></app-navbar>
+<div class="cajaFondo">
+  <div class="cajaGeneral">
+    <div class="dataOption">
+      <div class="cajaOption">
+        <div class="option">
+          <p class="thisOpt" routerLink="/adminProfile">Countries</p>
+          <p class="opt" routerLink="">Cities</p>
+          <p class="opt" routerLink="">Offices</p>
+          <p class="opt" routerLink="">Rooms</p>
+          <p class="opt" routerLink="">Users</p>
+          <p class="opt" routerLink="">Reservations</p>
+        </div> 
+      </div>
+      <!--<div class="save">
+        <button class="saveChanges">Save Changes</button>
+      </div>-->
+    </div>
+    <div class="cajaCRUD">
+      <ul id="accordion">
+        <li>
+          <label class="accLabel" for="first">Add <span>&#x3e;</span></label>
+          <input class="accInput" type="radio" name="accordion" id="first" checked />
+          <div class="content">
+            <label class="textLabel">Id: </label>
+            <input class="text" type="text" name="countryId" id="countryId" />
+            <label class="textLabel">Name: </label>
+            <input class="text" type="text" name="countryName" id="countryName" />
+            <input class="addButton" value="Add new country" type="submit">
+          </div>
+        </li>
+        <li>
+          <label class="accLabel" for="second">Get <span>&#x3e;</span></label>
+          <input class="accInput" type="radio" name="accordion" id="second" checked />
+          <div class="content">
+            <label class="textLabel">Id: </label>
+            <input class="text" type="text" name="countryId" id="countryId" />
+          </div>
+        </li>
+        <li>
+          <label class="accLabel" for="third">Update <span>&#x3e;</span></label>
+          <input class="accInput" type="radio" name="accordion" id="third" checked />
+          <div class="content">
+            <label class="textLabel">Id: </label>
+            <input class="text" type="text" name="countryId" id="countryId" />
+          </div>
+        </li>
+        <li>
+          <label class="accLabel" for="fourth">Delete <span>&#x3e;</span></label>
+          <input type="radio" name="accordion" id="fourth" checked />
+          <div class="content">
+            <label class="textLabel">Id: </label>
+            <input class="text" type="text" name="countryId" id="countryId" />
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

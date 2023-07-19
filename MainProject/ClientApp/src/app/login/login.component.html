@@ -12,22 +12,22 @@
       <label>Email</label>
       <div>
         <i class="textoDentro"></i>
-        <input type="text" [(ngModel)]="user.email" placeholder="Please enter your email">
+        <input type="text" [(ngModel)]="user.userName" name="userName" placeholder="Please enter your user name">
       </div>
       <label>Password</label>
       <div>
         <i></i>
-        <input type="password" [(ngModel)]="user.password" placeholder="Please enter your password">
+        <input type="password" [(ngModel)]="user.password" name="password" placeholder="Please enter your password">
       </div>
       <!--<a href="#" class="forgot">Forgot Password</a>-->
 
       <div class="botones">
         <div class="registro">
           <!--<input type="submit" class="regi" value="Register">-->
-          <button type="submit"  (click)="goToRegister()" class="regi">Register</button>
+          <button type="button"  (click)="goToRegister()" class="regi">Register</button>
         </div>
         <div class="log">
-          <button routerLink="/home" type="submit" class="logi">Login</button> <!--CAMBIAR routerLink-->
+          <button type="submit" (keydown.enter)="login()" (click)="login()" class="logi">Login</button> <!--CAMBIAR routerLink-->
         </div>
       </div>
     </form>
