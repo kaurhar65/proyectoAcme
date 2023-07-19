@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'node_modules/rxjs';
+import { Observable, of } from 'node_modules/rxjs';
 import { tap, shareReplay } from 'node_modules/rxjs/operators';
 import { environment, apiControllers, apiUrls } from '../../environments/environment';
 import * as dayjs from 'dayjs';
@@ -22,16 +22,15 @@ export class AuthenticationService {
   public login(userName: string, password: string): Observable<any> {
     return this.httpClient
       .post(
-        `${environment.apiUrl}\
-          ${apiControllers.authentication}\
-          ${apiUrls.authentication.login}`,
+        `${environment.apiUrl}${apiControllers.authentication}${apiUrls.authentication.login}`,
         {'userName': userName, 'password': password})
       .pipe(tap((res: any) => this.setSession(res)), shareReplay());
   }
 
-  public logout(): void {
+  public logout(): Observable<void> {
     localStorage.removeItem('token');
     localStorage.removeItem('expiration');
+    return of();
   }
 
   private getExpiration(): dayjs.Dayjs {

@@ -1,5 +1,7 @@
 ﻿#pragma warning disable CS8602, CS8604
 
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -42,7 +44,7 @@ namespace RoomsApiCrudIdentity.Controllers
         [Route("Login")]
         public async Task<IActionResult> Login([FromBody] RoomsApiCrudIdentity.Models.LoginModel model)
         {
-            var user = await _userManager.FindByNameAsync(model.UserName);
+            var user = await _userManager.FindByEmailAsync(model.Email);
 
             if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
             {
