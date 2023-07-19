@@ -14,7 +14,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { ReserveListComponent } from './reserve-list/reserve-list.component';
-import { PopupComponent } from './pop-up/pop-up.component';
+import { PopUpComponent } from './pop-up/pop-up.component';
 import { AdminCountryComponent } from './admin-country/admin-country.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -34,9 +34,14 @@ import { RoomsComponent } from './rooms/rooms.component';
     HelloUserComponent,
     ReservasComponent,
     ReserveListComponent,
+<<<<<<< HEAD
     PopupComponent,
     AdminCountryComponent,
     RoomsComponent
+=======
+    PopUpComponent,
+    AdminCountryComponent
+>>>>>>> 45c92cd89dc82985fc9861f62d0e726aeadf8676
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

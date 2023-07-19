@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { RequestService } from 'src/app/services/request.service';
+import { Observable } from 'node_modules/rxjs';
+import { environment, apiControllers, apiUrls } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -13,14 +16,39 @@ export class HomeComponent {
     password: ""
   }
 
+<<<<<<< HEAD
   constructor(private router: Router) { } 
   
+=======
+  constructor(private router: Router, private requestService: RequestService) { } 
+>>>>>>> 45c92cd89dc82985fc9861f62d0e726aeadf8676
   goToLogin() {
     this.router.navigate(['login']);
   }
 
   registerSubmit() {
-    alert(`${this.user.name}, ${this.user.email} and ${this.user.password}`)
+    let self = this;
+    alert(`${this.user.name}, ${this.user.email} and ${this.user.password}`);
+    this.requestService.post(`${environment.apiUrl}${apiControllers.authentication}${apiUrls.authentication.register}`,
+      {
+        "UserName": this.user.name,
+        "Password": this.user.password,
+        "Email": this.user.email,
+        "Phone": "000000000"
+      })
+      .subscribe({
+        next(response: any) {
+          alert(JSON.stringify(response))
+          if (response["body"]) {
+            alert(`You have successfully registred.`);
+            self.goToLogin();
+          }
+          },
+        error(err: Error) {
+          alert(err.message)
+        }
+      });
   }
+
 
 }

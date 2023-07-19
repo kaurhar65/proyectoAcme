@@ -45,7 +45,10 @@
 /* ANIMACIÓN DE COLOR BLANCO */
 .underline-animation {
     display: inline-block;
-    position: relative; 
+    position: relative;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .underline-animation::after {
