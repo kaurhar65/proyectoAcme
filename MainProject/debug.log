@@ -10,3 +10,7 @@
 [0706/122231.331:ERROR:viz_main_impl.cc(162)] Exiting GPU process due to errors during initialization
 [0706/122231.984:ERROR:viz_main_impl.cc(162)] Exiting GPU process due to errors during initialization
 [0706/122232.533:ERROR:gpu_init.cc(441)] Passthrough is not supported, GL is disabled
+[0717/110133.700:ERROR:viz_main_impl.cc(162)] Exiting GPU process due to errors during initialization
+[0717/110133.967:ERROR:viz_main_impl.cc(162)] Exiting GPU process due to errors during initialization
+[0717/110134.203:ERROR:gpu_init.cc(441)] Passthrough is not supported, GL is disabled
+[0717/111029.368:WARNING:dns_config_service_win.cc(712)] Failed to read DnsConfig.

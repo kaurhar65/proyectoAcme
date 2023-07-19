@@ -10,6 +10,23 @@
         </div>
     </div>
     <div id="title">
-        <h3>{{titulo}}</h3>
+        <div>
+            <h3 *ngIf="isHomePage(titulo); else noHomePage" (click)="changeDisplay()" id="homeTitle" class="underline-animation" >{{titulo}}</h3>
+            <ng-template #noHomePage>
+                <h3>{{titulo}}</h3>
+            </ng-template>
+            <div id="littleMenu" *ngIf="isOpen">
+                <div *ngFor="let city of cities">
+                    <p class="city">{{city.name}}</p>
+                    <div class="cityList">
+                        <p class="room underline-animation-black" *ngFor="let room of city.rooms">{{room}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button routerLink="/reservas" class="reservas" *ngIf="showButton(titulo)">Reserve a room</button>
+        </div>
     </div>
+    
 </div>
