@@ -17,20 +17,23 @@ export class AuthenticationService {
 
     localStorage.setItem('token', authenticationResult.token);
     localStorage.setItem('expiration', JSON.stringify(expiration.valueOf()));
+    localStorage.setItem('userId', authenticationResult.userId);
+    //alert(localStorage.getItem('userId'));
+    alert(JSON.stringify(authenticationResult));
   }
 
-  public login(userName: string, password: string): Observable<any> {
+  public login(email: string, password: string): Observable<any> {
     return this.httpClient
       .post(
         `${environment.apiUrl}${apiControllers.authentication}${apiUrls.authentication.login}`,
-        {'userName': userName, 'password': password})
+        {'email': email, 'password': password})
       .pipe(tap((res: any) => this.setSession(res)), shareReplay());
   }
 
-  public logout(): Observable<void> {
+  public logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('expiration');
-    return of();
+    localStorage.removeItem('userId');
   }
 
   private getExpiration(): dayjs.Dayjs {

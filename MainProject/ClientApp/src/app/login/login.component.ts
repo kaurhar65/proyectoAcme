@@ -11,8 +11,8 @@ import { environment, apiControllers, apiUrls } from 'src/environments/environme
 })
 export class LoginComponent {
   user = {
-    //email: "",
-    userName: "",
+    email: "",
+    //userName: "",
     password: ""
   }
   constructor(private router: Router, private authenticationService: AuthenticationService) { } 
@@ -27,12 +27,12 @@ export class LoginComponent {
   login() {
     let self = this;
     //alert(`${this.user.userName} and ${this.user.password}`),
-      this.authenticationService.login(this.user.userName, this.user.password)
+      this.authenticationService.login(this.user.email, this.user.password)
         .subscribe({
           next(response: any) {
             //alert(JSON.stringify(response));
             if (response["token"]) {
-              alert(`You have successfully logged in as ${self.user.userName}.`);
+              alert(`You have successfully logged in as ${self.user.email}.`);
               self.goToHome();
             }
           },
