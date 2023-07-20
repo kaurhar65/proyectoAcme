@@ -10,6 +10,11 @@ import { ReservasComponent } from './reservas/reservas.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { AdminCountryComponent } from './admin-country/admin-country.component';
 import { AdminCityComponent } from './admin-city/admin-city.component';
+import { AdminOfficeComponent } from './admin-office/admin-office.component';
+import { AdminReservationComponent } from './admin-reservation/admin-reservation.component';
+import { AdminRoomComponent } from './admin-room/admin-room.component';
+import { AdminAdministratorComponent } from './admin-administrator/admin-administrator.component';
+import { AdminUserComponent } from './admin-user/admin-user.component';
 import { RoomsComponent } from './rooms/rooms.component';
 
 // Define las rutas
@@ -21,6 +26,11 @@ const routes: Routes = [
   { path: 'reservation', component: ReservationComponent },
   { path: 'adminProfile', component: AdminCountryComponent },
   { path: 'adminProfile/cities', component: AdminCityComponent },
+  { path: 'adminProfile/offices', component: AdminOfficeComponent },
+  { path: 'adminProfile/reservations', component: AdminReservationComponent },
+  { path: 'adminProfile/rooms', component: AdminRoomComponent },
+  { path: 'adminProfile/users', component: AdminUserComponent },
+  { path: 'adminProfile/administrators', component: AdminAdministratorComponent },
   { path: 'all-rooms', component: RoomsComponent },
   { path: '**', component: HomeComponent },
   { path:'', redirectTo: '/register', pathMatch: 'full' }
