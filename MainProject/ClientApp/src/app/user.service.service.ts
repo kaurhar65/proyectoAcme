@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserServiceService {
-  private userName: string = 'xx';
+  private userName: string = "";
 
   setUserName(name: string) {
     this.userName = name;

@@ -7,6 +7,7 @@ import { RequestService } from '../services/request.service';
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css']
 })
+
 export class RoomsComponent implements OnInit {
   allRooms: Room[] = [
     {id: 1, name: "Sala 1", img:"https://i.pinimg.com/736x/61/30/e3/6130e3adf957d8c9f43d48fa194c5274.jpg"},
