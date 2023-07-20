@@ -34,14 +34,9 @@ import { RoomsComponent } from './rooms/rooms.component';
     HelloUserComponent,
     ReservasComponent,
     ReserveListComponent,
-<<<<<<< HEAD
-    PopupComponent,
+    PopUpComponent,
     AdminCountryComponent,
     RoomsComponent
-=======
-    PopUpComponent,
-    AdminCountryComponent
->>>>>>> 45c92cd89dc82985fc9861f62d0e726aeadf8676
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
