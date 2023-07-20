@@ -10,6 +10,7 @@
           <p class="opt" routerLink="">Rooms</p>
           <p class="opt" routerLink="">Users</p>
           <p class="opt" routerLink="">Reservations</p>
+          <p class="opt" routerLink="">Administrators</p>
         </div> 
       </div>
       <!--<div class="save">
@@ -22,11 +23,9 @@
           <label class="accLabel" for="first">Add <span>&#x3e;</span></label>
           <input class="accInput" type="radio" name="accordion" id="first" checked />
           <div class="content">
-            <label class="textLabel">Id: </label>
-            <input class="text" type="text" name="countryId" id="countryId" />
             <label class="textLabel">Name: </label>
-            <input class="text" type="text" name="countryName" id="countryName" />
-            <input class="addButton" value="Add new country" type="submit">
+            <input class="text" [(ngModel)]="countryName" type="text" name="countryName" id="countryName" />
+            <input class="addButton" value="Add new country" (keydown.enter)="addCountry()" (click)="addCountry()" type="submit">
           </div>
         </li>
         <li>
@@ -34,7 +33,9 @@
           <input class="accInput" type="radio" name="accordion" id="second" checked />
           <div class="content">
             <label class="textLabel">Id: </label>
-            <input class="text" type="text" name="countryId" id="countryId" />
+            <input class="text" [(ngModel)]="countryId" type="text" name="countryId" id="countryId" />
+            <input class="getCountry" value="Get country by id" (keydown.enter)="getCountryById()" (click)="getCountryById()" type="submit">
+            <input class="getCountry" value="Get all" (click)="getAllCountries()" type="button">
           </div>
         </li>
         <li>
