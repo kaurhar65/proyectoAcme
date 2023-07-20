@@ -3,21 +3,23 @@ import { RequestService } from 'src/app/services/request.service';
 import { environment, apiControllers, apiUrls } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-admin-country',
-  templateUrl: './admin-country.component.html',
-  styleUrls: ['./admin-country.component.css'],
+  selector: 'app-admin-city',
+  templateUrl: './admin-city.component.html',
+  styleUrls: ['./admin-city.component.css']
 })
-export class AdminCountryComponent {
+export class AdminCityComponent {
   constructor(private requestService: RequestService) { }
-  countryName = "xx"
-  countryId = 12
+  cityName = "xx"
+  cityId = 2
+  cityCountry = "Spain"
 
-  addCountry() {
-    alert(this.countryName);
+
+  addCity() {
+    alert(this.cityName);
     let self = this;
-    this.requestService.post(`${environment.apiUrl}${apiControllers.country}${apiUrls.country.createCountry}`,
+    this.requestService.post(`${environment.apiUrl}${apiControllers.city}${apiUrls.city.createCity}`,
       {
-        "Name": this.countryName
+        "Name": this.cityName
       })
       .subscribe({
         next(response: any) {
@@ -31,10 +33,10 @@ export class AdminCountryComponent {
         }
       });
   }
-  getCountryById() {
-    alert(this.countryId);
+  getCityById() {
+    alert(this.cityId);
     let self = this;
-    this.requestService.get(`${environment.apiUrl}${apiControllers.country}${apiUrls.country.getCountryById} ${this.countryId}`)
+    this.requestService.get(`${environment.apiUrl}${apiControllers.city}${apiUrls.city.getCityById} ${this.cityId}`)
       .subscribe({
         next(response: any) {
           alert(JSON.stringify(response))
@@ -47,25 +49,22 @@ export class AdminCountryComponent {
         }
       });
   }
-  getAllCountries() {
-    alert(this.countryId);
+  getAllCities() {
+    alert(this.cityId);
     let self = this;
-    this.requestService.get(`${environment.apiUrl}${apiControllers.country}${apiUrls.country.getAllCountries}`)
+    this.requestService.get(`${environment.apiUrl}${apiControllers.city}${apiUrls.city.getAllCities}`)
       .subscribe({
         next(response: any) {
           alert(JSON.stringify(response))
           if (response["body"]) {
-            alert(`MOSTRARRR TODAS COUNTRIES`);
+            alert(`MOSTRARRR TODAS CITIES`);
           }
         },
         error(err: Error) {
           alert(err.message)
         }
       });
-
   }
-  updateCountry() { }
-  deleteCountry() { }
-
+  updateCity() { }
+  deleteCity() { }
 }
-
