@@ -14,7 +14,8 @@ export const apiControllers = {
   city: "City/",
   office: "Office/",
   room: "Room/",
-  reservation: "Reservation/"
+  reservation: "Reservation/",
+  user: "User/"
 }
 
 export const apiUrls = {
@@ -67,6 +68,13 @@ export const apiUrls = {
     createReservation: "CreateReservation",
     updateReservation: "UpdateReservation",
     deleteReservation: "DeleteReservation"
+  },
+  user: {
+    getAllUsers: "GetAllUsers",
+    getUserById: "GetUserById",
+    getUserByEmail: "GetUserByEmail",
+    updateUser: "UpdateUser",
+    updatePassword: "UpdatePassword"
   }
 }
 
