@@ -9,6 +9,7 @@ import { HelloUserComponent } from 'src/app/hello-user/hello-user.component';
 import { ReservasComponent } from './reservas/reservas.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { AdminCountryComponent } from './admin-country/admin-country.component';
+import { AdminCityComponent } from './admin-city/admin-city.component';
 import { RoomsComponent } from './rooms/rooms.component';
 
 // Define las rutas
@@ -19,13 +20,14 @@ const routes: Routes = [
   { path: 'reservas', component: ReservasComponent },
   { path: 'reservation', component: ReservationComponent },
   { path: 'adminProfile', component: AdminCountryComponent },
+  { path: 'adminProfile/cities', component: AdminCityComponent },
   { path: 'all-rooms', component: RoomsComponent },
   { path: '**', component: HomeComponent },
   { path:'', redirectTo: '/register', pathMatch: 'full' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {bindToComponentInputs:true} as ExtraOptions)],
+  imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true } as ExtraOptions)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
