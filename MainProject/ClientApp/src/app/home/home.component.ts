@@ -16,7 +16,12 @@ export class HomeComponent {
     password: ""
   }
 
+<<<<<<< HEAD
+  constructor(private router: Router) { } 
+  
+=======
   constructor(private router: Router, private requestService: RequestService) { } 
+>>>>>>> 45c92cd89dc82985fc9861f62d0e726aeadf8676
   goToLogin() {
     this.router.navigate(['login']);
   }

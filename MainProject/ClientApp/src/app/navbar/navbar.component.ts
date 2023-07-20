@@ -13,7 +13,8 @@ export class NavbarComponent implements OnInit{
   isOpen:boolean = false;
   @Input() titulo:string = "";
   constructor(private router: Router, private authenticationService: AuthenticationService) { }
-  cities:any = [
+
+  cities: City[] = [
     {
       name: "Australia",
       rooms: [
@@ -32,7 +33,7 @@ export class NavbarComponent implements OnInit{
         "ACME Vancouver", "ACME Toronto"
       ]
     }
-  ]
+  ];
 
   isHomePage(titulo:string) {
     if (titulo == "Find your country") {
@@ -79,5 +80,15 @@ export class NavbarComponent implements OnInit{
   salir() {
     this.authenticationService.logout().subscribe({ next() { } }),
     this.goToLogin()
+  }
+}
+
+export class City {
+  name: string;
+  rooms: string[];
+
+  constructor (name:string, rooms:string[]) {
+    this.name = name;
+    this.rooms = rooms;
   }
 }
