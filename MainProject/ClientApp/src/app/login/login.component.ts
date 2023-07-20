@@ -12,8 +12,8 @@ import { UserServiceService } from 'src/app/user.service.service';
 })
 export class LoginComponent {
   user = {
-    //email: "",
-    userName: "",
+    email: "",
+    //userName: "",
     password: ""
   }
   constructor(private router: Router, private authenticationService: AuthenticationService, private userService: UserServiceService) { } 
@@ -26,16 +26,15 @@ export class LoginComponent {
   }
 
   login() {
-    let self = this;
     //alert(`${this.user.userName} and ${this.user.password}`),
-      this.authenticationService.login(this.user.userName, this.user.password)
+      this.authenticationService.login(this.user.email, this.user.password)
         .subscribe({
-          next(response: any) {
+          next: (response: any) => {
             //alert(JSON.stringify(response));
             if (response["token"]) {
-              alert(`You have successfully logged in as ${self.user.userName}.`);
-              self.goToHome();
-              self.userService.setUserName(self.user.userName);
+              alert(`You have successfully logged in as ${this.user.email}.`);
+              this.userService.setUserName(this.user.email);
+              this.goToHome();
             }
           },
           error(err: Error) {

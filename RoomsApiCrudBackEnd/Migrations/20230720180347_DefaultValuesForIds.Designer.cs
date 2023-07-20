@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RoomsApiCrudIdentity.Data;
 
@@ -10,9 +11,11 @@ using RoomsApiCrudIdentity.Data;
 namespace RoomsApiCrudIdentity.Migrations
 {
     [DbContext(typeof(RoomsApiCrudDbContext))]
-    partial class RoomsApiCrudDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230720180347_DefaultValuesForIds")]
+    partial class DefaultValuesForIds
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

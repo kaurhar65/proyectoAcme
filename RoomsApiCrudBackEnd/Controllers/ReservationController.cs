@@ -11,7 +11,7 @@ using RoomsApiCrudIdentity.Entities;
 
 namespace RoomsApiCrudIdentity.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ReservationController : ControllerBase
@@ -64,14 +64,16 @@ namespace RoomsApiCrudIdentity.Controllers
                     _context.Rooms,
                     reservation => reservation.RoomId,
                     room => room.Id,
-                    (reservation, room) => new { reservation, Room = room })
+                    (reservation, room) => new { Reservation = reservation, Room = room })
                 .Join(
                     _context.Offices,
                     roomReservation => roomReservation.Room.OfficeId,
                     office => office.Id,
-                    (roomReservation, office) => new { roomReservation.Room, Office = office })
+                    (roomReservation, office) => new { Reservation = roomReservation.Reservation, Room = roomReservation.Room, Office = office })
                 .Where(
-                    officeRoomReservation => officeRoomReservation.Room.OfficeId == officeId)
+                    officeRoomReservation => officeRoomReservation.Office.Id == officeId)
+                .Select(
+                    officeRoomReservation => officeRoomReservation.Reservation)
                 .ToListAsync();
             if (!result.Any())
             {
@@ -88,20 +90,22 @@ namespace RoomsApiCrudIdentity.Controllers
                     _context.Rooms,
                     reservation => reservation.RoomId,
                     room => room.Id,
-                    (reservation, room) => new { reservation, Room = room })
+                    (reservation, room) => new { Reservation = reservation, Room = room })
                 .Join(
                     _context.Offices,
                     roomReservation => roomReservation.Room.OfficeId,
                     office => office.Id,
-                    (roomReservation, office) => new { roomReservation, Office = office })
+                    (roomReservation, office) => new { Reservation = roomReservation.Reservation, Room = roomReservation.Room, Office = office })
                 .Join(
                     _context.Cities,
                     officeRoomReservation => officeRoomReservation.Office.CityId,
                     city => city.Id,
-                    (officeRoomReservation, city) => new { officeRoomReservation.Office, City = city }
+                    (officeRoomReservation, city) => new { Reservation = officeRoomReservation.Reservation, Room = officeRoomReservation.Room, Office = officeRoomReservation.Office, City = city }
                 )
                 .Where(
-                    cityOfficeRoomReservation => cityOfficeRoomReservation.Office.CityId == cityId)
+                    cityOfficeRoomReservation => cityOfficeRoomReservation.City.Id == cityId)
+                .Select(
+                    cityOfficeRoomReservation => cityOfficeRoomReservation.Reservation)
                 .ToListAsync();
             if (!result.Any())
             {
@@ -118,25 +122,27 @@ namespace RoomsApiCrudIdentity.Controllers
                     _context.Rooms,
                     reservation => reservation.RoomId,
                     room => room.Id,
-                    (reservation, room) => new { reservation, Room = room })
+                    (reservation, room) => new { Reservation = reservation, Room = room })
                 .Join(
                     _context.Offices,
                     roomReservation => roomReservation.Room.OfficeId,
                     office => office.Id,
-                    (roomReservation, office) => new { roomReservation, Office = office })
+                    (roomReservation, office) => new { Reservation = roomReservation.Reservation, Room = roomReservation.Room, Office = office })
                 .Join(
                     _context.Cities,
                     officeRoomReservation => officeRoomReservation.Office.CityId,
                     city => city.Id,
-                    (officeRoomReservation, city) => new { officeRoomReservation, City = city }
+                    (officeRoomReservation, city) => new { Reservation = officeRoomReservation.Reservation, Room = officeRoomReservation.Room, Office = officeRoomReservation.Office, City = city }
                 )
                 .Join(
                     _context.Countries,
                     cityOfficeRoomReservation => cityOfficeRoomReservation.City.CountryId,
                     country => country.Id,
-                    (cityOfficeRoomReservation, country) => new { cityOfficeRoomReservation.City, Country = country })
+                    (cityOfficeRoomReservation, country) => new { Reservation = cityOfficeRoomReservation.Reservation, Room = cityOfficeRoomReservation.Room, Office = cityOfficeRoomReservation.Office, City = cityOfficeRoomReservation.City, Country = country })
                 .Where(
-                    countryCityOfficeRoomReservation => countryCityOfficeRoomReservation.City.CountryId == countryId)
+                    countryCityOfficeRoomReservation => countryCityOfficeRoomReservation.Country.Id == countryId)
+                .Select(
+                    countryCityOfficeRoomReservation => countryCityOfficeRoomReservation.Reservation)
                 .ToListAsync();
             if (!result.Any())
             {

@@ -1,4 +1,4 @@
-<app-navbar titulo="'Hello, ' + userService.getUserName() + '!'"></app-navbar>
+<app-navbar titulo="Hello, {{userName}}!"></app-navbar>
 <div class="cajaFondo">
   <div class="container">
     <div class="izquierda">
@@ -23,7 +23,7 @@
       <div class="cajaDatos">
         <div class="name">
           <p>Full name</p>
-          <input type="text" id="input" class="inputName" placeholder="Benjamin Davis">
+          <input type="text" id="input" class="inputName" placeholder="{{userName}}">
         </div>
         <div class="email">
           <p>Current email</p>
