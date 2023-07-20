@@ -22,6 +22,7 @@ import { RequestService } from './services/request.service';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthenticationInterceptorService } from './services/authentication-interceptor.service';
 import { RoomsComponent } from './rooms/rooms.component';
+import { AdminCityComponent } from './admin-city/admin-city.component';
 
 @NgModule({
   declarations: [
@@ -34,14 +35,10 @@ import { RoomsComponent } from './rooms/rooms.component';
     HelloUserComponent,
     ReservasComponent,
     ReserveListComponent,
-<<<<<<< HEAD
-    PopupComponent,
-    AdminCountryComponent,
-    RoomsComponent
-=======
+    RoomsComponent,
     PopUpComponent,
-    AdminCountryComponent
->>>>>>> 45c92cd89dc82985fc9861f62d0e726aeadf8676
+    AdminCountryComponent,
+    AdminCityComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
