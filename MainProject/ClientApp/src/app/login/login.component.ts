@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Observable } from 'node_modules/rxjs';
 import { environment, apiControllers, apiUrls } from 'src/environments/environment';
+import { UserServiceService } from 'src/app/user.service.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent {
     userName: "",
     password: ""
   }
-  constructor(private router: Router, private authenticationService: AuthenticationService) { } 
+  constructor(private router: Router, private authenticationService: AuthenticationService, private userService: UserServiceService) { } 
   goToRegister() {
     this.router.navigate(['register']);
   }
@@ -34,6 +35,7 @@ export class LoginComponent {
             if (response["token"]) {
               alert(`You have successfully logged in as ${self.user.userName}.`);
               self.goToHome();
+              self.userService.setUserName(self.user.userName);
             }
           },
           error(err: Error) {

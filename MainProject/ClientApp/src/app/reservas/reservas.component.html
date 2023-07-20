@@ -7,7 +7,7 @@
           <div class="row divCountry">
             <p>Select a country</p>
             <select [(ngModel)]="reserva.country" name="country">
-              <option value="any" selected>any country</option>
+              <option value="1" selected>any country (united states id=1)</option>
               <option value="Australia">Australia</option>
               <option value="Japan">Japan</option>
               <option value="Canada">Canada</option>
@@ -15,7 +15,7 @@
               <option value="France">France</option>
               <option value="Spain">Spain</option>
               <option value="Germany">Germany</option>
-              <option value="United States">United States</option>
+              <option value="1">United States</option>
               <option value="United Kingdom">United Kingdom</option>
               <option value="Mexico">Mexico</option>
             </select>
@@ -29,7 +29,7 @@
           <div class="row divOffice">
             <p>Select an office</p>
             <select [(ngModel)]="reserva.office" name="office">
-              <option value="any" selected>any office</option>
+              <option value="1" selected>any office (new york id=1)</option>
               <optgroup label="Australia">
                 <option value="ACME Sydney">ACME Sydney</option>
                 <option value="ACME Melbourne">ACME Melbourne</option>
@@ -57,7 +57,7 @@
                 <option value="ACME Munich">ACME Munich</option>
               </optgroup>
               <optgroup label="United States">
-                <option value="ACME New York City">ACME New York City</option>
+                <option value="1">ACME New York City</option>
               </optgroup>
               <optgroup label="United Kingdom">
                 <option value="ACME London">ACME London</option>
@@ -76,7 +76,7 @@
           <div class="row divRoom">
             <p>Select a room</p>
             <select [(ngModel)]="reserva.room" name="room" required>
-              <option value="any" selected>any room</option>
+              <option value="1" selected>any room (Empire)</option>
               <optgroup label="Australia - ACME Sydney">
                 <option value="Blue Mountains">Blue Mountains</option>
                 <option value="Bondi">Bondi</option>
@@ -160,7 +160,7 @@
                 <option value="Oktoberfest">Oktoberfest</option>
               </optgroup>
               <optgroup label="United States - ACME New York City">
-                <option value="Empire">Empire</option>
+                <option value="1">Empire</option>
                 <option value="Central Park">Central Park</option>
                 <option value="Hudson">Hudson</option>
                 <option value="Liberty">Liberty</option>
@@ -190,7 +190,7 @@
       </div>
       <div class="subm">
         <div class="row divSubmit">
-          <input class="submitReserve" (click)="enviarReserva()" type="submit" value="Reserve" name="submit" id="submitForm">
+          <input class="submitReserve" (click)="crearReserva()" type="submit" value="Reserve" name="submit" id="submitForm">
         </div>
       </div>
     </form>
