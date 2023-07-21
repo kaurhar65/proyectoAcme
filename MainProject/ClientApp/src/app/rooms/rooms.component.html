@@ -2,6 +2,14 @@
 <div id="allRooms">
     <h3>All rooms</h3>
     <div id="roomList">
-        <h1>Room!</h1>
+        <div class="roomCard" *ngFor="let room of allRooms" [routerLink]="['room-detail', room.id]">
+            <div class="image">
+                <img src="{{room.img}}" alt="Imagen de sala">
+            </div>
+            <div class="texto">
+                <p class="idText">Id: {{room.id}}</p>
+                <p class="nameText">{{room.name}}</p>
+            </div>
+        </div>
     </div>
 </div>
