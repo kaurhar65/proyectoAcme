@@ -62,6 +62,10 @@ export class AdminCountryComponent {
           alert(err.message)
         }
       });
+
   }
+  updateCountry() { }
+  deleteCountry() { }
+
 }
 

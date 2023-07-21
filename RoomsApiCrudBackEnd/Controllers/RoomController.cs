@@ -65,14 +65,16 @@ namespace RoomsApiCrudIdentity.Controllers
                     _context.Offices,
                     room => room.OfficeId,
                     office => office.Id,
-                    (room, office) => new { room, Office = office })
+                    (room, office) => new { Room = room, Office = office })
                 .Join(
                     _context.Cities,
                     officeRoom => officeRoom.Office.CityId,
                     city => city.Id,
-                    (officeRoom, city) => new { officeRoom.Office, City = city })
+                    (officeRoom, city) => new { officeRoom, City = city })
                 .Where(
-                    cityOfficeRoom => cityOfficeRoom.Office.CityId == cityId)
+                    cityOfficeRoom => cityOfficeRoom.City.Id == cityId)
+                .Select(
+                    cityOfficeRoom => cityOfficeRoom.officeRoom.Room)
                 .ToListAsync();
             if (!result.Any())
             {
@@ -89,20 +91,22 @@ namespace RoomsApiCrudIdentity.Controllers
                     _context.Offices,
                     room => room.OfficeId,
                     office => office.Id,
-                    (room, office) => new { room, Office = office })
+                    (room, office) => new { Room = room, Office = office })
                 .Join(
                     _context.Cities,
                     officeRoom => officeRoom.Office.CityId,
                     city => city.Id,
-                    (officeRoom, city) => new { officeRoom, City = city })
+                    (officeRoom, city) => new { Room = officeRoom.Room, Office = officeRoom.Office, City = city })
                 .Join(
                     _context.Countries,
                     cityOfficeRoom => cityOfficeRoom.City.CountryId,
                     country => country.Id,
-                    (cityOfficeRoom, country) => new { cityOfficeRoom.City, Country = country }
+                    (cityOfficeRoom, country) => new { cityOfficeRoom, Country = country }
                     )
                 .Where(
-                    countryCityOfficeRoom => countryCityOfficeRoom.City.CountryId == countryId)
+                    countryCityOfficeRoom => countryCityOfficeRoom.Country.Id == countryId)
+                .Select(
+                    countryCityOfficeRoom => countryCityOfficeRoom.cityOfficeRoom.Room)
                 .ToListAsync();
             if (!result.Any())
             {

@@ -66,7 +66,8 @@ namespace RoomsApiCrudIdentity.Controllers
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
                     //expiration = token.ValidTo
-                    expiration = 60
+                    expiration = 60,
+                    userId = user.Id
                 });
             }
 

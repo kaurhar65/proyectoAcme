@@ -98,20 +98,29 @@ button:hover {
 
   /*formulario de CRUD*/
 
-  .content {
-      display: flex;
-      flex-direction: row;
-  }
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.agr2 {
+    display: flex;
+    gap: 15px;
+}
 .textLabel {
-  font-size: 16px;
-  margin: 0px 4px 0px 8px;
+  font-size: 14px;
   font-weight:600;
 }
 .text {
   font-size: 14px;
   font-weight: 600;
+  margin: 0px 10px;
 }
 .addButton {
     position: relative;
     right: 0;
+}
+.butt {
+    font-size: 14px;
 }
