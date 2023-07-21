@@ -65,14 +65,17 @@ namespace RoomsApiCrudIdentity.Controllers
                     _context.Cities,
                     office => office.CityId,
                     city => city.Id,
-                    (office, city) => new { office, City = city })
+                    (office, city) => new { Office = office, City = city })
                 .Join(
                     _context.Countries,
                     cityOffice => cityOffice.City.CountryId,
                     country => country.Id,
-                    (cityOffice, country) => new { cityOffice.City, Country = country })
+                    //(cityOffice, country) => new { CityOffice = cityOffice, Country = country })
+                    (cityOffice, country) => new { Office = cityOffice.Office, City = cityOffice.City, Country = country})
                 .Where(
-                    countryCityOffice => countryCityOffice.City.Id == countryId)
+                    countryCityOffice => countryCityOffice.Country.Id == countryId)
+                .Select(
+                    countryCityOffice => countryCityOffice.Office)
                 .ToListAsync();
             if (!result.Any())
             {

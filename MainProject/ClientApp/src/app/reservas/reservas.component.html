@@ -6,191 +6,122 @@
         <div class="col col1">
           <div class="row divCountry">
             <p>Select a country</p>
-            <select [(ngModel)]="reserva.country" name="country">
-              <option value="1" selected>any country (united states id=1)</option>
-              <option value="Australia">Australia</option>
-              <option value="Japan">Japan</option>
-              <option value="Canada">Canada</option>
-              <option value="Italy">Italy</option>
-              <option value="France">France</option>
-              <option value="Spain">Spain</option>
-              <option value="Germany">Germany</option>
-              <option value="1">United States</option>
-              <option value="United Kingdom">United Kingdom</option>
-              <option value="Mexico">Mexico</option>
+            <select
+              [(ngModel)]="selection.country"
+              #countryList
+              (change)="onCountrySelected(countryList.value)"
+              name="countryList"
+            >
+              <option selected value="any">Any country</option>
+              <option *ngFor="let country of countries" [value]="country.id">
+                {{ country.name }}
+              </option>
             </select>
           </div>
           <div class="row divDate">
             <p>Select a day</p>
-            <input [(ngModel)]="reserva.day" type="date" name="day" id="date" required>            
+            <input
+              [(ngModel)]="reservationRegistrationForm.date"
+              type="date"
+              name="day"
+              id="date"
+              required
+            />
           </div>
         </div>
         <div class="col col2">
           <div class="row divOffice">
             <p>Select an office</p>
-            <select [(ngModel)]="reserva.office" name="office">
-              <option value="1" selected>any office (new york id=1)</option>
-              <optgroup label="Australia">
-                <option value="ACME Sydney">ACME Sydney</option>
-                <option value="ACME Melbourne">ACME Melbourne</option>
-              </optgroup>
-              <optgroup label="Japan">
-                <option value="ACME Tokyo">ACME Tokyo</option>
-              </optgroup>
-              <optgroup label="Canada">
-                <option value="ACME Vancouver">ACME Vancouver</option>
-                <option value="ACME Toronto">ACME Toronto</option>
-              </optgroup>
-              <optgroup label="Italy">
-                <option value="ACME Rome">ACME Rome</option>
-                <option value="ACME Milan">ACME Milan</option>
-              </optgroup>
-              <optgroup label="France">
-                <option value="ACME Paris">ACME Paris</option>
-              </optgroup>
-              <optgroup label="Spain">
-                <option value="ACME Barcelona">ACME Barcelona</option>
-                <option value="ACME Madrid">ACME Madrid</option>
-              </optgroup>
-              <optgroup label="Germany">
-                <option value="ACME Berlin">ACME Berlin</option>
-                <option value="ACME Munich">ACME Munich</option>
-              </optgroup>
-              <optgroup label="United States">
-                <option value="1">ACME New York City</option>
-              </optgroup>
-              <optgroup label="United Kingdom">
-                <option value="ACME London">ACME London</option>
-              </optgroup>
-              <optgroup label="Mexico">
-                <option value="ACME Mexico City">ACME Mexico City</option>
+            <select
+              [(ngModel)]="selection.office"
+              #officeList
+              (change)="onOfficeSelected(officeList.value)"
+              name="officeList"
+            >
+              <option selected value="any">Any office</option>
+              <optgroup *ngFor="let city of cities" label="{{ city.name }}">
+                <ng-container *ngFor="let office of offices">
+                  <option
+                    *ngIf="office.cityId === city.id"
+                    [value]="office.id"
+                  >
+                    {{ office.name }}
+                  </option>
+                </ng-container>
               </optgroup>
             </select>
           </div>
           <div class="row divTime1">
             <p>Start time</p>
-            <input [(ngModel)]="reserva.startTime" type="time" name="startTime" id="time" required>
+            <input
+              [(ngModel)]="reservationRegistrationForm.startTime"
+              type="time"
+              name="startTime"
+              id="time"
+              required
+            />
           </div>
         </div>
         <div class="col col3">
           <div class="row divRoom">
             <p>Select a room</p>
-            <select [(ngModel)]="reserva.room" name="room" required>
-              <option value="1" selected>any room (Empire)</option>
-              <optgroup label="Australia - ACME Sydney">
-                <option value="Blue Mountains">Blue Mountains</option>
-                <option value="Bondi">Bondi</option>
-                <option value="Darling Harbour">Darling Harbour</option>
-                <option value="Opera House">Opera House</option>
-                <option value="Manly">Manly</option>
-              </optgroup>
-              <optgroup label="Australia - ACME Melbourne">
-                <option value="Yarra">Yarra</option>
-                <option value="Flinders">Flinders</option>
-                <option value="St Kilda">St Kilda</option>
-                <option value="Federation">Federation</option>
-                <option value="Brighton">Brighton</option>
-              </optgroup>
-              <optgroup label="Japan - ACME Tokyo">
-                <option value="Fuji">Fuji</option>
-                <option value="Shibuya">Shibuya</option>
-                <option value="Ginza">Ginza</option>
-                <option value="Shinjuku">Shinjuku</option>
-                <option value="Harajuku">Harajuku</option>
-              </optgroup>
-              <optgroup label="Canada - ACME Vancouver">
-                <option value="Stanley Park">Stanley Park</option>
-                <option value="Capilano">Capilano</option>
-                <option value="Granville Island">Granville Island</option>
-                <option value="Grouse Mountain">Grouse Mountain</option>
-                <option value="English Bay">English Bay</option>
-              </optgroup>
-              <optgroup label="Canada - ACME Toronto">
-                <option value="Ontaro">Ontario</option>
-                <option value="CN Tower">CN Tower</option>
-                <option value="Distillery">Distillery</option>
-              </optgroup>
-              <optgroup label="Italy - ACME Rome">
-                <option value="Tevere">Tevere</option>
-                <option value="Colosseo">Colosseo</option>
-                <option value="Aventino">Aventino</option>
-                <option value="Trevi">Trevi</option>
-                <option value="Vatican">Vatican</option>
-              </optgroup>
-              <optgroup label="Italy - ACME Milan">
-                <option value="Navigli">Navigli</option>
-                <option value="Duomo">Duomo</option>
-                <option value="Brera">Brera</option>
-                <option value="Porta Nuova">Porta Nuova</option>
-                <option value="Sforza">Sforza</option>
-              </optgroup>
-              <optgroup label="France - ACME Paris">
-                <option value="Seine">Seine</option>
-                <option value="Louvre">Louvre</option>
-                <option value="Eiffel">Eiffel</option>
-                <option value="montmartre">Montmartre</option>
-                <option value="Versalles">Versalles</option>
-              </optgroup>
-              <optgroup label="Spain - ACME Barcelona">
-                <option value="Montjüic">Montjuïc</option>
-                <option value="Tibidabo">Tibidabo</option>
-                <option value="Barceloneta">Barceloneta</option>
-                <option value="Gaudí">Gaudí</option>
-                <option value="Sagrada Familia">Sagrada Familia</option>
-              </optgroup>
-              <optgroup label="Spain - ACME Madrid">
-                <option value="Retiro">Retiro</option>
-                <option value="Prado">Prado</option>
-                <option value="Gran Via">Gran Via</option>
-                <option value="Puerta del Sol">Puerta del Sol</option>
-                <option value="Reina Sofía">Reina Sofía</option>
-              </optgroup>
-              <optgroup label="Germany - ACME Berlin">
-                <option value="Spree">Spree</option>
-                <option value="Brandenburg">Brandenburg</option>
-                <option value="Tiergarten">Tiergarten</option>
-                <option value="Potsdamer">Potsdamer</option>
-                <option value="Reichstag">Reichstag</option>
-              </optgroup>
-              <optgroup label="Germany - ACME Munich">
-                <option value="Isar">Isar</option>
-                <option value="Englischer Garten">Englischer Garten</option>
-                <option value="Marienplatz">Marienplatz</option>
-                <option value="Nymphenburg">Nymphenburg</option>
-                <option value="Oktoberfest">Oktoberfest</option>
-              </optgroup>
-              <optgroup label="United States - ACME New York City">
-                <option value="1">Empire</option>
-                <option value="Central Park">Central Park</option>
-                <option value="Hudson">Hudson</option>
-                <option value="Liberty">Liberty</option>
-                <option value="Times Squar">Times Square</option>
-              </optgroup>
-              <optgroup label="United Kingdom - ACME London">
-                <option value="Thames">Thames</option>
-                <option value="Buckingham">Buckingham</option>
-                <option value="Hyde">Hyde</option>
-                <option value="Tower">Tower</option>
-                <option value="Westminster">Westminster</option>
-              </optgroup>
-              <optgroup label="Mexico - ACME Mexico City">
-                <option value="Chapultepec">Chapultepec</option>
-                <option value="Zócalo">Zócalo</option>
-                <option value="Polanco">Polanco</option>
-                <option value="Reforma">Reforma</option>
-                <option value="Coyoacán">Coyoacán</option>
-              </optgroup>
-            </select>
+            <select
+              [(ngModel)]="selection.room"
+              #roomList
+              (change)="onRoomSelected(roomList.value)"
+              name="roomList"
+              required
+            >
+            <ng-container *ngFor="let office of offices">
+              <ng-container *ngIf="selection.office == 'any'; else particularOffice">
+                <optgroup label="{{ office.name }}">
+                  <ng-container *ngFor="let room of rooms">
+                    <option
+                      *ngIf="room.officeId === office.id"
+                      [value]="room.id"
+                    >
+                      {{ room.name }}
+                    </option>
+                  </ng-container>
+                </optgroup>
+              </ng-container>
+              <ng-template #particularOffice>
+                <optgroup *ngIf="office.id == selection.office" label="{{ office.name }}">
+                  <ng-container *ngFor="let room of rooms">
+                    <option
+                      *ngIf="room.officeId === office.id"
+                      [value]="room.id"
+                    >
+                      {{ room.name }}
+                    </option>
+                  </ng-container>
+                </optgroup>
+              </ng-template>
+            </ng-container>
+          </select>
           </div>
           <div class="row divTime2">
             <p>End time</p>
-            <input [(ngModel)]="reserva.endTime" type="time" name="endTime" id="time" required>
+            <input
+              [(ngModel)]="reservationRegistrationForm.endTime"
+              type="time"
+              name="endTime"
+              id="time"
+              required
+            />
           </div>
         </div>
       </div>
       <div class="subm">
         <div class="row divSubmit">
-          <input class="submitReserve" (click)="crearReserva()" type="submit" value="Reserve" name="submit" id="submitForm">
+          <input
+            class="submitReserve"
+            (click)="validateReservation()"
+            type="submit"
+            value="Reserve"
+            name="submit"
+            id="submitForm"
+          />
         </div>
       </div>
     </form>
