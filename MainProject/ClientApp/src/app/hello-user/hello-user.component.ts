@@ -17,5 +17,4 @@ export class HelloUserComponent {
     this.userName = localStorage.getItem('userName')!;
     this.email = localStorage.getItem('email')!;
   }
-
 }
