@@ -11,9 +11,10 @@ import { UserServiceService } from 'src/app/user.service.service';
 })
 export class HelloUserComponent {
   userName: string = "";
+  email: string = "";
 
   constructor(private userServiceService: UserServiceService) {
     this.userName = localStorage.getItem('userName')!;
+    this.email = localStorage.getItem('email')!;
   }
-
 }

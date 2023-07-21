@@ -25,6 +25,7 @@ export class AuthenticationService {
     localStorage.setItem('token', authenticationResult.token);
     localStorage.setItem('expiration', JSON.stringify(expiration.valueOf()));
     localStorage.setItem('userId', authenticationResult.userId);
+    localStorage.setItem('email', email);
     this.userService.setUserName(email);
     //alert(localStorage.getItem('userId'));
     alert(JSON.stringify(authenticationResult));
@@ -43,10 +44,7 @@ export class AuthenticationService {
   }
 
   public logout(): void {
-    localStorage.removeItem('token');
-    localStorage.removeItem('expiration');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('userName');
+    localStorage.clear();
   }
 
   private getExpiration(): dayjs.Dayjs {
