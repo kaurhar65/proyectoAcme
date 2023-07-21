@@ -73,6 +73,7 @@ button {
 p {
   margin: 0;
   padding: 10px 0px 5px 0px;
+  font-weight: bold;
 }
 
 .lang {
