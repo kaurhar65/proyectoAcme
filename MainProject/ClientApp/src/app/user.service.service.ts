@@ -11,7 +11,7 @@ import { HttpParams } from '@angular/common/http';
   providedIn: 'root',
 })
 export class UserServiceService {
-  private userName: string = '';
+  //private userName: string = '';
 
   constructor(private requestService: RequestService) {}
 
