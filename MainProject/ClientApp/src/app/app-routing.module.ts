@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, ExtraOptions} from '@angular/router';
 
 // Importa los componentes que deseas enlazar a las rutas
 import { HomeComponent } from 'src/app/home/home.component';
@@ -25,7 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {bindToComponentInputs:true})],
+  imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true } as ExtraOptions)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

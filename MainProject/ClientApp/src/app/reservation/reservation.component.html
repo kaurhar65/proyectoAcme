@@ -1,11 +1,11 @@
-
-  <app-navbar titulo="My reservations" ></app-navbar>
+<div #pageContent>
+  <app-navbar titulo="My reservations"></app-navbar>
   <div class="body">
     <div class="bla">
       <div class="container">
         <form>
           <i class="fas fa-search"></i>
-          <input type="text" placeholder="Search by ID/City/Country">
+          <input type="text" [(ngModel)]="palabra" (keyup)="onSearch()" placeholder="Search by ID/City/Country">
           <button type="submit"> Search </button>
         </form>
         <a class="underline-animation" href="https://www.google.com/search"> Need help? </a>
@@ -17,4 +17,4 @@
     <app-reserve-list class="reserve-list"></app-reserve-list>
     <app-reserve-list class="reserve-list"></app-reserve-list>
   </div>
-
+</div>
