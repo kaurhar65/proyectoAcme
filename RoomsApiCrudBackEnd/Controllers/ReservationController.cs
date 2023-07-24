@@ -11,7 +11,7 @@ using RoomsApiCrudIdentity.Entities;
 
 namespace RoomsApiCrudIdentity.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ReservationController : ControllerBase
@@ -69,7 +69,7 @@ namespace RoomsApiCrudIdentity.Controllers
                     _context.Offices,
                     roomReservation => roomReservation.Room.OfficeId,
                     office => office.Id,
-                    (roomReservation, office) => new { Reservation = roomReservation.Reservation, Room = roomReservation.Room, Office = office })
+                    (roomReservation, office) => new { roomReservation.Reservation, Room = roomReservation.Room, Office = office })
                 .Where(
                     officeRoomReservation => officeRoomReservation.Office.Id == officeId)
                 .Select(
