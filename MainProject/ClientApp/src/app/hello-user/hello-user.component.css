@@ -54,13 +54,15 @@
 
 button {
   background-color: #ffff;
-  border: 1px solid black;
+  border: 1px solid gray;
   height: 28px;
   width: 80%;
+  color:black;
 }
 
   button:hover {
-    background-color: #c4c4c4;
+    background-color: whitesmoke;
+
   }
 
 .idioma {
@@ -149,9 +151,11 @@ input {
     justify-content: space-between;
     padding: 20px 0px 0px 0px; /*pendiente ajustar espaciado*/
   }
+
   .changePic {
-      display: none;
+    display: none;
   }
+
   .derecha {
     width: 100%;
   }
@@ -203,5 +207,13 @@ input {
   .save {
     margin: 15px;
     width: 150px;
+    background-color: transparent;
+    font-weight: bold;
+    color: black;
   }
+
+    .save:hover {
+      background-color: whitesmoke;
+      color: black;
+    }
 }

@@ -199,11 +199,12 @@
 
 .reservas {
     color: white;
-    padding: 0.5rem;
-    background-color: #913831;
-    border: black solid 2px;
+    padding: 8px 20px;
+    background-color: transparent;
+    border: white solid 1px;
     margin-right: 4rem;
     margin-bottom: 1rem;
+    font-weight:bold;
 }
 
 .reservas:hover {
