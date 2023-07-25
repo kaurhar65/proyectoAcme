@@ -1,18 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
+/*
+    FONT-WEIGHT
+    titulo grande: 600;
+    texto normal: 300;
+    texto negrita: 400;
+
+    FONT SIZE
+    14px 16px 38px(titulo)
+    
+*/
+
 #home {
-    padding: 2rem 4rem;
-    background-color: white;
-    height: 70vh;
+  padding: 25px 38px 12px 38px;
+  background-color: white;
+  height: 70vh;
 }
 
 #home h3 {
-    font-weight: bolder;
+    font-weight: 400;
+    margin: 0;
 }
 .superiorHome {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 10px;
-    align-items: center;
+    margin-bottom: 30px;
+    align-content: center;
 }
 .reservas {
     border: 1px solid black;
@@ -64,8 +77,8 @@
 .roomCard p{
     margin: 0;
     padding: 1rem 0 1rem 1rem;
-    font-size: 20px;
-    font-weight: bolder;
+    font-size: 16px;
+    font-weight: 300;
 }
 
 .roomCard img {

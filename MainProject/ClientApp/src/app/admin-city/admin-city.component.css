@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
+/*
+    FONT-WEIGHT
+    titulo grande: 500;
+    texto normal: 300;
+    texto negrita: 400;
+
+    FONT SIZE
+    14px 16px 38px(titulo)
+    
+*/
+
 .cajaFondo {
   display: flex;
   flex-direction: column;
@@ -29,7 +41,7 @@
 }
 
 .thisOpt {
-  font-weight: 800;
+  font-weight: 500;
   cursor: pointer;
   color: #c20000;
   margin: 5px;
@@ -40,7 +52,7 @@
 }
 
   .opt:hover {
-    font-weight: bold;
+    color: #c20000;
     cursor: pointer;
   }
 
@@ -80,14 +92,14 @@ button {
       align-items: center;
       justify-content: space-between;
       font-size: 20px;
-      font-weight: 800;
+      font-weight: 500;
       cursor: pointer;
       color: #c20000;
     }
 
       #accordion li .accLabel span {
         transform: rotate(90deg);
-        font-size: 22px;
+        font-size: 20px;
         color: #333;
       }
 
@@ -122,12 +134,12 @@ button {
 
 .textLabel {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 300;
 }
 
 .text {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
   margin: 0px 10px;
 }
 
