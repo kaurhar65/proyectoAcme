@@ -38,7 +38,7 @@ export class NavbarComponent implements OnInit {
   }
 
   showButton(titulo: string) {
-    if (titulo.includes('Hello') || titulo.includes('Make a')) {
+    if (titulo.includes('Hello') || titulo.includes('Make a') || titulo.includes('You are in')) {
       return false;
     }
 
@@ -50,6 +50,12 @@ export class NavbarComponent implements OnInit {
       return true;
     }
     return false;
+  }
+  showReservationsButton(titulo: string) {
+    if (titulo.includes('You are in')) {
+      return false;
+    }
+    return true;
   }
 
   changeDisplay() {
@@ -66,6 +72,7 @@ export class NavbarComponent implements OnInit {
         ?.classList.remove('underline-animation-black');
     }
   }
+
 
   ngOnInit(): void {}
   

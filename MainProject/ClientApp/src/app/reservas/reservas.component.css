@@ -1,5 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
+/*
+    FONT-WEIGHT
+    titulo grande: 600;
+    texto normal: 300;
+    texto negrita: 500;
+
+    FONT SIZE
+    14px 16px 38px(titulo)
+    
+*/
+
 * {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 .cajaFondo {
     flex-direction: column;
@@ -17,7 +30,6 @@
   display: flex;
   justify-content:center;
   align-items:center;
-  width:60%;
 }
 
 form {
@@ -59,7 +71,7 @@ p {
   margin: 0;
   font-size: 14px;
   color: rgb(79, 79, 79);
-  font-weight: 1000;
+  font-weight: 400;
   margin-bottom: 5px;
 }
 
@@ -79,6 +91,7 @@ input {
   background-color: #e8e8e8;
   border: none;
   height: 28px;
+  font-size: 14px;
 }
 
   input:focus {
@@ -89,7 +102,7 @@ input {
   border: 1px solid black;
   color: black;
   background-color:white;
-  font-weight:bolder;
+  font-weight: 400;
 }
 
   .submitReserve:hover {
@@ -97,7 +110,7 @@ input {
   }
 
 /* pantallas pequeñas */
-@media (max-width: 850px) {
+@media (max-width: 750px) {
   .container {
     margin: 20px 50px;
     padding: 15px 10px;
