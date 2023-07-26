@@ -1,10 +1,14 @@
 #pragma warning disable CS8602, CS8604
 
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using RoomsApiCrudIdentity.Data;
+using RoomsApiCrudIdentity.Policies.Handlers;
+using RoomsApiCrudIdentity.Policies.Requirements;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,6 +50,15 @@ builder.Services.AddAuthentication(options =>
             IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(configuration["JWT:Secret"]))
         };
     });
+
+builder.Services.AddSingleton<IAuthorizationHandler, ReservationSameCreatorHandler>();
+builder.Services.AddSingleton<IAuthorizationHandler, AdminHandler>();
+
+builder.Services.AddAuthorization(options => {
+    options.AddPolicy("ReservationPolicy", policy => {
+        policy.AddRequirements(new ReservationAccessRequirement());
+    });
+});
 
 builder.Services.Configure<PasswordHasherOptions>(opt => opt.IterationCount = 210_000);
 

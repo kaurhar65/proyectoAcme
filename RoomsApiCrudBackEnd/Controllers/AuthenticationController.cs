@@ -51,7 +51,8 @@ namespace RoomsApiCrudIdentity.Controllers
                 var userRoles = await _userManager.GetRolesAsync(user);
                 var authClaims = new List<Claim> 
                 {
-                    new(ClaimTypes.Name, user.UserName),
+                    new(ClaimTypes.Email, user.Email),
+                    new("UserId", user.Id),
                     new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
                 };
 
@@ -67,7 +68,8 @@ namespace RoomsApiCrudIdentity.Controllers
                     token = new JwtSecurityTokenHandler().WriteToken(token),
                     //expiration = token.ValidTo
                     expiration = 60,
-                    userId = user.Id
+                    userId = user.Id,
+                    email = user.Email
                 });
             }
 
@@ -106,9 +108,6 @@ namespace RoomsApiCrudIdentity.Controllers
             }
 
             return Ok(new Response { Status = "Success", Message = "User created successfully." });
-            {
-                
-            }
         }
 
         [HttpPost]
