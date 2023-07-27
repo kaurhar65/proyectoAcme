@@ -9,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using RoomsApiCrudIdentity.Data;
 using RoomsApiCrudIdentity.Policies.Handlers;
 using RoomsApiCrudIdentity.Policies.Requirements;
+using RoomsApiCrudIdentity.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -73,6 +74,9 @@ builder.Services.AddCors(options =>
         //.WithExposedHeaders("Access-Control-Allow-Origin");
     });
 });
+
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
+builder.Services.AddTransient<IMailService, MailService>();
 
 // default scaffolded Identity
 //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)

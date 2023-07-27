@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import * as dayjs from 'dayjs';
 import { FormsModule } from '@angular/forms';
 import { RequestService } from 'src/app/services/request.service';
@@ -7,7 +7,7 @@ import {
   apiControllers,
   apiUrls,
 } from '../../environments/environment';
-import { OnInit } from '@angular/core';
+import { OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { toArray } from 'rxjs/operators';
 import { Country } from '../models/country';
@@ -49,6 +49,8 @@ export class ReservasComponent implements OnInit {
   cities: City[] = [];
   offices: Office[] = [];
   rooms: Room[] = [];
+  //@ViewChild('roomList') roomList!: ElementRef;
+  //roomList: number = 0;
 
   constructor(private requestService: RequestService) {
     this.reservationRegistrationForm = new ReservationRegistrationForm();
@@ -159,6 +161,8 @@ export class ReservasComponent implements OnInit {
         .subscribe({
           next: (rooms: Room[]) => {
             this.rooms = rooms;
+            this.selection.room = this.rooms[0].id as number;
+            this.reservationRegistrationForm.roomId = this.selection.room;
           },
         });
     } else {
@@ -171,6 +175,8 @@ export class ReservasComponent implements OnInit {
         .subscribe({
           next: (rooms: Room[]) => {
             this.rooms = rooms;
+            this.selection.room = this.rooms[0].id as number;
+            this.reservationRegistrationForm.roomId = this.selection.room;
           },
         });
     }
@@ -178,5 +184,6 @@ export class ReservasComponent implements OnInit {
 
   onRoomSelected(id: string): void {
     this.reservationRegistrationForm.roomId = parseInt(id);
+    alert(`${this.reservationRegistrationForm.roomId}`);
   }
 }
