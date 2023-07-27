@@ -13,7 +13,7 @@ using RoomsApiCrudIdentity.Models;
 
 namespace RoomsApiCrudIdentity.Controllers
 {
-    [Authorize]
+    /*[Authorize]*/
     [ApiController]
     [Route("api/[controller]")]
     public class CountryController : ControllerBase
@@ -43,7 +43,7 @@ namespace RoomsApiCrudIdentity.Controllers
             return Ok(await _context.Countries.FindAsync(id));
         }
 
-        [Authorize(Roles = UserRoles.Admin)]
+        /*[Authorize(Roles = UserRoles.Admin)]*/
         [HttpPost]
         [Route("CreateCountry")]
         public async Task<IActionResult> CreateCountry(Country country)
@@ -53,7 +53,7 @@ namespace RoomsApiCrudIdentity.Controllers
             return Created($"/GetCountryById?id={country.Id}", country);
         }
 
-        [Authorize(Roles = UserRoles.Admin)]
+        /*[Authorize(Roles = UserRoles.Admin)]*/
         [HttpPut]
         [Route("UpdateCountry")]
         public async Task<IActionResult> UpdateCountry(Country countryToUpdate)
@@ -63,7 +63,7 @@ namespace RoomsApiCrudIdentity.Controllers
             return NoContent();
         }
 
-        [Authorize(Roles = UserRoles.Admin)]
+        /*[Authorize(Roles = UserRoles.Admin)]*/
         [HttpDelete]
         [Route("DeleteCountry")]
         public async Task<IActionResult> DeleteCountry(int id)

@@ -28,7 +28,7 @@ export class NavbarComponent implements OnInit {
   }
 
   showButton(titulo: string) {
-    if (titulo.includes('Hello') || titulo.includes('Make a')) {
+    if (titulo.includes('Hello') || titulo.includes('Make a') || titulo.includes('You are in')) {
       return false;
     }
 
@@ -40,6 +40,12 @@ export class NavbarComponent implements OnInit {
       return true;
     }
     return false;
+  }
+  showReservationsButton(titulo: string) {
+    if (titulo.includes('You are in')) {
+      return false;
+    }
+    return true;
   }
 
   changeDisplay() {
@@ -57,6 +63,7 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+<<<<<<< HEAD
   ngOnInit(): void {
     this.crudService.get(`${environment.apiUrl}${apiControllers.country}${apiUrls.country.getAllCountries}`)
       .subscribe({next: (response:any) => {
@@ -64,6 +71,10 @@ export class NavbarComponent implements OnInit {
       }, error: (error: Error) => {alert(`${error.name.toUpperCase()}: ${error.message}`)}
     });
   }
+=======
+
+  ngOnInit(): void {}
+>>>>>>> main
   
   goToLogin() {
     this.router.navigate(['login']);

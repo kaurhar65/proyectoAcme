@@ -65,6 +65,7 @@ export const apiUrls = {
     getReservationsByCityId: "GetReservationsByCityId",
     getReservationsByOfficeId: "GetReservationsByOfficeId",
     getReservationsByRoomId: "GetReservationsByRoomId",
+    getReservationsByUserId: "GetReservationsByUserId",
     createReservation: "CreateReservation",
     updateReservation: "UpdateReservation",
     deleteReservation: "DeleteReservation"

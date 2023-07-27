@@ -1,20 +1,24 @@
-<div class="general">
+<div class="general" #reservationComponent>
   <div class="subGeneral">
     <div class="imagen">
-      <img src="office.jpg" alt="officeId1">
+      <img src="office.jpg" alt="officeId1" />
     </div>
     <div class="generalLeft">
-      <h1>Room Name</h1>
-      <p> Oficina, País </p>
-      <p>00/000/2000</p>
-      <p> Reservation Time </p>
+      <h1>{{ reservation.roomName }}</h1>
+      <p>
+        {{ reservation.officeName }}, {{ reservation.cityName }},
+        {{ reservation.countryName }}
+      </p>
+      <p>{{ reservation.date }}</p>
+      <p>Start time: {{ reservation.startTime }}</p>
+      <p>End time: {{ reservation.endTime }}</p>
     </div>
   </div>
   <div class="generalCenter">
-    <p> Reservation ID </p>
+    <p>Reservation ID: {{ reservation.id }}</p>
   </div>
   <div class="generalRight">
-    <button type="submit"> Delete </button>
+    <button type="submit" (click)="onDeleteClick()">Delete</button>
     <button (click)="popup.openPopup()">Modify</button>
     <app-pop-up #popup></app-pop-up>
   </div>
