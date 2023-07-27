@@ -1,10 +1,10 @@
 <app-navbar titulo="Find your country"></app-navbar>
 <div id="allRooms">
     <h3>All rooms</h3>
-    <div id="roomList">
+    <div id="roomList" *ngIf="allRooms">
         <div class="roomCard" *ngFor="let room of allRooms" [routerLink]="['room-detail', room.id]">
             <div class="image">
-                <img src="{{room.img}}" alt="Imagen de sala">
+                
             </div>
             <div class="texto">
                 <p class="idText">Id: {{room.id}}</p>
