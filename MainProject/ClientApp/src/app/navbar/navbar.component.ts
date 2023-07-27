@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { RequestService } from '../services/request.service';
+import { apiControllers, apiUrls, environment } from 'src/environments/environment';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -12,23 +14,11 @@ export class NavbarComponent implements OnInit {
   @Input() titulo: string = '';
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private crudService: RequestService
   ) {}
 
-  cities: City[] = [
-    {
-      name: 'Australia',
-      rooms: ['ACME Sydney', 'ACME Melbourne'],
-    },
-    {
-      name: 'Japan',
-      rooms: ['ACME Tokyo'],
-    },
-    {
-      name: 'Canada',
-      rooms: ['ACME Vancouver', 'ACME Toronto'],
-    },
-  ];
+  cities: City[] = [];
 
   isHomePage(titulo: string) {
     if (titulo == 'Find your country') {
@@ -67,7 +57,13 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.crudService.get(`${environment.apiUrl}${apiControllers.country}${apiUrls.country.getAllCountries}`)
+      .subscribe({next: (response:any) => {
+
+      }, error: (error: Error) => {alert(`${error.name.toUpperCase()}: ${error.message}`)}
+    });
+  }
   
   goToLogin() {
     this.router.navigate(['login']);
@@ -80,10 +76,12 @@ export class NavbarComponent implements OnInit {
 }
 
 export class City {
+  id:number;
   name: string;
   rooms: string[];
 
-  constructor(name: string, rooms: string[]) {
+  constructor(id:number, name: string, rooms: string[]) {
+    this.id = id;
     this.name = name;
     this.rooms = rooms;
   }

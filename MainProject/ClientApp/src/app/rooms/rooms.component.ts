@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { RequestService } from '../services/request.service';
 import { apiControllers, apiUrls, environment } from 'src/environments/environment';
@@ -11,21 +11,30 @@ import { apiControllers, apiUrls, environment } from 'src/environments/environme
 
 export class RoomsComponent implements OnInit {
 
-  allRooms: Room[]= [];
+  allRooms: Room[] = [];
   constructor (private requestService: RequestService) {
 
   }
 
   
   ngOnInit(): void {
+    let officeName = "";
     this.requestService.get(`${environment.apiUrl}${apiControllers.room}${apiUrls.room.getAllRooms}`)
-    .subscribe({next(response: any) {
-      let allRooms: Room[] = [];
+    .subscribe({next: (response: any) => {
+      // let allRooms: Room[] = [];
       response.forEach((room: any) => {
-        let newRoom = new Room(room.id,room.name, room.officeId);
-        allRooms.push(newRoom);
+        let officeName = "";
+        this.requestService.get(`${environment.apiUrl}${apiControllers.office}${apiUrls.office.getOfficeById}`, 
+          new HttpParams().append('id', room.officeId))
+          .subscribe({next: (office: any) => {
+            officeName = office.name;
+            let newRoom = new Room(room.id,room.name, room.officeId, officeName);
+            this.allRooms.push(newRoom);
+          }, error: (error: Error) => {alert(`${error.name.toUpperCase()}: ${error.message}`)}
+        });
+        
       });
-    }, error(err: Error){alert(`${err.name}: ${err.message}`)}})
+    }, error: (err: Error) => {alert(`${err.name}: ${err.message}`)}})
   }
 }
 
@@ -33,10 +42,12 @@ class Room {
   id:number;
   name:string;
   officeId:number;
+  officeName:string;
 
-  constructor (id:number, name:string, officeId:number) {
+  constructor (id:number, name:string, officeId:number, officeName:string) {
     this.id = id;
     this.name = name;
     this.officeId = officeId;
+    this.officeName = officeName;
   }
 }
