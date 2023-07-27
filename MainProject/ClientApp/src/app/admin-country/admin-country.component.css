@@ -117,7 +117,7 @@ button {
   }
 
   #accordion .accLabel + input[type="radio"]:checked + .content {
-    max-height: 400px;
+    max-height: fit-content;
   }
 
 /*formulario de CRUD*/

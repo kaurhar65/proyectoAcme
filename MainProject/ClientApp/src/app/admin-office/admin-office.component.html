@@ -20,55 +20,86 @@
           <label class="accLabel" for="first">Add <span>&#x3e;</span></label>
           <input class="accInput" type="radio" name="accordion" id="first" checked />
           <div class="content">
-            <div class="agrupador">
-              <label class="textLabel">Office name: </label>
-              <input class="text" [(ngModel)]="officeName" type="text" name="officeName" id="officeName" />
+            <div class="box">
+              <div class="agrupador">
+                  <label class="textLabel">Office name: </label>
+                  <input class="text" [(ngModel)]="officeName" type="text" name="officeName" id="officeName" />
+              </div>
+              <div class="agrupador">
+                <label class="textLabel">Office's city: </label>
+                <input class="text" [(ngModel)]="officeCityId" type="text" name="officeCityId" id="officeCityId" />
+              </div>
+              <div class="boton">
+                <input class="addButton butt" value="Add new office" (keydown.enter)="addOffice()" (click)="addOffice()" type="submit">
+              </div>
             </div>
-            <div class="agrupador">
-              <label class="textLabel">Office's city: </label>
-              <input class="text" [(ngModel)]="officeCity" type="text" name="officeCity" id="officeCity" />
+            <div *ngFor="let office of offices" class="resultDiv">
+              <pre class="result">{{office | json}}</pre>
             </div>
-            <input class="addButton butt" value="Add new office" (keydown.enter)="addOffice()" (click)="addOffice()" type="submit">
           </div>
         </li>
         <li>
           <label class="accLabel" for="second">Get <span>&#x3e;</span></label>
           <input class="accInput" type="radio" name="accordion" id="second" checked />
           <div class="content">
-            <div class="agrupador">
-              <label class="textLabel">Search by id: </label>
-              <input class="text" [(ngModel)]="officeId" type="text" name="officeId" id="officeId" />
+            <div class="box">
+              <div class="agrupador">
+                <label class="textLabel">Search by id: </label>
+                <input class="text" [(ngModel)]="officeId" type="text" name="officeId" id="officeId" />
+              </div>
+              <div class="agrupador agr2">
+                <input class="getButton butt" value="Get office by id" (keydown.enter)="getOfficeById(officeId)" (click)="getOfficeById(officeId)" type="submit">
+                <input class="getButton butt" value="Get all" (click)="getAllOffices()" type="button">
+              </div>
             </div>
-            <div class="agrupador agr2">
-              <input class="getButton butt" value="Get office by id" (keydown.enter)="getOfficeById()" (click)="getOfficeById()" type="submit">
-              <input class="getButton butt" value="Get all" (click)="getAllOffices()" type="button">
+            <div *ngFor="let office of offices" class="resultDiv">
+              <p class="result">{{office | json}}</p>
             </div>
-          </div>
-        </li>
+          </div> 
+</li>
         <li>
           <label class="accLabel" for="third">Update <span>&#x3e;</span></label>
           <input class="accInput" type="radio" name="accordion" id="third" checked />
           <div class="content">
-            <div class="agrupador">
-              <label class="textLabel">Office id: </label>
-              <input class="text" [(ngModel)]="officeId" type="text" name="officeId" id="officeId" />
+            <div class="box">
+              <div class="agrupador agrCol">
+                <div class="agr2">
+                  <label class="textLabel">Office id: </label>
+                  <input class="text" [(ngModel)]="officeId" type="text" name="officeId" id="officeId" />
+                </div>
+              </div>
+              <div class="agrupador agrCol">
+                <div class="agr2">
+                  <label class="textLabel">Set name: </label>
+                  <input class="text" [(ngModel)]="officeName" type="text" name="officeName" id="officeName" />
+                </div>
+
+                <div class="agr2">
+                  <label class="textLabel">Set cityId: </label>
+                  <input class="text" [(ngModel)]="officeCityId" type="text" name="officeCityId" id="officeCityId" />
+                </div>
+              </div>
+              <div class="agrupador agrCol">
+                <input class="updateButton butt" value="Update city" (click)="updateOffice(officeId)" type="submit">
+              </div>
             </div>
-            <div class="agrupador agr2">
-              <label class="textLabel">New name: </label>
-              <input class="text" [(ngModel)]="officeName" type="text" name="officeName" id="officeName" />
+            <div *ngFor="let office of offices" class="resultDiv">
+              <p class="result">Before: {{oldOffice | json}}</p>
+              <p class="result">After: {{office | json}}</p>
             </div>
-            <input class="updateButton butt" value="Update office" (click)="updateOffice()" type="submit">
           </div>
-</li>
+        </li>
         <li>
           <label class="accLabel" for="fourth">Delete <span>&#x3e;</span></label>
           <input type="radio" name="accordion" id="fourth" checked />
           <div class="content">
-            <div class="agrupador">
-              <label class="textLabel">Office id: </label>
-              <input class="text" [(ngModel)]="officeId" type="text" name="officeId" id="officeId" />
+            <div class="box">
+              <div class="agrupador">
+                <label class="textLabel">Office id: </label>
+                <input class="text" [(ngModel)]="officeId" type="text" name="officeId" id="officeId" />
+              </div>
+              <input class="deleteButton butt" value="Delete office" (keydown.enter)="deleteOffice()" (click)="deleteOffice()" type="submit">
             </div>
-            <input class="deleteButton butt" value="Delete office" (keydown.enter)="deleteOffice()" (click)="deleteOffice()" type="submit">
           </div>
         </li>
       </ul>

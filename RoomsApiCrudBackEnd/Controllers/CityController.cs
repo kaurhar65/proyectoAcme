@@ -12,7 +12,7 @@ using RoomsApiCrudIdentity.Models;
 
 namespace RoomsApiCrudIdentity.Controllers
 {
-    [Authorize]
+    /*[Authorize]*/
     [ApiController]
     [Route("api/[controller]")]
     public class CityController : ControllerBase
@@ -57,7 +57,7 @@ namespace RoomsApiCrudIdentity.Controllers
             return Ok(result);
         }
 
-        [Authorize(Roles = UserRoles.Admin)]
+        /*[Authorize(Roles = UserRoles.Admin)]*/
         [HttpPost]
         [Route("CreateCity")]
         public async Task<IActionResult> CreateCity(City city)
@@ -67,7 +67,7 @@ namespace RoomsApiCrudIdentity.Controllers
             return Created($"/GetCityById?id={city.Id}", city);
         }
 
-        [Authorize(Roles = UserRoles.Admin)]
+        /*[Authorize(Roles = UserRoles.Admin)]*/
         [HttpPut]
         [Route("UpdateCity")]
         public async Task<IActionResult> UpdateCity(City cityToUpdate)
@@ -77,7 +77,7 @@ namespace RoomsApiCrudIdentity.Controllers
             return NoContent();
         }
 
-        [Authorize(Roles = UserRoles.Admin)]
+        /*[Authorize(Roles = UserRoles.Admin)]*/
         [HttpDelete]
         [Route("DeleteCity")]
         public async Task<IActionResult> DeleteCity(int id)
