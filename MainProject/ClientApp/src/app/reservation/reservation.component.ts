@@ -1,4 +1,12 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { RequestService } from '../services/request.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { environment, apiControllers, apiUrls } from '../../environments/environment';
+import { Reservation } from 'src/app/models/reservation';
+import { ReservationExtendedDTO } from '../models/reservation-extended-dto';
+import { HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+ 
 
 @Component({
   selector: 'app-reservation',
@@ -6,40 +14,41 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./reservation.component.css']
 })
 export class ReservationComponent {
-  palabra: string = '';
+  llistaReservas!: ReservationExtendedDTO[];
+  currentUserId: string = "";
 
-  @ViewChild('pageContent', { read: ElementRef })
-  pageContent!: ElementRef;
+ 
 
-  onSearch() {
-    const term = this.palabra.toLowerCase();
-    const elements = this.pageContent.nativeElement.getElementsByTagName('*');
-
-    for (let i = 0; i < elements.length; i++) {
-      const element = elements[i];
-      this.searchInElement(element, term);
-    }
+  constructor(private authenticationService: AuthenticationService, private requestService: RequestService) {
+    this.idUsuario();
+    this.getReservas();
   }
 
-  private searchInElement(element: HTMLElement, term: string) {
-    const text = element.innerText.toLowerCase();
-    if (text.includes(term)) {
-      this.highlight(element);
-    } else {
-      this.removeHighlight(element);
-    }
+ 
 
-    const children = element.children;
-    for (let i = 0; i < children.length; i++) {
-      this.searchInElement(children[i] as HTMLElement, term);
-    }
+  ngOnInit() {
+    this.getReservas();
   }
 
-  private highlight(element: HTMLElement) {
-    element.style.color = 'blue';
-  }
+ 
 
-  private removeHighlight(element: HTMLElement) {
-    element.style.backgroundColor = '';
+  idUsuario() {
+    this.currentUserId = localStorage.getItem('userId')!;
+  }//idUsuario
+
+ 
+
+  getReservas() {
+    this.requestService
+      .get(`${environment.apiUrl}${apiControllers.reservation}${apiUrls.reservation.getReservationsByUserId}`,
+      new HttpParams().append('userId', `${this.currentUserId}`))
+      .subscribe({
+        next: (fetchedReservations: ReservationExtendedDTO[]) => {
+          this.llistaReservas = fetchedReservations
+        },
+        error: (err: Error) => {
+          alert(err.message)
+        }
+      });
   }
 }
