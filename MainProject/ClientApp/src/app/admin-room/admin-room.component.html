@@ -20,30 +20,40 @@
           <label class="accLabel" for="first">Add <span>&#x3e;</span></label>
           <input class="accInput" type="radio" name="accordion" id="first" checked />
           <div class="content">
-            <div class="agrup1">
-              <div class="agrupador agru">
+            <div class="box">
+              <div class="agrupador">
                 <label class="textLabel">Room name: </label>
                 <input class="text" [(ngModel)]="roomName" type="text" name="roomName" id="roomName" />
               </div>
-              <div class="agrupador agru">
-                <label class="textLabel">Room's' office: </label>
-                <input class="text" [(ngModel)]="roomOffice" type="text" name="roomOffice" id="roomOffice" />
+              <div class="agrupador">
+                <label class="textLabel">Room's' officeId: </label>
+                <input class="text" [(ngModel)]="roomOfficeId" type="text" name="roomOfficeId" id="roomOfficeId" />
               </div>
+              <div class="boton">
+                <input class="addButton butt" value="Add new room" (keydown.enter)="addRoom()" (click)="addRoom()" type="submit">
               </div>
-            <input class="addButton butt" value="Add new room" (keydown.enter)="addRoom()" (click)="addRoom()" type="submit">
+            </div>
+            <!--<div *ngFor="let room of rooms" class="resultDiv">
+              <pre class="result">{{room | json}}</pre>
+            </div>-->
           </div>
         </li>
         <li>
           <label class="accLabel" for="second">Get <span>&#x3e;</span></label>
           <input class="accInput" type="radio" name="accordion" id="second" checked />
           <div class="content">
-            <div class="agrupador">
-              <label class="textLabel">Search by id: </label>
-              <input class="text" [(ngModel)]="roomId" type="text" name="roomId" id="roomId" />
+            <div class="box">
+              <div class="agrupador">
+                <label class="textLabel">Search by id: </label>
+                <input class="text" [(ngModel)]="roomId" type="text" name="roomId" id="roomId" />
+              </div>
+              <div class="agrupador agr2">
+                <input class="getRoom butt" value="Get room by id" (keydown.enter)="getRoomById(roomId)" (click)="getRoomById(roomId)" type="submit">
+                <input class="getButton butt" value="Get all" (click)="getAllRooms()" type="button">
+              </div>
             </div>
-            <div class="agrupador agr2">
-              <input class="getRoom butt" value="Get room by id" (keydown.enter)="getRoomById()" (click)="getRoomById()" type="submit">
-              <input class="getButton butt" value="Get all" (click)="getAllRooms()" type="button">
+            <div *ngFor="let room of rooms" class="resultDiv">
+              <p class="result">{{room | json}}</p>
             </div>
           </div>
         </li>
@@ -51,28 +61,47 @@
           <label class="accLabel" for="third">Update <span>&#x3e;</span></label>
           <input class="accInput" type="radio" name="accordion" id="third" checked />
           <div class="content">
-            <div class="agrupador">
-              <label class="textLabel">Room id: </label>
-              <input class="text" [(ngModel)]="roomId" type="text" name="roomId" id="roomId" />
+            <div class="box">
+              <div class="agrupador agrCol">
+                <div class="agr2">
+                  <label class="textLabel">Room id: </label>
+                  <input class="text" [(ngModel)]="roomId" type="text" name="roomId" id="roomId" />
+                </div>
+              </div>
+              <div class="agrupador agrCol">
+                <div class="agr2">
+                  <label class="textLabel">Set name: </label>
+                  <input class="text" [(ngModel)]="roomName" type="text" name="roomName" id="roomName" />
+                </div>
+
+                <div class="agr2">
+                  <label class="textLabel">Set OfficeId: </label>
+                  <input class="text" [(ngModel)]="roomOfficeId" type="text" name="roomOfficeId" id="roomOfficeId" />
+                </div>
+              </div>
+              <div class="agrupador agrCol">
+                <input class="updateButton butt" value="Update room" (click)="updateRoom(roomId)" type="submit">
+              </div>
             </div>
-            <div class="agrupador">
-              <label class="textLabel">New name: </label>
-              <input class="text" [(ngModel)]="roomName" type="text" name="roomName" id="roomName" />
+            <div *ngFor="let room of rooms" class="resultDiv">
+              <p class="result">Before: {{oldRoom | json}}</p>
+              <p class="result">After: {{room | json}}</p>
             </div>
-            <input class="updateButton butt" value="Update room" (click)="getAllRooms()" type="submit">
           </div>
-</li>
+        </li>
         <li>
           <label class="accLabel" for="fourth">Delete <span>&#x3e;</span></label>
           <input type="radio" name="accordion" id="fourth" checked />
           <div class="content">
-            <div class="agrupador">
-              <label class="textLabel">Room id: </label>
-              <input class="text" [(ngModel)]="roomId" type="text" name="roomId" id="roomId" />
+            <div class="box">
+              <div class="agrupador">
+                <label class="textLabel">Room id: </label>
+                <input class="text" [(ngModel)]="roomId" type="text" name="roomId" id="roomId" />
+              </div>
+              <input class="deleteButton butt" value="Delete room" (keydown.enter)="deleteRoom()" (click)="deleteRoom()" type="submit">
             </div>
-            <input class="deleteButton butt" value="Delete room" (keydown.enter)="deleteRoom()" (click)="deleteRoom()" type="submit">
           </div>
-</li>
+        </li>
       </ul>
     </div>
   </div>

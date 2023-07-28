@@ -12,7 +12,7 @@ using RoomsApiCrudIdentity.Models;
 
 namespace RoomsApiCrudIdentity.Controllers
 {
-    [Authorize]
+    /*[Authorize]*/
     [ApiController]
     [Route("api/[controller]")]
     public class RoomController : ControllerBase
@@ -115,7 +115,7 @@ namespace RoomsApiCrudIdentity.Controllers
             return Ok(result);
         }
 
-        [Authorize(Roles = UserRoles.Admin)]
+        //[Authorize(Roles = UserRoles.Admin)]
         [HttpPost]
         [Route("CreateRoom")]
         public async Task<IActionResult> CreateRoom(Room room)
@@ -125,7 +125,7 @@ namespace RoomsApiCrudIdentity.Controllers
             return Created($"/GetOfficeById?id={room.Id}", room);
         }
 
-        [Authorize(Roles = UserRoles.Admin)]
+        //[Authorize(Roles = UserRoles.Admin)]
         [HttpPut]
         [Route("UpdateRoom")]
         public async Task<IActionResult> UpdateRoom(Room roomToUpdate)
@@ -135,7 +135,7 @@ namespace RoomsApiCrudIdentity.Controllers
             return NoContent();
         }
 
-        [Authorize(Roles = UserRoles.Admin)]
+        //[Authorize(Roles = UserRoles.Admin)]
         [HttpDelete]
         [Route("DeleteRoom")]
         public async Task<IActionResult> DeleteRoom(int id)

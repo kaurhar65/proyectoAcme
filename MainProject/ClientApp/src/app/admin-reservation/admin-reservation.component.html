@@ -20,40 +20,58 @@
           <label class="accLabel" for="first">Add <span>&#x3e;</span></label>
           <input class="accInput" type="radio" name="accordion" id="first" checked />
           <div class="content">
-            <div class="agrupador agru">
-              <label class="textLabel">Room id: </label>
-              <input class="text" [(ngModel)]="roomId" type="text" name="roomId" id="roomId" />
+            <div class="box">
+              <div class="agrupador agr2">
+                <div class="agrCol">
+                  <div class="agrupador agr2">
+                    <label class="textLabel">Room id: </label>
+                    <input class="text" [(ngModel)]="reservation.roomId" type="text" name="reservation.roomId" id="reservation.roomId" />
+                  </div>
+                  <div class="agrupador agr2">
+                    <label class="textLabel">User id: </label>
+                    <input class="text" [(ngModel)]="reservation.userId" type="text" name="reservation.userId" id="reservation.userId" />
+                  </div>
+                  <div class="agrupador agr2">
+                    <label class="textLabel">Day: </label>
+                    <input class="text" [(ngModel)]="reservation.date" type="date" name="day" id="date" />
+                  </div>
+                </div>
+                <div class="agrCol">
+                  <div class="agrupador agr2">
+                    <label class="textLabel">Start time: </label>
+                    <input class="text" [(ngModel)]="reservation.startTime" type="time" name="startTime" id="time"/>
+                  </div>
+                  <div class="agrupador agr2">
+                    <label class="textLabel">End time: </label>
+                    <input class="text" [(ngModel)]="reservation.endTime" type="time" name="time" id="time" />
+                  </div>
+                </div>
+                <div class="agrupador agrCol bot">
+                  <input class="addButton butt" value="Add new reservation" (keydown.enter)="addReservation()" (click)="addReservation()" type="submit">
+                </div>
+              </div>
             </div>
-            <div class="agrupador agru">
-              <label class="textLabel">User id: </label>
-              <input class="text" [(ngModel)]="userId" type="text" name="userId" id="userId" />
-            </div>
-            <div class="agrupador agru">
-              <label class="textLabel">Date: </label>
-              <input class="text" [(ngModel)]="date" type="text" name="date" id="date" />
-            </div>
-            <div class="agrupador agru">
-              <label class="textLabel">Start time: </label>
-              <input class="text" [(ngModel)]="startTime" type="text" name="startTime" id="startTime" />
-            </div>
-            <div class="agrupador agru">
-              <label class="textLabel">End time: </label>
-              <input class="text" [(ngModel)]="endTime" type="text" name="endTime" id="endTime" />
-            </div>
-            <input class="addButton" value="Add new reservation" (keydown.enter)="addReservation()" (click)="addReservation()" type="submit">
+            <!--<div *ngFor="let reserva of reservas" class="resultDiv">
+              <p class="result">{{reserva | json}}</p>
+            </div>-->
           </div>
         </li>
         <li>
           <label class="accLabel" for="second">Get <span>&#x3e;</span></label>
           <input class="accInput" type="radio" name="accordion" id="second" checked />
           <div class="content">
-            <div class="agrupador">
-              <label class="textLabel">Search by id: </label>
-              <input class="text" [(ngModel)]="reservationId" type="text" name="reservationId" id="reservationId" />
+            <div class="box">
+              <div class="agrupador">
+                <label class="textLabel">Search by id: </label>
+                <input class="text" [(ngModel)]="reservation.id" type="text" name="reservationId" id="id" />
+              </div>
+              <div class="agrupador agr2">
+                <input class="getReservation butt" value="Get reservation by id" (keydown.enter)="getReservationById(reservation.id)" (click)="getReservationById(reservation.id)" type="submit">
+                <input class="getReservation butt" value="Get all" (click)="getAllReservations()" type="button">
+              </div>
             </div>
-            <div class="agrupador agr2">
-              <input class="getReservation" value="Get reservation by id" (keydown.enter)="getReservationById()" (click)="getReservationById()" type="submit">
-              <input class="getReservation" value="Get all" (click)="getAllReservations()" type="button">
+            <div *ngFor="let reserva of reservas" class="resultDiv">
+              <p class="result">{{reserva | json}}</p>
             </div>
           </div>
         </li>
@@ -61,34 +79,54 @@
           <label class="accLabel" for="third">Update <span>&#x3e;</span></label>
           <input class="accInput" type="radio" name="accordion" id="third" checked />
           <div class="content">
-            <div class="agrupador agru">
-              <label class="textLabel">Reserva id: </label>
-              <input class="text" [(ngModel)]="reservationId" type="text" name="reservationId" id="reservationId" />
+            <div class="box">
+              <div class="agrupador agr2">
+                <div class="agrCol">
+                  <div class="agrupador agr2">
+                    <label class="textLabel">Reserva id: </label>
+                    <input class="text" [(ngModel)]="reservation.id" type="text" name="reservationId" id="id" />
+                  </div>
+
+                </div>
+                <div class="agrCol">
+                  <div class="agrupador agr2">
+                    <label class="textLabel">Date: </label>
+                    <input class="text" [(ngModel)]="reservation.date" type="date" name="reservationDate" id="date" />
+                  </div>
+                  <div class="agrupador agr2">
+                    <label class="textLabel">Start time: </label>
+                    <input class="text" [(ngModel)]="reservation.startTime" type="time" name="reservationStartTime" id="startTime" />
+                  </div>
+                  <div class="agrupador agr2">
+                    <label class="textLabel">End time: </label>
+                    <input class="text" [(ngModel)]="reservation.endTime" type="time" name="reservationEndTime" id="time" />
+                  </div>
+
+                </div>
+                <div class="agrupador agrCol bot">
+                  <input class="updateButton butt" value="Update reservation" (click)="updateReservation()" type="submit">
+                </div>
+              </div>
             </div>
-            <div class="agrupador agru">
-              <label class="textLabel">Date: </label>
-              <input class="text" [(ngModel)]="date" type="text" name="date" id="date" />
+            <div *ngFor="let reserva of reservas" class="resultDiv">
+              <p class="result">{{reserva | json}}</p>
             </div>
-            <div class="agrupador agru">
-              <label class="textLabel">Start time: </label>
-              <input class="text" [(ngModel)]="startTime" type="text" name="startTime" id="startTime" />
-            </div>
-            <div class="agrupador agru">
-              <label class="textLabel">End time: </label>
-              <input class="text" [(ngModel)]="endTime" type="text" name="endTime" id="endTime" />
-            </div>
-            <input class="updateButton butt" value="Update reservation" (click)="updateReservation()" type="submit">
           </div>
         </li>
         <li>
           <label class="accLabel" for="fourth">Delete <span>&#x3e;</span></label>
           <input type="radio" name="accordion" id="fourth" checked />
           <div class="content">
-            <div class="agrupador">
-              <label class="textLabel">Id: </label>
-              <input class="text" [(ngModel)]="reservationId" type="text" name="reservationId" id="reservationId" />
+            <div class="box">
+              <div class="agrupador">
+                <label class="textLabel">Id: </label>
+                <input class="text" [(ngModel)]="reservation.id" type="text" name="reservationId" id="id" />
+              </div>
+              <input class="deleteButton butt" value="Delete reservation" (keydown.enter)="deleteReservation()" (click)="deleteReservation()" type="submit">
             </div>
-            <input class="deleteButton butt" value="Delete reservation" (keydown.enter)="deleteReservation()" (click)="deleteReservation()" type="submit">
+            <!--<div *ngFor="let reserva of reservas" class="resultDiv">
+              <p class="result">{{reserva | json}}</p>
+            </div>-->
           </div>
       </ul>
     </div>

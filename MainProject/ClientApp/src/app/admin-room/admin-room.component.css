@@ -117,20 +117,32 @@ button {
   }
 
   #accordion .accLabel + input[type="radio"]:checked + .content {
-    max-height: 400px;
+    max-height: fit-content;
   }
 
 /*formulario de CRUD*/
 
-.content {
+.box {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
+.agrupador {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .agr2 {
   display: flex;
   gap: 15px;
+  justify-content: space-between;
+}
+
+.agrCol {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .textLabel {
@@ -151,4 +163,13 @@ button {
 
 .butt {
   font-size: 14px;
+}
+
+/*Motrar resultados*/
+.resultDiv {
+  font-size: 14px;
+}
+
+.result {
+  margin: 0;
 }

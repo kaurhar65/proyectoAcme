@@ -33,9 +33,9 @@
                 <input class="addButton butt" value="Add new office" (keydown.enter)="addOffice()" (click)="addOffice()" type="submit">
               </div>
             </div>
-            <div *ngFor="let office of offices" class="resultDiv">
+            <!--<div *ngFor="let office of offices" class="resultDiv">
               <pre class="result">{{office | json}}</pre>
-            </div>
+            </div>-->
           </div>
         </li>
         <li>
@@ -56,7 +56,7 @@
               <p class="result">{{office | json}}</p>
             </div>
           </div> 
-</li>
+        </li>
         <li>
           <label class="accLabel" for="third">Update <span>&#x3e;</span></label>
           <input class="accInput" type="radio" name="accordion" id="third" checked />

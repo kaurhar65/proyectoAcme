@@ -48,8 +48,7 @@ export class AdminOfficeComponent {
             };
           });
         },
-      });
-    
+      });    
   }
   getOfficeById(id: number) {
     alert(this.officeId);
