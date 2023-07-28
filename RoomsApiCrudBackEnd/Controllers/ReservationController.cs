@@ -281,21 +281,25 @@ namespace RoomsApiCrudIdentity.Controllers
         [Route("DeleteReservation")]
         public async Task<IActionResult> DeleteReservation(int id)
         {
-            var reservationToDelete = await _context.Reservations.FindAsync(id);
+            // var reservationToDelete = await _context.Reservations.FindAsync(id);
             
+            var reservationToDelete = await _context.Reservations.FindAsync(id);
+                //.Where(reservation => reservation.Id == id)
+                //.FirstOrDefaultAsync();
+
             if (reservationToDelete is null)
             {
                 return NotFound();
             }
             
-            if ((await _authorizationService.AuthorizeAsync(User, reservationToDelete, "ReservationPolicy")).Succeeded)
-            {
+            //if ((await _authorizationService.AuthorizeAsync(User, reservationToDelete, "ReservationPolicy")).Succeeded)
+            //{
                 _context.Reservations.Remove(reservationToDelete);
                 await _context.SaveChangesAsync();
                 return NoContent();
-            }
+            //}
         
-            return Forbid();
+            //return Forbid();
         }
     }
 }

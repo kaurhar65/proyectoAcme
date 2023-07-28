@@ -39,10 +39,11 @@ export class ReserveListComponent {
   }
 
   eliminarReserva(id: number) {
+    alert(JSON.stringify(new HttpParams().append('id', `${id.toString()}`)));
     this.requestService
       .delete(
         `${environment.apiUrl}${apiControllers.reservation}${apiUrls.reservation.deleteReservation}`,
-        new HttpParams().append('id', id))
+        new HttpParams().append('id', `${id.toString()}`))
       //   {
       //     id: this.reservation.id,
       //   }

@@ -22,7 +22,7 @@ export class RequestService {
     return this.httpClient.put<any>(url, body);
   }
 
-  public delete(url: string, body: object): Observable<any> {
-    return this.httpClient.delete<any>(url, body);
+  public delete(url: string, parameters?: HttpParams): Observable<any> {
+    return this.httpClient.delete<any>(url, parameters === undefined ? {} : { params: parameters });
   }
 }

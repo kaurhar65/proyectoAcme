@@ -116,9 +116,7 @@ export class AdminCountryComponent {
     alert(this.countryId);
     this.requestService
       .delete(`${environment.apiUrl}${apiControllers.country}${apiUrls.country.deleteCountry}`,
-        {
-          "id": id
-        })
+        new HttpParams().append('id', `${id}`))
       .subscribe({ });
   }
 
