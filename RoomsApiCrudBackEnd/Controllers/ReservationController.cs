@@ -8,6 +8,7 @@ using System.Data;
 
 using RoomsApiCrudIdentity.Data;
 using RoomsApiCrudIdentity.Entities;
+using RoomsApiCrudIdentity.Models;
 
 namespace RoomsApiCrudIdentity.Controllers
 {
@@ -20,13 +21,15 @@ namespace RoomsApiCrudIdentity.Controllers
         public readonly string _connectionString;
         private readonly RoomsApiCrudDbContext _context;
         private readonly IAuthorizationService _authorizationService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ReservationController(IConfiguration configuration, RoomsApiCrudDbContext context, IAuthorizationService authorizationService)
+        public ReservationController(IHttpContextAccessor httpContextAccessor, IConfiguration configuration, RoomsApiCrudDbContext context, IAuthorizationService authorizationService)
         {
             _configuration = configuration;
             _connectionString = _configuration.GetConnectionString("RoomsApiCrudConn")!;
             _context = context;
             _authorizationService = authorizationService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         [Authorize(Roles = "Admin")]
@@ -194,6 +197,7 @@ namespace RoomsApiCrudIdentity.Controllers
                         StartTime = countryCityOfficeRoomReservation.Reservation.StartTime,
                         EndTime = countryCityOfficeRoomReservation.Reservation.EndTime,
                         RoomName = countryCityOfficeRoomReservation.Room.Name,
+                        RoomId = countryCityOfficeRoomReservation.Room.Id,
                         OfficeName = countryCityOfficeRoomReservation.Office.Name,
                         CityName = countryCityOfficeRoomReservation.City.Name,
                         CountryName = countryCityOfficeRoomReservation.Country.Name,
@@ -218,19 +222,50 @@ namespace RoomsApiCrudIdentity.Controllers
             return Created($"/GetReservationById?id={reservation.Id}", reservation);
         }
 
-        [Authorize(Policy = "ReservationPolicy")]
+        //[Authorize(Policy = "ReservationPolicy")]
+        [Authorize]
         [HttpPut]
         [Route("UpdateReservation")]
         public async Task<IActionResult> UpdateReservation(Reservation reservationToUpdate)
         {
-            var originalReservation = await _context.Reservations.FindAsync(reservationToUpdate.Id);
-            if ((await _authorizationService.AuthorizeAsync(User, originalReservation, "ReservationPolicy")).Succeeded)
-            {
+            // var originalReservation = await _context.Reservations.FindAsync(reservationToUpdate.Id);
+            // var currentUser = _httpContextAccessor.HttpContext.User;
+            // string jwt = _httpContextAccessor.HttpContext.Request.Headers
+            // .Any(x => x.Key == "Authorization") ? 
+            //     _httpContextAccessor.HttpContext.Request.Headers
+            //         .Where(x => x.Key == "Authorization")
+            //         .FirstOrDefault()
+            //         .Value
+            //         .SingleOrDefault()
+            //         .Replace("Bearer ", "") : "";
+            // System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler handler = new();
+            // System.IdentityModel.Tokens.Jwt.JwtSecurityToken token = handler.ReadJwtToken(jwt);
+            // //.HttpContext?.User.
+            // if (token.Claims.FirstOrDefault(claim => claim.Type.Equals("UserId"))?.Value.Equals(originalReservation.UserId) ?? false)
+
+            //var result = await _authorizationService.AuthorizeAsync(currentUser, originalReservation, "ReservationPolicy");
+            //var result = await _authorizationHandler.HandleRequirementAsync(new AuthorizationHandlerContext(), new ReservationAccessRequirement(), originalReservation);
+            // if (result.Succeeded)
+            // {
                 _context.Reservations.Update(reservationToUpdate);
-                await _context.SaveChangesAsync();
-                return NoContent();
-            }
-            return Forbid();
+                var result = await _context.SaveChangesAsync();
+                //return NoContent();
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    new Response
+                    {
+                        Status = "Error",
+                        // Message = result.Errors
+                        //     .Select(error => error.Description)
+                        //     .Aggregate("", (acc, error) => acc + $"*SEPARATOR*{error}")
+                        Message = result.ToString()
+                    }
+                );
+                    //});
+            // }
+            // return Forbid();
+            //return StatusCode(StatusCodes.Status500InternalServerError, result.Failure.FailureReasons
+                        //    .Select(error => error.Message)
+                        //    .Aggregate("", (acc, error) => acc + $"*SEPARATOR*{error}"));
         }
 
         [Authorize(Policy = "ReservationPolicy")]

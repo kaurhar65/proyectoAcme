@@ -51,9 +51,9 @@ namespace RoomsApiCrudIdentity.Controllers
                 var userRoles = await _userManager.GetRolesAsync(user);
                 var authClaims = new List<Claim> 
                 {
-                    new(ClaimTypes.Email, user.Email),
-                    new("UserId", user.Id),
-                    new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                    new("", ClaimTypes.Email, user.Email),
+                    new("", "UserId", user.Id),
+                    new("", JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
                 };
 
                 foreach (var userRole in userRoles)
