@@ -41,10 +41,7 @@
               <option selected value="any">Any office</option>
               <optgroup *ngFor="let city of cities" label="{{ city.name }}">
                 <ng-container *ngFor="let office of offices">
-                  <option
-                    *ngIf="office.cityId === city.id"
-                    [value]="office.id"
-                  >
+                  <option *ngIf="office.cityId === city.id" [value]="office.id">
                     {{ office.name }}
                   </option>
                 </ng-container>
@@ -66,39 +63,46 @@
           <div class="row divRoom">
             <p>Select a room</p>
             <select
+              id="roomList"
               [(ngModel)]="selection.room"
               #roomList
               (change)="onRoomSelected(roomList.value)"
               name="roomList"
               required
             >
-            <ng-container *ngFor="let office of offices">
-              <ng-container *ngIf="selection.office == 'any'; else particularOffice">
-                <optgroup label="{{ office.name }}">
-                  <ng-container *ngFor="let room of rooms">
-                    <option
-                      *ngIf="room.officeId === office.id"
-                      [value]="room.id"
-                    >
-                      {{ room.name }}
-                    </option>
-                  </ng-container>
-                </optgroup>
+              <ng-container *ngFor="let office of offices">
+                <ng-container
+                  *ngIf="selection.office == 'any'; else particularOffice"
+                >
+                  <optgroup label="{{ office.name }}">
+                    <ng-container *ngFor="let room of rooms; let i = index">
+                      <option
+                        *ngIf="room.officeId === office.id"
+                        [value]="room.id"
+                        [attr.selected]="i > 0 ? null : 'selected'"
+                      >
+                        {{ room.name }}
+                      </option>
+                    </ng-container>
+                  </optgroup>
+                </ng-container>
+                <ng-template #particularOffice>
+                  <optgroup
+                    *ngIf="office.id == selection.office"
+                    label="{{ office.name }}"
+                  >
+                    <ng-container *ngFor="let room of rooms">
+                      <option
+                        *ngIf="room.officeId === office.id"
+                        [value]="room.id"
+                      >
+                        {{ room.name }}
+                      </option>
+                    </ng-container>
+                  </optgroup>
+                </ng-template>
               </ng-container>
-              <ng-template #particularOffice>
-                <optgroup *ngIf="office.id == selection.office" label="{{ office.name }}">
-                  <ng-container *ngFor="let room of rooms">
-                    <option
-                      *ngIf="room.officeId === office.id"
-                      [value]="room.id"
-                    >
-                      {{ room.name }}
-                    </option>
-                  </ng-container>
-                </optgroup>
-              </ng-template>
-            </ng-container>
-          </select>
+            </select>
           </div>
           <div class="row divTime2">
             <p>End time</p>

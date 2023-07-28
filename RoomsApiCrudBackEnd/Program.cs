@@ -9,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using RoomsApiCrudIdentity.Data;
 using RoomsApiCrudIdentity.Policies.Handlers;
 using RoomsApiCrudIdentity.Policies.Requirements;
+using RoomsApiCrudIdentity.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,14 +52,16 @@ builder.Services.AddAuthentication(options =>
         };
     });
 
-builder.Services.AddSingleton<IAuthorizationHandler, ReservationSameCreatorHandler>();
-builder.Services.AddSingleton<IAuthorizationHandler, AdminHandler>();
-
 builder.Services.AddAuthorization(options => {
     options.AddPolicy("ReservationPolicy", policy => {
-        policy.AddRequirements(new ReservationAccessRequirement());
+        policy.Requirements.Add(new ReservationAccessRequirement());
     });
 });
+
+builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddSingleton<IAuthorizationHandler, ReservationSameCreatorHandler>();
+builder.Services.AddSingleton<IAuthorizationHandler, AdminHandler>();
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.Configure<PasswordHasherOptions>(opt => opt.IterationCount = 210_000);
 
@@ -73,6 +76,9 @@ builder.Services.AddCors(options =>
         //.WithExposedHeaders("Access-Control-Allow-Origin");
     });
 });
+
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
+builder.Services.AddTransient<IMailService, MailService>();
 
 // default scaffolded Identity
 //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
