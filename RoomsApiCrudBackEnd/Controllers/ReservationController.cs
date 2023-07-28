@@ -12,7 +12,7 @@ using RoomsApiCrudIdentity.Models;
 
 namespace RoomsApiCrudIdentity.Controllers
 {
-    // [Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ReservationController : ControllerBase
@@ -32,7 +32,8 @@ namespace RoomsApiCrudIdentity.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
 
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpGet]
         [Route("GetAllReservations")]
         public async Task<IActionResult> GetAllReservations()
@@ -40,7 +41,8 @@ namespace RoomsApiCrudIdentity.Controllers
             return Ok(await _context.Reservations.ToListAsync());
         }
 
-        [Authorize(Policy = "ReservationPolicy")]
+        // [Authorize(Policy = "ReservationPolicy")]
+        [Authorize]
         [HttpGet]
         [Route("GetReservationById")]
         public async Task<IActionResult> GetReservationById(int id)
@@ -48,7 +50,8 @@ namespace RoomsApiCrudIdentity.Controllers
             return Ok(await _context.Reservations.FindAsync(id));
         }
 
-        [Authorize(Policy = "ReservationPolicy")]
+        // [Authorize(Policy = "ReservationPolicy")]
+        [Authorize]
         [HttpGet]
         [Route("GetReservationsByRoomId")]
         public async Task<IActionResult> GetReservationsByRoomId(int roomId)
@@ -64,7 +67,8 @@ namespace RoomsApiCrudIdentity.Controllers
             return Ok(result);
         }
 
-        [Authorize(Policy = "ReservationPolicy")]
+        // [Authorize(Policy = "ReservationPolicy")]
+        [Authorize]
         [HttpGet]
         [Route("GetReservationsByOfficeId")]
         public async Task<IActionResult> GetReservationsByOfficeId(int officeId)
@@ -91,7 +95,8 @@ namespace RoomsApiCrudIdentity.Controllers
             return Ok(result);
         }
 
-        [Authorize(Policy = "ReservationPolicy")]
+        // [Authorize(Policy = "ReservationPolicy")]
+        [Authorize]
         [HttpGet]
         [Route("GetReservationsByCityId")]
         public async Task<IActionResult> GetReservationsByCityId(int cityId)
@@ -124,7 +129,8 @@ namespace RoomsApiCrudIdentity.Controllers
             return Ok(result);
         }
 
-        [Authorize(Policy = "ReservationPolicy")]
+        //[Authorize(Policy = "ReservationPolicy")]
+        [Authorize]
         [HttpGet]
         [Route("GetReservationsByCountryId")]
         public async Task<IActionResult> GetReservationsByCountryId(int countryId)
@@ -163,6 +169,7 @@ namespace RoomsApiCrudIdentity.Controllers
         }
 
         // [Authorize(Policy = "ReservationPolicy")]
+        [Authorize]
         [HttpGet]
         [Route("GetReservationsByUserId")]
         public async Task<IActionResult> GetReservationsByUserId(string userId)
@@ -268,7 +275,8 @@ namespace RoomsApiCrudIdentity.Controllers
                         //    .Aggregate("", (acc, error) => acc + $"*SEPARATOR*{error}"));
         }
 
-        [Authorize(Policy = "ReservationPolicy")]
+        //[Authorize(Policy = "ReservationPolicy")]
+        [Authorize]
         [HttpDelete]
         [Route("DeleteReservation")]
         public async Task<IActionResult> DeleteReservation(int id)
