@@ -20,7 +20,6 @@ export class AdminCityComponent {
   oldCity: (City) = new City()
 
   addCity() {
-    alert(this.cityName);
     this.requestService.post(`${environment.apiUrl}${apiControllers.city}${apiUrls.city.createCity}`,
       {
         "Name": this.cityName,
@@ -39,11 +38,9 @@ export class AdminCityComponent {
 
   }
   getCityById(id: number) {
-    alert(this.cityId);
     this.requestService.get(`${environment.apiUrl}${apiControllers.city}${apiUrls.city.getCityById}`, new HttpParams().append("id", id))
       .subscribe({
         next: (fetchedCity: any) => {
-          alert(JSON.stringify(fetchedCity));
           this.cities = [{
             id: fetchedCity.id,
             name: fetchedCity.name,
@@ -53,11 +50,9 @@ export class AdminCityComponent {
       });
   }
   getAllCities() {
-    alert(this.cityId);
     this.requestService.get(`${environment.apiUrl}${apiControllers.city}${apiUrls.city.getAllCities}`)
       .subscribe({
         next: (fetchedCities: any[]) => {
-          alert(JSON.stringify(fetchedCities));
           this.cities = fetchedCities.map((city: any): any => {
             return {
               id: city.id,
@@ -75,7 +70,6 @@ export class AdminCityComponent {
         new HttpParams().append('id', this.cityId))
       .subscribe({
         next: (fetchedCity: any) => {
-          alert(JSON.stringify(fetchedCity));
           this.oldCity = {
             id: fetchedCity.id,
             name: fetchedCity.name,
@@ -92,7 +86,6 @@ export class AdminCityComponent {
           "CountryId": this.cityCountryId
         }).subscribe({
           next() {
-            alert('Funciona!');
           },
           error(err: Error) {
             alert(err.message)

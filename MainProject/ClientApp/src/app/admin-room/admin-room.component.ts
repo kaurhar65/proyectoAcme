@@ -40,7 +40,6 @@ export class AdminRoomComponent {
     this.requestService.get(`${environment.apiUrl}${apiControllers.room}${apiUrls.room.getAllRooms}`)
       .subscribe({
         next: (fetchedRooms: any[]) => {
-          alert(JSON.stringify(fetchedRooms));
           this.rooms = fetchedRooms.map((room: any): any => {
             return {
               id: room.id,
@@ -55,7 +54,6 @@ export class AdminRoomComponent {
     this.requestService.get(`${environment.apiUrl}${apiControllers.room}${apiUrls.room.getRoomById}`, new HttpParams().append("id", id))
       .subscribe({
         next: (fetchedRoom: any) => {
-          alert(JSON.stringify(fetchedRoom));
           this.rooms = [{
             id: fetchedRoom.id,
             name: fetchedRoom.name,
@@ -69,7 +67,6 @@ export class AdminRoomComponent {
     this.requestService.get(`${environment.apiUrl}${apiControllers.room}${apiUrls.room.getRoomById}`, new HttpParams().append("id", id))
       .subscribe({
         next: (fetchedRoom: any) => {
-          alert(JSON.stringify(fetchedRoom));
           this.oldRoom = {
             id: fetchedRoom.id,
             name: fetchedRoom.name,
@@ -86,7 +83,6 @@ export class AdminRoomComponent {
           "OfficeId": this.roomOfficeId
         }).subscribe({
           next() {
-            alert('Funciona!');
           },
           error(err: Error) {
             alert(err.message)

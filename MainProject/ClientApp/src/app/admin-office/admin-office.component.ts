@@ -20,7 +20,6 @@ export class AdminOfficeComponent {
   oldOffice: (Office) = new Office()
 
   addOffice() {
-    alert(this.officeName);
     this.requestService.post(`${environment.apiUrl}${apiControllers.office}${apiUrls.office.createOffice}`,
       {
         "Name": this.officeName,
@@ -39,7 +38,6 @@ export class AdminOfficeComponent {
     this.requestService.get(`${environment.apiUrl}${apiControllers.office}${apiUrls.office.getAllOffices}`)
       .subscribe({
         next: (fetchedOffices: any[]) => {
-          alert(JSON.stringify(fetchedOffices));
           this.offices = fetchedOffices.map((office: any): any => {
             return {
               id: office.id,
@@ -51,11 +49,9 @@ export class AdminOfficeComponent {
       });    
   }
   getOfficeById(id: number) {
-    alert(this.officeId);
     this.requestService.get(`${environment.apiUrl}${apiControllers.office}${apiUrls.office.getOfficeById}`, new HttpParams().append("id", id))
       .subscribe({
         next: (fetchedOffice: any) => {
-          alert(JSON.stringify(fetchedOffice));
           this.offices = [{
             id: fetchedOffice.id,
             name: fetchedOffice.name,
@@ -70,7 +66,6 @@ export class AdminOfficeComponent {
       .get(`${environment.apiUrl}${apiControllers.office}${apiUrls.office.getOfficeById}`, new HttpParams().append("id", id))
       .subscribe({
         next: (fetchedOffice: any) => {
-          alert(JSON.stringify(fetchedOffice));
           this.oldOffice = {
             id: fetchedOffice.id,
             name: fetchedOffice.name,
@@ -87,7 +82,6 @@ export class AdminOfficeComponent {
           "CityId": this.officeCityId
         }).subscribe({
           next() {
-            alert('Funciona!');
           },
           error(err: Error) {
             alert(err.message)

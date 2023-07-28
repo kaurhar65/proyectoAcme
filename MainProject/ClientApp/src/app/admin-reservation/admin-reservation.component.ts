@@ -58,7 +58,6 @@ export class AdminReservationComponent {
 
   /*CREATE*/
   addReservation() {
-    alert(JSON.stringify(this.reservation))
     this.requestService
       .post(
         `${environment.apiUrl}${apiControllers.reservation}${apiUrls.reservation.createReservation}`,
@@ -81,11 +80,9 @@ export class AdminReservationComponent {
   }
 
   getAllReservations() {
-    alert(JSON.stringify(this.reservas));
     this.requestService.get(`${environment.apiUrl}${apiControllers.reservation}${apiUrls.reservation.getAllReservations}`)
       .subscribe({
         next: (fetchedReservations: Reservation[]) => {
-          alert(JSON.stringify(fetchedReservations));
           this.reservas = fetchedReservations
         },
       });    
@@ -96,7 +93,6 @@ export class AdminReservationComponent {
         new HttpParams().append('id', id))
       .subscribe({
         next: (fetchedReservations: any) => {
-          alert(JSON.stringify(fetchedReservations))
           this.reservas = fetchedReservations
         },
         error: (err: Error) => {

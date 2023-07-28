@@ -32,7 +32,6 @@ export class AdminCountryComponent {
         })
         .subscribe({
           next(response: any) {
-            alert(JSON.stringify(response))
             if (response !== null) {
               alert(`You have successfully added the country.`);
             }
@@ -63,13 +62,11 @@ export class AdminCountryComponent {
 
   }
   getCountryById(id:number) {
-    alert(this.countryId);
     this.requestService
       .get(`${environment.apiUrl}${apiControllers.country}${apiUrls.country.getCountryById}`,
         new HttpParams().append('id', id))
       .subscribe({
         next: (fetchedCountry: any) => {
-          alert(JSON.stringify(fetchedCountry));
           this.countries = [{
             id: fetchedCountry.id,
             name: fetchedCountry.name,
@@ -78,7 +75,6 @@ export class AdminCountryComponent {
       });
   }  
   updateCountry() {
-    alert(this.countryId);
     /* getting old info*/
     this.requestService
       .get(`${environment.apiUrl}${apiControllers.country}${apiUrls.country.getCountryById}`,
@@ -93,7 +89,6 @@ export class AdminCountryComponent {
         },
       });
 
-    alert(JSON.stringify(this.oldCountry));
     /*update database*/
     this.requestService
       .put(`${environment.apiUrl}${apiControllers.country}${apiUrls.country.updateCountry}`
@@ -103,7 +98,6 @@ export class AdminCountryComponent {
 
         }).subscribe({
           next() {
-            alert('Funciona!');
           },
           error(err: Error) {
             alert(err.message)
