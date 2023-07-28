@@ -283,7 +283,7 @@ namespace RoomsApiCrudIdentity.Controllers
         {
             var reservationToDelete = await _context.Reservations.FindAsync(id);
             
-            if (reservationToDelete == null)
+            if (reservationToDelete is null)
             {
                 return NotFound();
             }
