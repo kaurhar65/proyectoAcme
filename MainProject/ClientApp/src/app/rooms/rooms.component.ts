@@ -12,19 +12,19 @@ import { apiControllers, apiUrls, environment } from 'src/environments/environme
 export class RoomsComponent implements OnInit {
 
   allRooms: Room[] = [];
-  constructor (private requestService: RequestService) {
+  constructor (private crudService: RequestService) {
 
   }
 
   
   ngOnInit(): void {
     let officeName = "";
-    this.requestService.get(`${environment.apiUrl}${apiControllers.room}${apiUrls.room.getAllRooms}`)
+    this.crudService.get(`${environment.apiUrl}${apiControllers.room}${apiUrls.room.getAllRooms}`)
     .subscribe({next: (response: any) => {
       // let allRooms: Room[] = [];
       response.forEach((room: any) => {
         let officeName = "";
-        this.requestService.get(`${environment.apiUrl}${apiControllers.office}${apiUrls.office.getOfficeById}`, 
+        this.crudService.get(`${environment.apiUrl}${apiControllers.office}${apiUrls.office.getOfficeById}`, 
           new HttpParams().append('id', room.officeId))
           .subscribe({next: (office: any) => {
             officeName = office.name;
@@ -34,7 +34,7 @@ export class RoomsComponent implements OnInit {
         });
         
       });
-    }, error: (err: Error) => {alert(`${err.name}: ${err.message}`)}})
+    }, error: (err: Error) => {alert(`${err.name}: ${err.message}`)}});
   }
 }
 

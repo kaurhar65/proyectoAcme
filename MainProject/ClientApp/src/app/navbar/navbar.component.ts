@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { RequestService } from '../services/request.service';
 import { apiControllers, apiUrls, environment } from 'src/environments/environment';
+import { HttpParams } from '@angular/common/http';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -18,7 +19,7 @@ export class NavbarComponent implements OnInit {
     private crudService: RequestService
   ) {}
 
-  cities: City[] = [];
+  navbarInfo: NavbarInfo[] = [];
 
   isHomePage(titulo: string) {
     if (titulo == 'Find your country') {
@@ -63,18 +64,28 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-<<<<<<< HEAD
   ngOnInit(): void {
     this.crudService.get(`${environment.apiUrl}${apiControllers.country}${apiUrls.country.getAllCountries}`)
-      .subscribe({next: (response:any) => {
-
+      .subscribe({next: (countries:any) => {
+        countries.forEach((country:any) => {
+          console.log(country);
+          let offices = [];
+          this.crudService.get(`${environment.apiUrl}${apiControllers.office}${apiUrls.office.getOfficesByCountryId}`, new HttpParams().append('countryId', country.id))
+            .subscribe({next: (officesResponse:any) => {
+              console.table(officesResponse);
+              let newInfo = new NavbarInfo(country.id,country.name,officesResponse);
+              this.navbarInfo.push(newInfo);
+              console.table(newInfo);
+              console.log(newInfo.officeName);
+            }});
+        });
       }, error: (error: Error) => {alert(`${error.name.toUpperCase()}: ${error.message}`)}
     });
+    
+    this.navbarInfo.sort((a,b) => {
+      return a.countryName > b.countryName ? 1 : -1;
+    })
   }
-=======
-
-  ngOnInit(): void {}
->>>>>>> main
   
   goToLogin() {
     this.router.navigate(['login']);
@@ -86,14 +97,14 @@ export class NavbarComponent implements OnInit {
   }
 }
 
-export class City {
+export class NavbarInfo {
   id:number;
-  name: string;
-  rooms: string[];
+  countryName: string;
+  officeName: any[];
 
-  constructor(id:number, name: string, rooms: string[]) {
+  constructor(id:number, name: string, rooms: any[]) {
     this.id = id;
-    this.name = name;
-    this.rooms = rooms;
+    this.countryName = name;
+    this.officeName = rooms;
   }
 }
