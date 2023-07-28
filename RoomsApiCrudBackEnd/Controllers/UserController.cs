@@ -12,7 +12,7 @@ using RoomsApiCrudIdentity.Models;
 
 namespace RoomsApiCrudIdentity.Controllers
 {
-    [ApiController]
+    //[ApiController]
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
