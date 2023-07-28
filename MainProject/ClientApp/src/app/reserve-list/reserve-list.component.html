@@ -20,6 +20,6 @@
   <div class="generalRight">
     <button type="submit" (click)="onDeleteClick()">Delete</button>
     <button (click)="popup.openPopup()">Modify</button>
-    <app-pop-up #popup></app-pop-up>
+    <app-pop-up #popup [reservationData]="reservation"></app-pop-up>
   </div>
 </div>

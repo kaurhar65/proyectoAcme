@@ -52,14 +52,16 @@ builder.Services.AddAuthentication(options =>
         };
     });
 
-builder.Services.AddSingleton<IAuthorizationHandler, ReservationSameCreatorHandler>();
-builder.Services.AddSingleton<IAuthorizationHandler, AdminHandler>();
-
 builder.Services.AddAuthorization(options => {
     options.AddPolicy("ReservationPolicy", policy => {
-        policy.AddRequirements(new ReservationAccessRequirement());
+        policy.Requirements.Add(new ReservationAccessRequirement());
     });
 });
+
+builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddSingleton<IAuthorizationHandler, ReservationSameCreatorHandler>();
+builder.Services.AddSingleton<IAuthorizationHandler, AdminHandler>();
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.Configure<PasswordHasherOptions>(opt => opt.IterationCount = 210_000);
 

@@ -20,55 +20,84 @@
           <label class="accLabel" for="first">Add <span>&#x3e;</span></label>
           <input class="accInput" type="radio" name="accordion" id="first" checked />
           <div class="content">
-            <div class="agrupador">
-              <label class="textLabel">City name: </label>
-              <input class="text" [(ngModel)]="cityName" type="text" name="cityName" id="cityName" />
+            <div class="box">
+              <div class="agrupador">
+                <label class="textLabel">City name: </label>
+                <input class="text" [(ngModel)]="cityName" type="text" name="cityName" id="cityName" />
+              </div>
+              <div class="agrupador">
+                <label class="textLabel">City's country: </label>
+                <input class="text" [(ngModel)]="cityCountryId" type="text" name="cityCountryId" id="cityCountryId" />
+              </div>
+              <input class="addButton butt" value="Add new city" (keydown.enter)="addCity()" (click)="addCity()" type="submit">
             </div>
-            <div class="agrupador">
-              <label class="textLabel">City's country: </label>
-              <input class="text" [(ngModel)]="cityCountry" type="text" name="cityCountry" id="cityCountry" />
+            <div *ngFor="let city of cities" class="resultDiv">
+              <pre class="result">{{city | json}}</pre>
             </div>
-            <input class="addButton butt" value="Add new city" (keydown.enter)="addCity()" (click)="addCity()" type="submit">
           </div>
         </li>
         <li>
           <label class="accLabel" for="second">Get <span>&#x3e;</span></label>
           <input class="accInput" type="radio" name="accordion" id="second" checked />
           <div class="content">
-            <div class="agrupador">
-              <label class="textLabel">Search by id: </label>
-              <input class="text" [(ngModel)]="cityId" type="text" name="cityId" id="cityId" />
+            <div class="box">
+              <div class="agrupador">
+                <label class="textLabel">Search by id: </label>
+                <input class="text" [(ngModel)]="cityId" type="text" name="cityId" id="cityId" />
+              </div>
+              <div class="agrupador agr2">
+                <input class="getButton butt" value="Get city by id" (keydown.enter)="getCityById(cityId)" (click)="getCityById(cityId)" type="submit">
+                <input class="getButton butt" value="Get all" (click)="getAllCities()" type="button">
+              </div>
             </div>
-            <div class="agrupador agr2">
-              <input class="getButton butt" value="Get city by id" (keydown.enter)="getCityById()" (click)="getCityById()" type="submit">
-              <input class="getButton butt" value="Get all" (click)="getAllCities()" type="button">
+            <div *ngFor="let city of cities" class="resultDiv">
+              <p class="result">{{city | json}}</p>
             </div>
-            </div>
-</li>
+          </div>
+        </li>
         <li>
           <label class="accLabel" for="third">Update <span>&#x3e;</span></label>
           <input class="accInput" type="radio" name="accordion" id="third" checked />
           <div class="content">
-            <div class="agrupador">
-              <label class="textLabel">City id: </label>
-              <input class="text"  [(ngModel)]="cityId" type="text" name="cityId" id="cityId" />
+            <div class="box">
+              <div class="agrupador agrCol">
+                <div class="agr2">
+                  <label class="textLabel">City id: </label>
+                  <input class="text" [(ngModel)]="cityId" type="text" name="cityId" id="cityId" />
+                </div>
+              </div>
+              <div class="agrupador agrCol">
+                <div class="agr2">
+                  <label class="textLabel">Set name: </label>
+                  <input class="text" [(ngModel)]="cityName" type="text" name="cityName" id="cityName" />
+                </div>
+
+                <div class="agr2">
+                  <label class="textLabel">Set countryId: </label>
+                  <input class="text" [(ngModel)]="cityCountryId" type="text" name="cityCountryId" id="cityCountryId" />
+                </div>
+              </div>
+              <div class="agrupador agrCol">
+                <input class="updateButton butt" value="Update city" (click)="updateCity()" type="submit">
+              </div>
             </div>
-            <div class="agrupador agr2">
-              <label class="textLabel">New name: </label>
-              <input class="text" [(ngModel)]="cityName" type="text" name="cityName" id="cityName" />
+            <div *ngFor="let city of cities" class="resultDiv">
+              <p class="result">Before: {{oldCity | json}}</p>
+              <p class="result">After: {{city | json}}</p>
             </div>
-            <input class="updateButton butt" value="Update city" (click)="updateCity()" type="submit">
           </div>
         </li>
         <li>
           <label class="accLabel" for="fourth">Delete <span>&#x3e;</span></label>
           <input type="radio" name="accordion" id="fourth" checked />
           <div class="content">
-            <div class="agrupador">
-              <label class="textLabel">City id: </label>
-              <input class="text" [(ngModel)]="cityId" type="text" name="cityId" id="cityId" />
+            <div class="box">
+              <div class="agrupador">
+                <label class="textLabel">City id: </label>
+                <input class="text" [(ngModel)]="cityId" type="text" name="cityId" id="cityId" />
+              </div>
+              <input class="deleteButton butt" value="Delete city" (keydown.enter)="deleteCity()" (click)="deleteCity()" type="submit">
             </div>
-            <input class="deleteButton butt" value="Delete city" (keydown.enter)="deleteCity()" (click)="deleteCity()" type="submit">
           </div>
         </li>
       </ul>

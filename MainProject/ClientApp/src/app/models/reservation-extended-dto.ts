@@ -4,6 +4,7 @@ export class ReservationExtendedDTO {
     public startTime: string;
     public endTime: string;
     public roomName: string;
+    public roomId: number;
     public officeName: string;
     public cityName: string;
     public countryName: string;
@@ -16,6 +17,7 @@ export class ReservationExtendedDTO {
         this.startTime = "00:00";
         this.endTime = "00:00";
         this.roomName = "";
+        this.roomId = -1;
         this.officeName = "";
         this.cityName = "";
         this.countryName = "";

@@ -26,7 +26,7 @@ public class ClaimController : ControllerBase
 
     [HttpPost]
     [Route("AddClaimToUser")]
-    [Authorize(Roles = UserRoles.Admin)]
+    //[Authorize(Roles = UserRoles.Admin)]
     public async Task<IActionResult> AddClaimToUser(string claimType, string claimValue, string userId)
     {
         IdentityResult result = await _userManager.AddClaimAsync(
