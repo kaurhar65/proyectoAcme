@@ -105,9 +105,7 @@ export class AdminCityComponent {
     alert(this.cityId);
     this.requestService
       .delete(`${environment.apiUrl}${apiControllers.city}${apiUrls.city.deleteCity}`,
-        {
-          "id": this.cityId
-        })
+      new HttpParams().append('id', `${this.cityId.toString()}`))
       .subscribe({});
   }
 }
