@@ -20,25 +20,31 @@
           <label class="accLabel" for="first">Add <span>&#x3e;</span></label>
           <input class="accInput" type="radio" name="accordion" id="first" checked />
           <div class="content">
-            <div class="agrup1">
-              <div class="agrupador agru">
-                <label class="textLabel">Admin name: </label>
-                <input class="text" [(ngModel)]="adminName" type="text" name="adminName" id="adminName" />
+            <div class="box">
+              <div class="agrupador agr2">
+                <div class="agrCol">
+                  <div class="agrupador agr2">
+                    <label class="textLabel">Admin name: </label>
+                    <input class="text" [(ngModel)]="adminName" type="text" name="adminName" id="adminName" />
+                  </div>
+                  </div>
+                </div>
+                <div class="agrupador agru">
+                  <label class="textLabel">Admin email: </label>
+                  <input class="text" [(ngModel)]="adminEmail" type="text" name="adminEmail" id="adminEmail" />
+                </div>
+                <div class="agrupador agru">
+                  <label class="textLabel">Admin password: </label>
+                  <input class="text" [(ngModel)]="adminPassword" type="text" name="adminPassword" id="adminPassword" />
+                </div>
+                <div class="agrupador agru">
+                  <label class="textLabel">Admin phone: </label>
+                  <input class="text" [(ngModel)]="adminPhone" type="text" name="adminPhone" id="adminPhone" />
+                </div>
               </div>
-              <div class="agrupador agru">
-                <label class="textLabel">Admin email: </label>
-                <input class="text" [(ngModel)]="adminEmail" type="text" name="adminEmail" id="adminEmail" />
-              </div>
-              <div class="agrupador agru">
-                <label class="textLabel">Admin password: </label>
-                <input class="text" [(ngModel)]="adminPassword" type="text" name="adminPassword" id="adminPassword" />
-              </div>
-              <div class="agrupador agru">
-                <label class="textLabel">Admin phone: </label>
-                <input class="text" [(ngModel)]="adminPhone" type="text" name="adminPhone" id="adminPhone" />
-              </div>
+            <div class="box">
+              <input class="addButton butt" value="Add new administrator" (keydown.enter)="addAdmin()" (click)="addAdmin()" type="submit">
             </div>
-            <input class="addButton butt" value="Add new administrator" (keydown.enter)="addAdmin()" (click)="addAdmin()" type="submit">
           </div>
         </li>
         <li>
