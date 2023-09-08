@@ -94,9 +94,7 @@ export class AdminRoomComponent {
     alert(this.roomId);
     this.requestService
       .delete(`${environment.apiUrl}${apiControllers.room}${apiUrls.room.deleteRoom}`,
-        {
-          "id": this.roomId
-        })
+      new HttpParams().append('id', `${this.roomId.toString()}`))
       .subscribe({});
   }
 }

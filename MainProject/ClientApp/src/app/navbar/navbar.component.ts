@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { RequestService } from '../services/request.service';
+import { apiControllers, apiUrls, environment } from 'src/environments/environment';
+import { HttpParams } from '@angular/common/http';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -12,23 +15,11 @@ export class NavbarComponent implements OnInit {
   @Input() titulo: string = '';
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private crudService: RequestService
   ) {}
 
-  cities: City[] = [
-    {
-      name: 'Australia',
-      rooms: ['ACME Sydney', 'ACME Melbourne'],
-    },
-    {
-      name: 'Japan',
-      rooms: ['ACME Tokyo'],
-    },
-    {
-      name: 'Canada',
-      rooms: ['ACME Vancouver', 'ACME Toronto'],
-    },
-  ];
+  navbarInfo: NavbarInfo[] = [];
 
   isHomePage(titulo: string) {
     if (titulo == 'Find your country') {
@@ -73,8 +64,28 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.crudService.get(`${environment.apiUrl}${apiControllers.country}${apiUrls.country.getAllCountries}`)
+      .subscribe({next: (countries:any) => {
+        countries.forEach((country:any) => {
+          console.log(country);
+          let offices = [];
+          this.crudService.get(`${environment.apiUrl}${apiControllers.office}${apiUrls.office.getOfficesByCountryId}`, new HttpParams().append('countryId', country.id))
+            .subscribe({next: (officesResponse:any) => {
+              console.table(officesResponse);
+              let newInfo = new NavbarInfo(country.id,country.name,officesResponse);
+              this.navbarInfo.push(newInfo);
+              console.table(newInfo);
+              console.log(newInfo.officeName);
+            }});
+        });
+      }, error: (error: Error) => {alert(`${error.name.toUpperCase()}: ${error.message}`)}
+    });
+    
+    this.navbarInfo.sort((a,b) => {
+      return a.countryName > b.countryName ? 1 : -1;
+    })
+  }
   
   goToLogin() {
     this.router.navigate(['login']);
@@ -86,12 +97,14 @@ export class NavbarComponent implements OnInit {
   }
 }
 
-export class City {
-  name: string;
-  rooms: string[];
+export class NavbarInfo {
+  id:number;
+  countryName: string;
+  officeName: any[];
 
-  constructor(name: string, rooms: string[]) {
-    this.name = name;
-    this.rooms = rooms;
+  constructor(id:number, name: string, rooms: any[]) {
+    this.id = id;
+    this.countryName = name;
+    this.officeName = rooms;
   }
 }

@@ -256,17 +256,7 @@ namespace RoomsApiCrudIdentity.Controllers
             // {
                 _context.Reservations.Update(reservationToUpdate);
                 var result = await _context.SaveChangesAsync();
-                //return NoContent();
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    new Response
-                    {
-                        Status = "Error",
-                        // Message = result.Errors
-                        //     .Select(error => error.Description)
-                        //     .Aggregate("", (acc, error) => acc + $"*SEPARATOR*{error}")
-                        Message = result.ToString()
-                    }
-                );
+                return NoContent();
                     //});
             // }
             // return Forbid();
@@ -281,21 +271,25 @@ namespace RoomsApiCrudIdentity.Controllers
         [Route("DeleteReservation")]
         public async Task<IActionResult> DeleteReservation(int id)
         {
-            var reservationToDelete = await _context.Reservations.FindAsync(id);
+            // var reservationToDelete = await _context.Reservations.FindAsync(id);
             
+            var reservationToDelete = await _context.Reservations.FindAsync(id);
+                //.Where(reservation => reservation.Id == id)
+                //.FirstOrDefaultAsync();
+
             if (reservationToDelete is null)
             {
                 return NotFound();
             }
             
-            if ((await _authorizationService.AuthorizeAsync(User, reservationToDelete, "ReservationPolicy")).Succeeded)
-            {
+            //if ((await _authorizationService.AuthorizeAsync(User, reservationToDelete, "ReservationPolicy")).Succeeded)
+            //{
                 _context.Reservations.Remove(reservationToDelete);
                 await _context.SaveChangesAsync();
                 return NoContent();
-            }
+            //}
         
-            return Forbid();
+            //return Forbid();
         }
     }
 }

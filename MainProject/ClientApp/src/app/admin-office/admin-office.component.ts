@@ -94,9 +94,7 @@ export class AdminOfficeComponent {
     alert(this.officeId);
     this.requestService
       .delete(`${environment.apiUrl}${apiControllers.office}${apiUrls.office.deleteOffice}`,
-        {
-          "id": this.officeId
-        })
+      new HttpParams().append('id', `${this.officeId.toString()}`))
       .subscribe({});
   }
 }
