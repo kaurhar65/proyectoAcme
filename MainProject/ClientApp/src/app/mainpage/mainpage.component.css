@@ -19,6 +19,10 @@
 #home h3 {
     font-weight: 400;
     margin: 0;
+    font-size: 26px;
+}
+h3:hover {
+    cursor: default;
 }
 .superiorHome {
     display: flex;

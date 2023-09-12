@@ -146,7 +146,10 @@ button {
   gap: 15px;
   justify-content: space-between;
 }
-
+.agruAdd {
+    display: flex;
+    justify-content: space-between;
+}
 .agrCol {
   display: flex;
   flex-direction: column;
@@ -323,4 +326,28 @@ button {
 
 .butt {
   font-size: 14px;
+}
+.bot {
+    padding-top: 10px;
+    width: fit-content;
+}
+
+@media (max-width: 850px) {
+    .content {
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        flex-wrap: wrap;
+    }
+}
+@media (max-width: 580px) {
+    .text {
+        width: 90%;
+    }
+    .agruAdd {
+        flex-direction: column;
+    }
+    .agr2 {
+        gap: 5px;
+    }
 }

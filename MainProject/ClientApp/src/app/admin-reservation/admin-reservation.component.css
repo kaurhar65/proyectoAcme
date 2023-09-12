@@ -130,7 +130,6 @@ button {
 
 .agrupador {
   display: flex;
-  flex-wrap: wrap;
 }
 
 .agr2 {

@@ -20,32 +20,28 @@
           <label class="accLabel" for="first">Add <span>&#x3e;</span></label>
           <input class="accInput" type="radio" name="accordion" id="first" checked />
           <div class="content">
-            <div class="box">
-              <div class="agrupador agr2">
-                <div class="agrCol">
-                  <div class="agrupador agr2">
-                    <label class="textLabel">Admin name: </label>
-                    <input class="text" [(ngModel)]="adminName" type="text" name="adminName" id="adminName" />
-                  </div>
-                  </div>
+            <div class="agrCol">
+                <div class="agrupador agr2 agruAdd">
+                  <label class="textLabel">Admin name: </label>
+                  <input class="text" [(ngModel)]="adminName" type="text" name="adminName" id="adminName" />
                 </div>
-                <div class="agrupador agru">
+                <div class="agrupador agr2 agruAdd">
                   <label class="textLabel">Admin email: </label>
                   <input class="text" [(ngModel)]="adminEmail" type="text" name="adminEmail" id="adminEmail" />
                 </div>
-                <div class="agrupador agru">
+                <div class="agrupador agr2 agruAdd">
                   <label class="textLabel">Admin password: </label>
                   <input class="text" [(ngModel)]="adminPassword" type="text" name="adminPassword" id="adminPassword" />
                 </div>
-                <div class="agrupador agru">
+                <div class="agrupador agr2 agruAdd">
                   <label class="textLabel">Admin phone: </label>
                   <input class="text" [(ngModel)]="adminPhone" type="text" name="adminPhone" id="adminPhone" />
                 </div>
               </div>
-            <div class="box">
-              <input class="addButton butt" value="Add new administrator" (keydown.enter)="addAdmin()" (click)="addAdmin()" type="submit">
+              <div class="agrupador agrCol bot">
+                <input class="addButton butt" value="Add new administrator" (keydown.enter)="addAdmin()" (click)="addAdmin()" type="submit">
+              </div>
             </div>
-          </div>
         </li>
         <li>
           <label class="accLabel" for="second">Get <span>&#x3e;</span></label>
@@ -65,25 +61,27 @@
           <label class="accLabel" for="third">Update <span>&#x3e;</span></label>
           <input class="accInput" type="radio" name="accordion" id="third" checked />
           <div class="content">
-            <div class="agrup1">
-              <div class="agrupador agru">
+            <div class="agrCol">
+              <div class="agrupador agr2 agruAdd">
                 <label class="textLabel">Admin id: </label>
                 <input class="text" [(ngModel)]="adminId" type="text" name="adminId" id="adminId" />
               </div>
-              <div class="agrupador agru">
+              <div class="agrupador agr2 agruAdd">
                 <label class="textLabel">Admin name: </label>
                 <input class="text" [(ngModel)]="adminName" type="text" name="adminName" id="adminName" />
               </div>
-              <div class="agrupador agru">
+              <div class="agrupador agr2 agruAdd">
                 <label class="textLabel">Admin password: </label>
                 <input class="text" [(ngModel)]="adminPassword" type="text" name="adminPassword" id="adminPassword" />
               </div>
-              <div class="agrupador agru">
+              <div class="agrupador agr2 agruAdd">
                 <label class="textLabel">Admin phone: </label>
                 <input class="text" [(ngModel)]="adminPhone" type="text" name="adminPhone" id="adminPhone" />
               </div>
             </div>
-            <input class="updateButton butt" value="Update admin" (click)="getAllAdmins()" type="submit">
+            <div class="agrupador agrCol bot">
+              <input class="updateButton butt" value="Update admin" (click)="getAllAdmins()" type="submit">
+            </div>
           </div>
         </li>
         <li>

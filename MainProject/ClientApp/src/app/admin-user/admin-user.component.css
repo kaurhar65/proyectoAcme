@@ -137,7 +137,6 @@ button {
   gap: 15px;
   justify-content: space-between;
 }
-
 .agrCol {
   display: flex;
   flex-direction: column;

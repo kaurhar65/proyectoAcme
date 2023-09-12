@@ -29,11 +29,11 @@ export class NavbarComponent implements OnInit {
   }
 
   showButton(titulo: string) {
-    if (titulo.includes('Hello') || titulo.includes('Make a') || titulo.includes('You are in')) {
-      return false;
+    if (titulo.includes('Hello') || titulo.includes('Make a') || titulo.includes('Find your country') || titulo.includes('My reservations')) {
+      return true;
     }
 
-    return true;
+    return false;
   }
 
   isUserPage(titulo: string) {
