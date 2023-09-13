@@ -31,9 +31,9 @@
               </div>
               <input class="addButton butt" value="Add new city" (keydown.enter)="addCity()" (click)="addCity()" type="submit">
             </div>
-            <div *ngFor="let city of cities" class="resultDiv">
-              <pre class="result">{{city | json}}</pre>
-            </div>
+            <!--<div *ngFor="let city of cities" class="resultDiv"> //en teoria muestra la ciudad añadida, aunq no hace falta ngFor
+    <pre class="result">{{city | json}}</pre>
+  </div>-->
           </div>
         </li>
         <li>
@@ -81,9 +81,9 @@
                 <input class="updateButton butt" value="Update city" (click)="updateCity()" type="submit">
               </div>
             </div>
-            <div *ngFor="let city of cities" class="resultDiv">
+            <div class="resultDiv">
               <p class="result">Before: {{oldCity | json}}</p>
-              <p class="result">After: {{city | json}}</p>
+              <p class="result">After: {{updatedCity | json}}</p>
             </div>
           </div>
         </li>

@@ -70,7 +70,7 @@
                 <input class="getReservation butt" value="Get all" (click)="getAllReservations()" type="button">
               </div>
             </div>
-            <div *ngFor="let reserva of reservas" class="resultDiv">
+            <div *ngFor="let reserva of llistaReservas" class="resultDiv">
               <p class="result">{{reserva | json}}</p>
             </div>
           </div>

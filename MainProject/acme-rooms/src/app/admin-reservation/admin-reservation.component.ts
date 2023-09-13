@@ -8,6 +8,8 @@ import { Country } from '../models/country';
 import { City } from '../models/city';
 import { Office } from '../models/office';
 import { Room } from '../models/room';
+import * as dayjs from 'dayjs';
+import { ReservationExtendedDTO } from '../models/reservation-extended-dto';
 
 @Component({
   selector: 'app-admin-reservation',
@@ -15,44 +17,21 @@ import { Room } from '../models/room';
   styleUrls: ['./admin-reservation.component.css']
 })
 export class AdminReservationComponent {
-  
-  /*reservationId = 2
-  reservationRoomId = 0
-  reservationUserId = ""
-  reservationDate = "2023-11-24"
-  reservationStartTime = "10:30"
-  reservationEndTime = "12:00"*/
-
-  
-/*    {
-    "id": reservationId,
-    "date": this.reservationDate,
-    "startTime": this.reservationStartTime,
-    "endTime": this.reservationEndTime,
-    "roomId": this.reservationRoomId,
-    "userId": this.reservationUserId
-  }*/
-  
-  /*
-  reservas: (Reservation[]) = []
-  reserva: (Reservation) = new Reservation() */
-
+ 
   reservationRegistrationForm!: ReservationRegistrationForm;
-  /*selection: {
-    country: 'any' | number;
-    office: 'any' | number;
-    room: 'any' | number;
-  } = {
-      country: 'any',
-      office: 'any',
-      room: 'any',
-    };*/
+  llistaReservas!: ReservationExtendedDTO[];
+
   countries: Country[] = [];
   cities: City[] = [];
   offices: Office[] = [];
   rooms: Room[] = [];
+<<<<<<< HEAD:MainProject/acme-rooms/src/app/admin-reservation/admin-reservation.component.ts
   userId!: string;
   reservas: (Reservation[]) = []
+=======
+  userId!: number;
+  reserva: (Reservation[]) = []
+>>>>>>> da7931f (admin countries cities offices rooms reservations CRUD):MainProject/ClientApp/src/app/admin-reservation/admin-reservation.component.ts
   reservation: (Reservation) = new Reservation()
   constructor(private requestService: RequestService) { }
 
@@ -80,24 +59,59 @@ export class AdminReservationComponent {
   }
 
   getAllReservations() {
-    this.requestService.get(`${environment.apiUrl}${apiControllers.reservation}${apiUrls.reservation.getAllReservations}`)
+    this.requestService
+
+      .get(
+        `${environment.apiUrl}${apiControllers.reservation}${apiUrls.reservation.getReservationsByUserId}`,
+        new HttpParams().append('userId', `${this.userId}`)
+      )
+
       .subscribe({
-        next: (fetchedReservations: Reservation[]) => {
-          this.reservas = fetchedReservations
+        next: (fetchedReservations: ReservationExtendedDTO[]) => {
+          const currentDate = dayjs(undefined, 'YYYY-MM-DD');
+
+          this.llistaReservas = fetchedReservations
+            .filter(
+              (reservation) => {
+                // alert(`${reservation.date} AND ${dayjs(reservation.date)} AND ${currentDate.toString()}`);
+                return dayjs(reservation.date).isSame(currentDate, 'date') ||
+                  dayjs(reservation.date).isAfter(currentDate, 'date')
+              }
+              // reservation.date === currentDate
+            );
         },
-      });    
+
+        error: (err: Error) => {
+          alert(err.message);
+        },
+      });
   }
   getReservationById(id: number) {
     this.requestService
-      .get(`${environment.apiUrl}${apiControllers.reservation}${apiUrls.reservation.getReservationById}`,
-        new HttpParams().append('id', id))
+
+      .get(
+        `${environment.apiUrl}${apiControllers.reservation}${apiUrls.reservation.getReservationById}`,
+        new HttpParams().append('id', `${id}`)
+      )
+
       .subscribe({
-        next: (fetchedReservations: any) => {
-          this.reservas = fetchedReservations
+        next: (fetchedReservations: ReservationExtendedDTO[]) => {
+          const currentDate = dayjs(undefined, 'YYYY-MM-DD');
+
+          this.llistaReservas = fetchedReservations
+            .filter(
+              (reservation) => {
+                // alert(`${reservation.date} AND ${dayjs(reservation.date)} AND ${currentDate.toString()}`);
+                return dayjs(reservation.date).isSame(currentDate, 'date') ||
+                  dayjs(reservation.date).isAfter(currentDate, 'date')
+              }
+              // reservation.date === currentDate
+            );
         },
+
         error: (err: Error) => {
-          alert(err.message)
-        }
+          alert(err.message);
+        },
       });
   }
   updateReservation() { }

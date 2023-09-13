@@ -18,6 +18,7 @@ export class AdminCityComponent {
   /*crud var*/
   cities: (City[]) = []
   oldCity: (City) = new City()
+  updatedCity: (City) = new City()
 
   addCity() {
     this.requestService.post(`${environment.apiUrl}${apiControllers.city}${apiUrls.city.createCity}`,
@@ -92,7 +93,19 @@ export class AdminCityComponent {
           }
         });
     /*Get country with new info*/
-    this.getCityById(this.cityId)
+    /*this.getCityById(this.cityId)*/
+    this.requestService
+      .get(`${environment.apiUrl}${apiControllers.city}${apiUrls.city.getCityById}`,
+        new HttpParams().append('id', this.cityId))
+      .subscribe({
+        next: (fetchedCity: any) => {
+          this.updatedCity = {
+            id: fetchedCity.id,
+            name: fetchedCity.name,
+            countryId: fetchedCity.countryId,
+          };
+        },
+      });
   }
   deleteCity() {
     alert(this.cityId);

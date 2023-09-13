@@ -83,9 +83,9 @@
                 <input class="updateButton butt" value="Update room" (click)="updateRoom(roomId)" type="submit">
               </div>
             </div>
-            <div *ngFor="let room of rooms" class="resultDiv">
+            <div class="resultDiv">
               <p class="result">Before: {{oldRoom | json}}</p>
-              <p class="result">After: {{room | json}}</p>
+              <p class="result">After: {{updatedRoom | json}}</p>
             </div>
           </div>
         </li>
