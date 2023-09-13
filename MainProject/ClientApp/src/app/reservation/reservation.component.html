@@ -9,15 +9,15 @@
           <button type="submit"> Search </button>
         </form>
         <a class="underline-animation" href="https://www.google.com/search"> Need help? </a>
-        <div class="changes">
-          <button type="submit"> Save changes </button>
-        </div>
       </div>
     </div>
     <div>
       <ng-container *ngFor="let reservation of llistaReservas">
         <app-reserve-list [reservation]="reservation"></app-reserve-list>
       </ng-container>
+    </div>
+    <div class="noReserva" *ngIf="showNoReserva">
+      <app-no-reserva></app-no-reserva>
     </div>
   </div>
 </div>

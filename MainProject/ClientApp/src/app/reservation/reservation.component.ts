@@ -1,36 +1,26 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-
 import { RequestService } from '../services/request.service';
-
 import { AuthenticationService } from 'src/app/services/authentication.service';
-
 import {
   environment,
   apiControllers,
   apiUrls,
 } from '../../environments/environment';
-
 import { Reservation } from 'src/app/models/reservation';
-
 import { ReservationExtendedDTO } from '../models/reservation-extended-dto';
-
 import { HttpParams } from '@angular/common/http';
-
 import { Observable } from 'rxjs';
-
 import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-reservation',
-
   templateUrl: './reservation.component.html',
-
   styleUrls: ['./reservation.component.css'],
 })
 export class ReservationComponent {
   llistaReservas!: ReservationExtendedDTO[];
-
   currentUserId: string = '';
+  showNoReserva: boolean = false;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -72,8 +62,13 @@ export class ReservationComponent {
         },
 
         error: (err: Error) => {
-          alert(err.message);
+          //alert(err.message);
+          //this.showNoReserva = true;
         },
+
+        complete: () => {
+          this.showNoReserva = this.llistaReservas.length === 0 ? true : false;
+        }
       });
   }
 } //export

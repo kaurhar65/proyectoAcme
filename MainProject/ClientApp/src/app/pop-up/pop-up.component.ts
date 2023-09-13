@@ -1,15 +1,7 @@
 import { Component, Input } from '@angular/core';
-
 import { ReservationService } from 'src/app/services/reservation.service';
-
-import {
-  environment,
-  apiControllers,
-  apiUrls,
-} from 'src/environments/environment';
-
+import { environment,apiControllers,apiUrls} from 'src/environments/environment';
 import { RequestService } from '../services/request.service';
-
 import { ReservationExtendedDTO } from '../models/reservation-extended-dto';
 
 @Component({
