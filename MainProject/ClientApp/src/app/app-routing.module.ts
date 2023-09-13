@@ -16,6 +16,7 @@ import { AdminRoomComponent } from './admin-room/admin-room.component';
 import { AdminAdministratorComponent } from './admin-administrator/admin-administrator.component';
 import { AdminUserComponent } from './admin-user/admin-user.component';
 import { RoomsComponent } from './rooms/rooms.component';
+import { NoReservaComponent } from 'src/app/no-reserva/no-reserva.component';
 
 // Define las rutas
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'adminProfile/users', component: AdminUserComponent },
   { path: 'adminProfile/administrators', component: AdminAdministratorComponent },
   { path: 'all-rooms', component: RoomsComponent },
+  { path: 'noReserva', component: NoReservaComponent },
   { path: '**', component: HomeComponent },
   { path:'', redirectTo: '/register', pathMatch: 'full' }
 ];
