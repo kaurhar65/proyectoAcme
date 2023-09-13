@@ -1,0 +1,20 @@
+.container {
+  background-color: #fafafa;
+  height: 47vh;
+  padding: 20px;
+}
+
+.block {
+  background-color: #ffffff;
+  margin: 10px;
+  padding: 20px;
+  box-shadow: 3px 3px #e6e6e6;
+}
+
+p{
+    margin: auto;
+    font-size: large;
+    font-weight: bolder;
+    display: flex;
+    align-content: center;
+}
