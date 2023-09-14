@@ -51,24 +51,21 @@ export class ReservationComponent {
         next: (fetchedReservations: ReservationExtendedDTO[]) => {
           const currentDate = dayjs(undefined, 'YYYY-MM-DD');
 
-          this.llistaReservas = fetchedReservations
-            .filter(
-              (reservation) => {
-                // alert(`${reservation.date} AND ${dayjs(reservation.date)} AND ${currentDate.toString()}`);
-                return dayjs(reservation.date).isSame(currentDate, 'date') ||
-                dayjs(reservation.date).isAfter(currentDate, 'date') }
-                // reservation.date === currentDate
-            );
-        },
-
-        error: (err: Error) => {
-          //alert(err.message);
-          //this.showNoReserva = true;
+          this.llistaReservas = fetchedReservations.filter(
+            (reservation) => {
+              // alert(`${reservation.date} AND ${dayjs(reservation.date)} AND ${currentDate.toString()}`);
+              return (
+                dayjs(reservation.date).isSame(currentDate, 'date') ||
+                dayjs(reservation.date).isAfter(currentDate, 'date')
+              );
+            }
+            // reservation.date === currentDate
+          );
         },
 
         complete: () => {
           this.showNoReserva = this.llistaReservas.length === 0 ? true : false;
-        }
+        },
       });
   }
 } //export
