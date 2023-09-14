@@ -51,7 +51,7 @@ export class AdminReservationComponent {
   cities: City[] = [];
   offices: Office[] = [];
   rooms: Room[] = [];
-  userId!: number;
+  userId!: string;
   reservas: (Reservation[]) = []
   reservation: (Reservation) = new Reservation()
   constructor(private requestService: RequestService) { }
