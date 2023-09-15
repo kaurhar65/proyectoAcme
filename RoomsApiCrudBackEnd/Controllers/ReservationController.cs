@@ -16,21 +16,8 @@ namespace RoomsApiCrudIdentity.Controllers;
 [Route("api/[controller]")]
 public class ReservationController : ControllerBase
 {
-<<<<<<< HEAD
-    // [Authorize]
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ReservationController : ControllerBase
-    {
-        public readonly IConfiguration _configuration;
-        public readonly string _connectionString;
-        private readonly RoomsApiCrudDbContext _context;
-        private readonly IAuthorizationService _authorizationService;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-=======
     private readonly RoomsApiCrudDbContext _context;
     private readonly IAuthorizationService _authorizationService;
->>>>>>> cfc203cc8e0f4833945a8cae42d11d76ce6f08ac
 
     public ReservationController(
         RoomsApiCrudDbContext context,
