@@ -10,6 +10,6 @@ public class ReservationExtendedDTOModel
     public int RoomId { get; set; } = -1;
     public string? OfficeName { get; set; } = null;
     public string? CityName { get; set; } = null;
-    public string? CountryName { get; set; } = null; 
+    public string? CountryName { get; set; } = null;
     public string? UserId { get; set; } = null;
 }

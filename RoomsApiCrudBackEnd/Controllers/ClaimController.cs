@@ -1,17 +1,11 @@
 ﻿#pragma warning disable CS8602, CS8604
 
+using System.Data;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
-
-using System.Data;
-
-using RoomsApiCrudIdentity.Data;
-using RoomsApiCrudIdentity.Entities;
+// using Microsoft.AspNetCore.Authorization; commented out because we'll need it when we bring Admin roles back in
 using RoomsApiCrudIdentity.Models;
-using System.Security.Claims;
-using System.Runtime.CompilerServices;
 
 namespace RoomsApiCrudIdentity.Controllers;
 
@@ -27,7 +21,11 @@ public class ClaimController : ControllerBase
     [HttpPost]
     [Route("AddClaimToUser")]
     //[Authorize(Roles = UserRoles.Admin)]
-    public async Task<IActionResult> AddClaimToUser(string claimType, string claimValue, string userId)
+    public async Task<IActionResult> AddClaimToUser(
+        string claimType,
+        string claimValue,
+        string userId
+    )
     {
         IdentityResult result = await _userManager.AddClaimAsync(
             await _userManager.FindByIdAsync(userId),
@@ -36,40 +34,49 @@ public class ClaimController : ControllerBase
 
         if (result.Succeeded)
         {
-            return Ok(new Response { Status = "Success", Message = "Claim added successfully"});
+            return Ok(new Response { Status = "Success", Message = "Claim added successfully" });
         }
 
-        return StatusCode(StatusCodes.Status500InternalServerError,
-                    new Response
-                    { 
-                        Status = "Error",
-                        Message = result.Errors
-                            .Select(error => error.Description)
-                            .Aggregate("", (acc, error) => acc + $"*SEPARATOR*{error}")
-                    });
+        return StatusCode(
+            StatusCodes.Status500InternalServerError,
+            new Response
+            {
+                Status = "Error",
+                Message = result.Errors
+                    .Select(error => error.Description)
+                    .Aggregate("", (acc, error) => acc + $"*SEPARATOR*{error}")
+            }
+        );
     }
 
     [HttpPost]
     [Route("DeleteClaimFromUser")]
-    [Authorize(Roles = UserRoles.Admin)]
-    public async Task<IActionResult> DeleteClaimFromUser(string claimType, string claimValue, string claimIssuer, string userId)
+    // [Authorize(Roles = UserRoles.Admin)]
+    public async Task<IActionResult> DeleteClaimFromUser(
+        string claimType,
+        string claimValue,
+        string claimIssuer,
+        string userId
+    )
     {
         IdentityResult result = await _userManager.RemoveClaimAsync(
             await _userManager.FindByIdAsync(userId),
-            new Claim(claimType, claimValue, ClaimValueTypes.String, claimIssuer) 
+            new Claim(claimType, claimValue, ClaimValueTypes.String, claimIssuer)
         );
         if (result.Succeeded)
         {
             return Ok();
         }
 
-        return StatusCode(StatusCodes.Status500InternalServerError,
-                    new Response
-                    { 
-                        Status = "Error",
-                        Message = result.Errors
-                            .Select(error => error.Description)
-                            .Aggregate("", (acc, error) => acc + $"*SEPARATOR*{error}")
-                    });
+        return StatusCode(
+            StatusCodes.Status500InternalServerError,
+            new Response
+            {
+                Status = "Error",
+                Message = result.Errors
+                    .Select(error => error.Description)
+                    .Aggregate("", (acc, error) => acc + $"*SEPARATOR*{error}")
+            }
+        );
     }
 }
