@@ -64,7 +64,7 @@ export class ReservationComponent {
         },
 
         complete: () => {
-          this.showNoReserva = this.llistaReservas.length === 0 ? true : false;
+          this.showNoReserva = this.llistaReservas.length === 0 ? false : true;
         },
       });
   }
