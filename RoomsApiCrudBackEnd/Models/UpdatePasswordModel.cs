@@ -1,14 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RoomsApiCrudIdentity.Models
+namespace RoomsApiCrudIdentity.Models;
+
+public class UpdatePasswordModel
 {
-    public class UpdatePasswordModel
-    {
-        [Required]
-        public string? CurrentPassword { get; set; }
-        [Required]
-        public string? NewPassword { get; set; }
-        [Required]
-        public string? NewPasswordConfirmation { get; set; }
-    }
+    [Required]
+    public string? CurrentPassword { get; set; }
+
+    [Required]
+    public string? NewPassword { get; set; }
+
+    [Required]
+    public string? NewPasswordConfirmation { get; set; }
 }

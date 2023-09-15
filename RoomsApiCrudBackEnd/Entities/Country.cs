@@ -1,10 +1,7 @@
-using Microsoft.AspNetCore.Mvc;
+namespace RoomsApiCrudIdentity.Entities;
 
-namespace RoomsApiCrudIdentity.Entities
+public class Country
 {
-    public class Country
-    {
-        public int Id { get; set; } = default!;
-        public string? Name { get; set; } = null;
-    }
+    public int Id { get; set; } = default!;
+    public string? Name { get; set; } = null;
 }
