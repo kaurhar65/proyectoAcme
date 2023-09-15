@@ -12,11 +12,7 @@ using RoomsApiCrudIdentity.Models;
 
 namespace RoomsApiCrudIdentity.Controllers
 {
-<<<<<<< HEAD
     // [Authorize]
-=======
-    //[Authorize]
->>>>>>> 4f41b2619bc7f05e0580cc9a0f2181ea11307e9b
     [ApiController]
     [Route("api/[controller]")]
     public class ReservationController : ControllerBase
