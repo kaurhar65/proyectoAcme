@@ -1,32 +1,27 @@
-﻿using System.Security.Claims;
+﻿using Microsoft.AspNetCore.Authorization;
 using RoomsApiCrudIdentity.Policies.Requirements;
 using RoomsApiCrudIdentity.Entities;
-using Microsoft.AspNetCore.Authorization;
-using System.IdentityModel.Tokens.Jwt;
 
 namespace RoomsApiCrudIdentity.Policies.Handlers;
 
-public class ReservationSameCreatorHandler : AuthorizationHandler<ReservationAccessRequirement, Reservation>
+public class ReservationSameCreatorHandler
+    : AuthorizationHandler<ReservationAccessRequirement, Reservation>
 {
-    private readonly IHttpContextAccessor _httpContextAccessor;
+    public ReservationSameCreatorHandler() { }
 
-    public ReservationSameCreatorHandler(IHttpContextAccessor httpContextAccessor)
+    protected override Task HandleRequirementAsync(
+        AuthorizationHandlerContext context,
+        ReservationAccessRequirement requirement,
+        Reservation resource
+    )
     {
-       _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
-    }
-    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, ReservationAccessRequirement requirement, Reservation resource)
-    {
-        // string jwt = _httpContextAccessor.HttpContext.Request.Headers
-        //     .Any(x => x.Key == "Authorization") ? 
-        //         _httpContextAccessor.HttpContext.Request.Headers
-        //             .Where(x => x.Key == "Authorization")
-        //             .FirstOrDefault()
-        //             .Value
-        //             .SingleOrDefault()
-        //             .Replace("Bearer ", "") : "";
-        // JwtSecurityTokenHandler handler = new();
-        // JwtSecurityToken token = handler.ReadJwtToken(jwt);
-        if (_httpContextAccessor.HttpContext?.User.Claims.FirstOrDefault(claim => claim.Type.Equals("UserId"))?.Value.Equals(resource.UserId) ?? false)
+        if (
+            context.User.Claims.FirstOrDefault(claim =>
+            {
+                return (claim.Type == "UserId") && claim.Value == resource.UserId;
+            })
+            is not null
+        )
         {
             context.Succeed(requirement);
         }

@@ -2,6 +2,4 @@
 
 namespace RoomsApiCrudIdentity.Policies.Requirements;
 
-public class ReservationAccessRequirement : IAuthorizationRequirement
-{
-}
+public class ReservationAccessRequirement : IAuthorizationRequirement { }
