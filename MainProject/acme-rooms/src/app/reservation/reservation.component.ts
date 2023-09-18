@@ -20,7 +20,7 @@ import * as dayjs from 'dayjs';
 export class ReservationComponent {
   llistaReservas!: ReservationExtendedDTO[];
   currentUserId: string = '';
-  siHayReservas: boolean = false;
+  showNoReserva: boolean = false;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -53,16 +53,18 @@ export class ReservationComponent {
 
           this.llistaReservas = fetchedReservations.filter(
             (reservation) => {
+              // alert(`${reservation.date} AND ${dayjs(reservation.date)} AND ${currentDate.toString()}`);
               return (
                 dayjs(reservation.date).isSame(currentDate, 'date') ||
                 dayjs(reservation.date).isAfter(currentDate, 'date')
               );
             }
+            // reservation.date === currentDate
           );
         },
 
         complete: () => {
-          this.siHayReservas = this.llistaReservas.length === 0 ? true : false;
+          this.showNoReserva = this.llistaReservas.length === 0 ? false : true;
         },
       });
   }
