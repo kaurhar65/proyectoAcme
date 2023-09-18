@@ -67,7 +67,7 @@ h1 {
 
 }
 .generalLeft p{
-    font-weight: bold;
+    font-weight: normal;
 }
 .generalCenter p {
   font-weight: bold;
@@ -81,7 +81,7 @@ h1 {
     letter-spacing: 2px;
     border: 0.5px solid black;
     outline: none;
-    font-weight:bold;
+    font-weight:normal;
   }
 
     .generalRight button:hover {

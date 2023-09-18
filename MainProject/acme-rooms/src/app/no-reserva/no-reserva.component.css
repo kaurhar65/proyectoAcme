@@ -1,14 +1,15 @@
 .container {
-  background-color: #fafafa;
-  height: 47vh;
+  background-color: #e8e8e8;
+  height: 40vh;
   padding: 20px;
+  width: 80vw;
 }
 
 .block {
   background-color: #ffffff;
   margin: 10px;
   padding: 20px;
-  box-shadow: 3px 3px #e6e6e6;
+  box-shadow: 3px 3px #C3cbcb;
 }
 
 p{

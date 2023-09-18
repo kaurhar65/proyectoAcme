@@ -4,7 +4,7 @@
   margin: 0%;
   padding: 20px;
   overflow-y: auto;
-  height: auto;
+  height: 70vh;
 }
 .bla {
   display: flex;
