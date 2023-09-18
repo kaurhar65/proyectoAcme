@@ -40,7 +40,6 @@ builder.Services
     .AddDefaultTokenProviders()
 .AddRoles<IdentityRole>();
 
-
 builder.Services
 
     .AddAuthentication(options =>

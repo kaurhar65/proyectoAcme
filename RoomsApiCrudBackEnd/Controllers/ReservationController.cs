@@ -256,22 +256,6 @@ public class ReservationController : ControllerBase
                 countryCityOfficeRoomReservation =>
                     countryCityOfficeRoomReservation.Reservation.UserId == userId
             )
-            .Select(
-                countryCityOfficeRoomReservation =>
-                    new ReservationExtendedDTOModel
-                    {
-                        Id = countryCityOfficeRoomReservation.Reservation.Id,
-                        Date = countryCityOfficeRoomReservation.Reservation.Date,
-                        StartTime = countryCityOfficeRoomReservation.Reservation.StartTime,
-                        EndTime = countryCityOfficeRoomReservation.Reservation.EndTime,
-                        RoomName = countryCityOfficeRoomReservation.Room.Name,
-                        RoomId = countryCityOfficeRoomReservation.Room.Id,
-                        OfficeName = countryCityOfficeRoomReservation.Office.Name,
-                        CityName = countryCityOfficeRoomReservation.City.Name,
-                        CountryName = countryCityOfficeRoomReservation.Country.Name,
-                        UserId = countryCityOfficeRoomReservation.Reservation.UserId
-                    }
-            )
             .ToListAsync();
         if (!result.Any())
         {
@@ -281,13 +265,30 @@ public class ReservationController : ControllerBase
             (
                 await _authorizationService.AuthorizeAsync(
                     User,
-                    result.FirstOrDefault(),
+                    result.Select(tuple => tuple.Reservation).FirstOrDefault(),
                     "ReservationPolicy"
                 )
             ).Succeeded
         )
         {
-            return Ok(result);
+            return Ok(
+                result.Select(
+                    countryCityOfficeRoomReservation =>
+                        new ReservationExtendedDTOModel
+                        {
+                            Id = countryCityOfficeRoomReservation.Reservation.Id,
+                            Date = countryCityOfficeRoomReservation.Reservation.Date,
+                            StartTime = countryCityOfficeRoomReservation.Reservation.StartTime,
+                            EndTime = countryCityOfficeRoomReservation.Reservation.EndTime,
+                            RoomName = countryCityOfficeRoomReservation.Room.Name,
+                            RoomId = countryCityOfficeRoomReservation.Room.Id,
+                            OfficeName = countryCityOfficeRoomReservation.Office.Name,
+                            CityName = countryCityOfficeRoomReservation.City.Name,
+                            CountryName = countryCityOfficeRoomReservation.Country.Name,
+                            UserId = countryCityOfficeRoomReservation.Reservation.UserId
+                        }
+                )
+            );
         }
         return Forbid();
     }
