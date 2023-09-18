@@ -40,7 +40,6 @@ builder.Services
     .AddDefaultTokenProviders()
 .AddRoles<IdentityRole>();
 
-[13:40] Casanovas - Priego Celia
 
 builder.Services
 
@@ -86,7 +85,7 @@ builder.Services
 
             };
 
-    });,
+    });
 
 builder.Services.AddSingleton<IAuthorizationHandler, ReservationSameCreatorHandler>();
 builder.Services.AddSingleton<IAuthorizationHandler, AdminHandler>();
