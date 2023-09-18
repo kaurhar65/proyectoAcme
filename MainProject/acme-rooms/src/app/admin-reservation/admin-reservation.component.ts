@@ -25,13 +25,9 @@ export class AdminReservationComponent {
   cities: City[] = [];
   offices: Office[] = [];
   rooms: Room[] = [];
-<<<<<<< HEAD:MainProject/acme-rooms/src/app/admin-reservation/admin-reservation.component.ts
   userId!: string;
-  reservas: (Reservation[]) = []
-=======
-  userId!: number;
+  reservas: (Reservation[]) = [];
   reserva: (Reservation[]) = []
->>>>>>> da7931f (admin countries cities offices rooms reservations CRUD):MainProject/ClientApp/src/app/admin-reservation/admin-reservation.component.ts
   reservation: (Reservation) = new Reservation()
   constructor(private requestService: RequestService) { }
 
