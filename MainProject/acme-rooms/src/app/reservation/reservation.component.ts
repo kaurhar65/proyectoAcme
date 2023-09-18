@@ -20,7 +20,7 @@ import * as dayjs from 'dayjs';
 export class ReservationComponent {
   llistaReservas!: ReservationExtendedDTO[];
   currentUserId: string = '';
-  siHayReservas: boolean = true;
+  siHayReservas: boolean = false;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -61,10 +61,9 @@ export class ReservationComponent {
           );
         },
 
-        /*complete: () => {
-          /*this.siHayReservas = this.llistaReservas.length === 0 ? true : false; 
-          this.siHayReservas = true;
-        },*/
+        complete: () => {
+          this.siHayReservas = this.llistaReservas.length === 0 ? true : false;
+        },
       });
   }
 }

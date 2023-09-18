@@ -11,17 +11,15 @@
         <a class="underline-animation" href="https://www.google.com/search"> Need help? </a>
       </div>
     </div>
-    <p>ADIOSSS</p>
-    <div *ngFor="let reservation of llistaReservas">
-      <app-reserve-list [reservation]="reservation"></app-reserve-list>
-      <p>aaHOLAAAAA</p>
+    <div *ngIf="siHayReservas; else noReserva">
+      <div *ngFor="let reservation of llistaReservas">
+        <app-reserve-list [reservation]="reservation"></app-reserve-list>
+      </div>
     </div>
     <ng-template #noReserva>
       <div class="noReserva">
         <app-no-reserva></app-no-reserva>
-        <p>XXXXXX</p>
       </div>
     </ng-template>
-  
   </div>
 </div>
