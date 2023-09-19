@@ -20,7 +20,7 @@ import * as dayjs from 'dayjs';
 export class ReservationComponent {
   llistaReservas!: ReservationExtendedDTO[];
   currentUserId: string = '';
-  showNoReserva: boolean = false;
+  showNoReserva: boolean = true;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -64,8 +64,8 @@ export class ReservationComponent {
         },
 
         complete: () => {
-          this.showNoReserva = this.llistaReservas.length === 0 ? false : true;
-        },
+          this.showNoReserva = this.llistaReservas.length === 0 ? true : false;
+        }
       });
   }
 } //export
