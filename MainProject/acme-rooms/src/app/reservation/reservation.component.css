@@ -1,16 +1,12 @@
 
-.body {
+.principal {
   background-color: white;
   margin: 0%;
   padding: 20px;
   overflow-y: auto;
   height: 70vh;
 }
-.bla {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 .container {
   display: flex;
   align-items: center;
@@ -105,8 +101,8 @@ a {
     justify-content:center;
     margin-left:auto;
 }
-@media (max-width: 600px) { /* Modifica el tamaño máximo según tus necesidades */
-  .container {
+/*@media (max-width: 600px) {*/ /* Modifica el tamaño máximo según tus necesidades */
+  /*.container {
     flex-wrap: nowrap;
   }
 
@@ -117,4 +113,4 @@ a {
   .changes {
     padding-left: 5%;
   }
-}
+}*/

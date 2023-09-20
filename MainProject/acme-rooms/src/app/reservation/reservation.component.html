@@ -1,7 +1,6 @@
 <div #pageContent>
   <app-navbar titulo="My reservations"></app-navbar>
-  <div class="body">
-    <div class="bla">
+  <div class="principal">
       <div class="container">
         <form>
           <i class="fas fa-search"></i>
@@ -10,7 +9,7 @@
         </form>
         <a class="underline-animation" href="https://www.google.com/search"> Need help? </a>
       </div>
-    </div>
+
     <div *ngIf="!showNoReserva; else noReserva">
       <div *ngFor="let reservation of llistaReservas">
         <app-reserve-list [reservation]="reservation" (getReservas)="getReservas()"></app-reserve-list>
