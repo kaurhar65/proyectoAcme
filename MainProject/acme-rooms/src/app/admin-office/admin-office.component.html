@@ -83,9 +83,9 @@
                 <input class="updateButton butt" value="Update city" (click)="updateOffice(officeId)" type="submit">
               </div>
             </div>
-            <div *ngFor="let office of offices" class="resultDiv">
+            <div  class="resultDiv">
               <p class="result">Before: {{oldOffice | json}}</p>
-              <p class="result">After: {{office | json}}</p>
+              <p class="result">After: {{updatedOffice | json}}</p>
             </div>
           </div>
         </li>

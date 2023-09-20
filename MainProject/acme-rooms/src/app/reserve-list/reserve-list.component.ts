@@ -5,6 +5,8 @@ import {
   ElementRef,
   Renderer2,
   ViewChild,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { RequestService } from '../services/request.service';
 import { ReservationExtendedDTO } from '../models/reservation-extended-dto';
@@ -21,6 +23,8 @@ export class ReserveListComponent {
   //las reservas
   @Input()
   public reservation: ReservationExtendedDTO = new ReservationExtendedDTO();
+  @Output("getReservas")
+  getReservas: EventEmitter<any> = new EventEmitter();
 
   constructor(private requestService: RequestService) {}
 
@@ -50,6 +54,7 @@ export class ReserveListComponent {
       // )
       .subscribe({
         next: (response) => {
+          this.getReservas.emit();
           alert(`Eliminado correctamente. ${JSON.stringify(response)}`);
         }
       });

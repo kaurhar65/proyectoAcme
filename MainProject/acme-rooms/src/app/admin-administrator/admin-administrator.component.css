@@ -328,7 +328,6 @@ button {
   font-size: 14px;
 }
 .bot {
-    padding-top: 10px;
     width: fit-content;
 }
 
@@ -339,6 +338,9 @@ button {
         width: fit-content;
         flex-wrap: wrap;
     }
+  .bot {
+    padding-top: 10px;
+  }
 }
 @media (max-width: 580px) {
     .text {
@@ -350,4 +352,7 @@ button {
     .agr2 {
         gap: 5px;
     }
+  .bot {
+    padding-top: 10px;
+  }
 }
