@@ -62,18 +62,28 @@
           <div class="content">
             <div class="box">
               <div class="agrupador">
+                <label class="textLabel">Search by user id: </label>
+                <input class="text" [(ngModel)]="reservation.userId" type="text" name="reservationUserId" id="userId" />
+              </div>
+              <div class="agrupador agr2">
+                <input class="getReservation butt" value="Get reservation by user id" (keydown.enter)="getReservationByUserId(reservation.userId)" (click)="getReservationByUserId(reservation.userId)" type="submit">
+                <input class="getReservation butt" value="Get all" (click)="getAllReservations()" type="button">
+              </div>
+            </div>
+            <div class="box">
+              <div class="agrupador">
                 <label class="textLabel">Search by id: </label>
                 <input class="text" [(ngModel)]="reservation.id" type="text" name="reservationId" id="id" />
               </div>
               <div class="agrupador agr2">
                 <input class="getReservation butt" value="Get reservation by id" (keydown.enter)="getReservationById(reservation.id)" (click)="getReservationById(reservation.id)" type="submit">
-                <input class="getReservation butt" value="Get all" (click)="getAllReservations()" type="button">
               </div>
             </div>
             <div *ngFor="let reserva of llistaReservas" class="resultDiv">
               <p class="result">{{reserva | json}}</p>
             </div>
           </div>
+          
         </li>
         <li>
           <label class="accLabel" for="third">Update <span>&#x3e;</span></label>

@@ -17,7 +17,7 @@ import { ReservationExtendedDTO } from '../models/reservation-extended-dto';
   styleUrls: ['./admin-reservation.component.css']
 })
 export class AdminReservationComponent {
- 
+
   reservationRegistrationForm!: ReservationRegistrationForm;
   llistaReservas!: ReservationExtendedDTO[];
 
@@ -55,60 +55,71 @@ export class AdminReservationComponent {
 
   getAllReservations() {
     this.requestService
-
       .get(
-        `${environment.apiUrl}${apiControllers.reservation}${apiUrls.reservation.getReservationsByUserId}`,
-        new HttpParams().append('userId', `${this.userId}`)
-      )
-
+        `${environment.apiUrl}${apiControllers.reservation}${apiUrls.reservation.getAllReservations}`)
       .subscribe({
         next: (fetchedReservations: ReservationExtendedDTO[]) => {
           const currentDate = dayjs(undefined, 'YYYY-MM-DD');
-
           this.llistaReservas = fetchedReservations
             .filter(
               (reservation) => {
-                // alert(`${reservation.date} AND ${dayjs(reservation.date)} AND ${currentDate.toString()}`);
                 return dayjs(reservation.date).isSame(currentDate, 'date') ||
                   dayjs(reservation.date).isAfter(currentDate, 'date')
               }
-              // reservation.date === currentDate
             );
         },
-
         error: (err: Error) => {
           alert(err.message);
         },
       });
   }
+  getReservationByUserId(id: string) {
+    this.requestService
+      .get(
+        `${environment.apiUrl}${apiControllers.reservation}${apiUrls.reservation.getReservationsByUserId}`,
+        new HttpParams().append('userId', `${id}`)
+      )
+      .subscribe({
+        next: (fetchedReservations: ReservationExtendedDTO[]) => {
+          this.llistaReservas = fetchedReservations
+        },
+        error: (err: Error) => {
+          alert(err.message);
+        },
+      });
+
+  }
+
   getReservationById(id: number) {
     this.requestService
-
       .get(
         `${environment.apiUrl}${apiControllers.reservation}${apiUrls.reservation.getReservationById}`,
         new HttpParams().append('id', `${id}`)
       )
-
       .subscribe({
-        next: (fetchedReservations: ReservationExtendedDTO[]) => {
-          const currentDate = dayjs(undefined, 'YYYY-MM-DD');
-
-          this.llistaReservas = fetchedReservations
-            .filter(
-              (reservation) => {
-                // alert(`${reservation.date} AND ${dayjs(reservation.date)} AND ${currentDate.toString()}`);
-                return dayjs(reservation.date).isSame(currentDate, 'date') ||
-                  dayjs(reservation.date).isAfter(currentDate, 'date')
-              }
-              // reservation.date === currentDate
-            );
+        next: (fetchedReservations: any) => {
+          this.llistaReservas = [{
+            id: fetchedReservations.id,
+            date: fetchedReservations.date,
+            startTime: fetchedReservations.startTime,
+            endTime: fetchedReservations.endTime,
+            roomName: fetchedReservations.roomName,
+            roomId: fetchedReservations.roomId,
+            officeName: fetchedReservations.officeName,
+            cityName: fetchedReservations.cityName,
+            countryName: fetchedReservations.countryName,
+            userId: fetchedReservations.userId
+          }]
+          alert("funciona");
         },
-
         error: (err: Error) => {
           alert(err.message);
         },
       });
+
   }
+
   updateReservation() { }
   deleteReservation() { }
+
 }

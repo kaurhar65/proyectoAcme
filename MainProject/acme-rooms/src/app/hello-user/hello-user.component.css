@@ -4,20 +4,22 @@
 
 .cajaFondo {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   background-color: #ffffff;
-  height: 70vh;
+  height: 70vh; /* 70 + 30 del navbar */
+  align-items: center;
 }
 
 .container {
   display: flex;
   flex-direction: row;
-  margin: 20px 60px;
+  margin: 20px 0px;
+  padding: 0;
+  height:60vh;
 }
 
 .izquierda {
-  width: 40%;
+  width: 25vw;
   display: flex;
   flex-direction: column;
 }
@@ -38,16 +40,17 @@
 .img {
   border: 1px dotted;
   margin: 10px;
-  height: 200px;
-  width: 200px;
+  height: 30ex;
+  width: 30ex;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  background-image: url(https://img.freepik.com/foto-gratis/disparo-al-aire-libre-joven-caucasico-barba-relajandose-al-aire-libre-rodeado-hermoso-entorno-montana-selva_273609-1855.jpg?w=1060&t=st=1689159663~exp=1689160263~hmac=a55e0a004d54c20ae45a15fb0a22517489d7285a0fde3b147f817d1a1a0f29f8); /*cambiar a variable que contenga la foto de cada user*/
+  /*background-image: url(https://img.freepik.com/foto-gratis/disparo-al-aire-libre-joven-caucasico-barba-relajandose-al-aire-libre-rodeado-hermoso-entorno-montana-selva_273609-1855.jpg?w=1060&t=st=1689159663~exp=1689160263~hmac=a55e0a004d54c20ae45a15fb0a22517489d7285a0fde3b147f817d1a1a0f29f8); /*cambiar a variable que contenga la foto de cada user*/
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  overflow: hidden;
 }
 
 .changePic {
@@ -91,15 +94,16 @@ select {
 }
 
 .derecha {
-  width: 60%;
+  width: 80vw;
   display: flex;
   flex-direction: column;
-  align-items: left;
+  height: 35vh;
 }
 
 .cajaSave {
   display: flex;
   justify-content: right;
+  margin: 30px;
 }
 
 .save {
@@ -110,9 +114,7 @@ select {
 .cajaDatos {
   display: flex;
   flex-direction: column;
-  align-items: left;
-  width: 80%;
-  padding-left: 50px;
+  padding-left: 10%;
   height: 80%;
 }
 
