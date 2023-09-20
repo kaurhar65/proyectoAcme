@@ -128,10 +128,7 @@ public class AuthenticationController : ControllerBase
             await _roleManager.CreateAsync(new IdentityRole(Models.UserRoles.User));
         }
 
-        if (await _roleManager.RoleExistsAsync(Models.UserRoles.User))
-        {
-            await _userManager.AddToRoleAsync(user, Models.UserRoles.User);
-        }
+        await _userManager.AddToRoleAsync(user, Models.UserRoles.User);
 
         return Ok(new Response { Status = "Success", Message = "User created successfully." });
     }
@@ -179,10 +176,7 @@ public class AuthenticationController : ControllerBase
             await _roleManager.CreateAsync(new IdentityRole(Models.UserRoles.Admin));
         }
 
-        if (await _roleManager.RoleExistsAsync(Models.UserRoles.Admin))
-        {
-            await _userManager.AddToRoleAsync(user, Models.UserRoles.Admin);
-        }
+        await _userManager.AddToRoleAsync(user, Models.UserRoles.Admin);
 
         return Ok(new Response { Status = "Success", Message = "User created successfully." });
     }
