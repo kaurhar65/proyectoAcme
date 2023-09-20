@@ -18,6 +18,7 @@ export class AdminRoomComponent {
   /*crud */
   rooms: (Room[]) = []
   oldRoom: (Room) = new Room()
+  updatedRoom: (Room) = new Room()
   constructor(private requestService: RequestService) { }
 
   /*CREATE*/
@@ -89,7 +90,17 @@ export class AdminRoomComponent {
           }
         });
     /*Get country with new info*/
-    this.getRoomById(this.roomId) }
+    this.requestService.get(`${environment.apiUrl}${apiControllers.room}${apiUrls.room.getRoomById}`, new HttpParams().append("id", id))
+      .subscribe({
+        next: (fetchedRoom: any) => {
+          this.updatedRoom = {
+            id: fetchedRoom.id,
+            name: fetchedRoom.name,
+            officeId: fetchedRoom.officeId,
+          };
+        },
+      });
+  }
   deleteRoom() {
     alert(this.roomId);
     this.requestService
