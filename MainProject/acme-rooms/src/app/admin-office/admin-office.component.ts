@@ -18,6 +18,7 @@ export class AdminOfficeComponent {
   /*crud */
   offices: (Office[]) = []
   oldOffice: (Office) = new Office()
+  updatedOffice: (Office) = new Office()
 
   addOffice() {
     this.requestService.post(`${environment.apiUrl}${apiControllers.office}${apiUrls.office.createOffice}`,
@@ -88,7 +89,17 @@ export class AdminOfficeComponent {
           }
         });
     /*Get country with new info*/
-    this.getOfficeById(this.officeId)
+    this.requestService
+      .get(`${environment.apiUrl}${apiControllers.office}${apiUrls.office.getOfficeById}`, new HttpParams().append("id", id))
+      .subscribe({
+        next: (fetchedOffice: any) => {
+          this.updatedOffice = {
+            id: fetchedOffice.id,
+            name: fetchedOffice.name,
+            cityId: fetchedOffice.cityId,
+          };
+        },
+      });
   }
   deleteOffice() {
     alert(this.officeId);

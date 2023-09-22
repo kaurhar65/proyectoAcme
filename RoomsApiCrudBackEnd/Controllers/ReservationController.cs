@@ -293,6 +293,96 @@ public class ReservationController : ControllerBase
         return Forbid();
     }
 
+    [HttpGet]
+    [Route("GetReducedReservationsByRoomId")]
+    public async Task<IActionResult> GetReducedReservationsByRoomId(int roomId)
+    {
+        var result = await _context.Reservations
+            .Join(
+                _context.Rooms,
+                reservation => reservation.RoomId,
+                room => room.Id,
+                (reservation, room) => new { Reservation = reservation, Room = room }
+            )
+            .Join(
+                _context.Offices,
+                roomReservation => roomReservation.Room.OfficeId,
+                office => office.Id,
+                (roomReservation, office) =>
+                    new
+                    {
+                        Reservation = roomReservation.Reservation,
+                        Room = roomReservation.Room,
+                        Office = office
+                    }
+            )
+            .Join(
+                _context.Cities,
+                officeRoomReservation => officeRoomReservation.Office.CityId,
+                city => city.Id,
+                (officeRoomReservation, city) =>
+                    new
+                    {
+                        Reservation = officeRoomReservation.Reservation,
+                        Room = officeRoomReservation.Room,
+                        Office = officeRoomReservation.Office,
+                        City = city
+                    }
+            )
+            .Join(
+                _context.Countries,
+                cityOfficeRoomReservation => cityOfficeRoomReservation.City.CountryId,
+                country => country.Id,
+                (cityOfficeRoomReservation, country) =>
+                    new
+                    {
+                        Reservation = cityOfficeRoomReservation.Reservation,
+                        Room = cityOfficeRoomReservation.Room,
+                        Office = cityOfficeRoomReservation.Office,
+                        City = cityOfficeRoomReservation.City,
+                        Country = country
+                    }
+            )
+            .Where(
+                countryCityOfficeRoomReservation =>
+                    countryCityOfficeRoomReservation.Reservation.RoomId == roomId
+            )
+            .ToListAsync();
+        if (!result.Any())
+        {
+            return NotFound();
+        }
+        if (
+            (
+                await _authorizationService.AuthorizeAsync(
+                    User,
+                    result.Select(tuple => tuple.Reservation).FirstOrDefault(),
+                    "ReservationPolicy"
+                )
+            ).Succeeded
+        )
+        {
+            return Ok(
+                result.Select(
+                    countryCityOfficeRoomReservation =>
+                        new ReservationReducedDTOModel
+                        {
+                            Id = countryCityOfficeRoomReservation.Reservation.Id,
+                            Date = countryCityOfficeRoomReservation.Reservation.Date,
+                            StartTime = countryCityOfficeRoomReservation.Reservation.StartTime,
+                            EndTime = countryCityOfficeRoomReservation.Reservation.EndTime,
+                            RoomName = countryCityOfficeRoomReservation.Room.Name,
+                            RoomId = countryCityOfficeRoomReservation.Room.Id,
+                            OfficeName = countryCityOfficeRoomReservation.Office.Name,
+                            CityName = countryCityOfficeRoomReservation.City.Name,
+                            CountryName = countryCityOfficeRoomReservation.Country.Name,
+                        }
+                )
+            );
+        }
+        return Forbid();
+    }
+
     [HttpPost]
     [Route("CreateReservation")]
     public async Task<IActionResult> CreateReservation(Reservation reservation)
