@@ -13,4 +13,5 @@ public class RoomsApiCrudDbContext : DbContext
     public DbSet<Country>? Countries { get; set; }
     public DbSet<Reservation>? Reservations { get; set; }
     public DbSet<Room>? Rooms { get; set; }
+    public DbSet<LockedDate>? LockedDates { get; set; }
 }

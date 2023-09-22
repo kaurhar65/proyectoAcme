@@ -18,6 +18,7 @@
     "@angular/platform-browser": "^16.1.0",
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
+    "@easepick/bundle": "^1.2.1",
     "bootstrap": "^5.3.1",
     "dayjs": "^1.11.9",
     "node": "^20.6.0",
