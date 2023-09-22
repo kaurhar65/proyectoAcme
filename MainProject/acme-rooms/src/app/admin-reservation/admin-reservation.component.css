@@ -126,6 +126,7 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 3px 0px;
 }
 
 .agrupador {

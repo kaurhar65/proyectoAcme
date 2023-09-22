@@ -20,7 +20,10 @@ export class AdminReservationComponent {
 
   reservationRegistrationForm!: ReservationRegistrationForm;
   llistaReservas!: ReservationExtendedDTO[];
+  reservationData: (ReservationExtendedDTO) = new ReservationExtendedDTO;
+  updateThisReservation: (ReservationExtendedDTO) = new ReservationExtendedDTO;
 
+  reservaId !: number;
   countries: Country[] = [];
   cities: City[] = [];
   offices: Office[] = [];
@@ -89,7 +92,6 @@ export class AdminReservationComponent {
       });
 
   }
-
   getReservationById(id: number) {
     this.requestService
       .get(
@@ -119,7 +121,62 @@ export class AdminReservationComponent {
 
   }
 
-  updateReservation() { }
+  updateReservationById(id: number) {
+    /* comprobamos y obtenemos datos de la reserva */
+    this.requestService
+      .get(
+        `${environment.apiUrl}${apiControllers.reservation}${apiUrls.reservation.getReservationById}`,
+        new HttpParams().append('id', id)
+      )
+      .subscribe({
+        next: (fetchedReservations: any) => {
+          this.updateThisReservation = {
+            id: fetchedReservations.id,
+            date: fetchedReservations.date,
+            startTime: fetchedReservations.startTime,
+            endTime: fetchedReservations.endTime,
+            roomName: fetchedReservations.roomName,
+            roomId: fetchedReservations.roomId,
+            officeName: fetchedReservations.officeName,
+            cityName: fetchedReservations.cityName,
+            countryName: fetchedReservations.countryName,
+            userId: fetchedReservations.userId
+          }
+          alert("funciona");
+        },
+        error: (err: Error) => {
+          alert(err.message);
+          alert("comprueba que es una reserva existente");
+        },
+      });
+
+    this.updateThisReservation.date = this.reservationData.date;
+    this.updateThisReservation.startTime = this.reservationData.startTime;
+    this.updateThisReservation.endTime = this.reservationData.endTime;
+    /* */
+    this.requestService
+      .put(
+        `${environment.apiUrl}${apiControllers.reservation}${apiUrls.reservation.updateReservation}`, {
+          "id": this.updateThisReservation.id,
+          "date": this.updateThisReservation.date,
+          "startTime": this.updateThisReservation.startTime,
+          "endTime": this.updateThisReservation.endTime,
+          "roomId": this.updateThisReservation.roomId,
+          "userId": this.updateThisReservation.userId
+        }
+      )
+      .subscribe({
+        next: (response) => {
+          alert('Niceeeeee');
+          alert(`${JSON.stringify(response)}`);
+        },
+
+        error: (err: Error) => {
+          alert(`${JSON.stringify(err)}`);
+          alert(`muy mal`);
+        },
+      });
+  }
   deleteReservation() { }
 
 }
