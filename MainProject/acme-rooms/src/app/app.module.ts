@@ -28,7 +28,7 @@ import { AdminReservationComponent } from './admin-reservation/admin-reservation
 import { AdminRoomComponent } from './admin-room/admin-room.component';
 import { AdminAdministratorComponent } from './admin-administrator/admin-administrator.component';
 import { AdminUserComponent } from './admin-user/admin-user.component';
-import { NoReservaComponent } from 'src/app/no-reserva/no-reserva.component';
+import { NoReservaComponent } from './no-reserva/no-reserva.component';
 import { AllRoomsComponent } from './all-rooms/all-rooms.component';
 
 @NgModule({

@@ -396,15 +396,11 @@ public class ReservationController : ControllerBase
     [Route("UpdateReservation")]
     public async Task<IActionResult> UpdateReservation(Reservation reservationToUpdate)
     {
-        Reservation? originalReservation = await _context.Reservations.FindAsync(
-            reservationToUpdate.Id
-        );
-
         if (
             (
                 await _authorizationService.AuthorizeAsync(
                     User,
-                    originalReservation,
+                    reservationToUpdate,
                     "ReservationPolicy"
                 )
             ).Succeeded

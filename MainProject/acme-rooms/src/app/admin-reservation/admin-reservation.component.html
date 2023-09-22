@@ -94,33 +94,33 @@
                 <div class="agrCol">
                   <div class="agrupador agr2">
                     <label class="textLabel">Reserva id: </label>
-                    <input class="text" [(ngModel)]="reservation.id" type="text" name="reservationId" id="id" />
+                    <input class="text" [(ngModel)]="reservaId" type="text" name="reservationId" id="id" />
                   </div>
 
                 </div>
                 <div class="agrCol">
                   <div class="agrupador agr2">
                     <label class="textLabel">Date: </label>
-                    <input class="text" [(ngModel)]="reservation.date" type="date" name="reservationDate" id="date" />
+                    <input class="text" [(ngModel)]="reservationData.date" type="date" name="reservationDate" id="date" />
                   </div>
                   <div class="agrupador agr2">
                     <label class="textLabel">Start time: </label>
-                    <input class="text" [(ngModel)]="reservation.startTime" type="time" name="reservationStartTime" id="startTime" />
+                    <input class="text" [(ngModel)]="reservationData.startTime" type="time" name="reservationStartTime" id="startTime" />
                   </div>
                   <div class="agrupador agr2">
                     <label class="textLabel">End time: </label>
-                    <input class="text" [(ngModel)]="reservation.endTime" type="time" name="reservationEndTime" id="time" />
+                    <input class="text" [(ngModel)]="reservationData.endTime" type="time" name="reservationEndTime" id="time" />
                   </div>
 
                 </div>
                 <div class="agrupador agrCol bot">
-                  <input class="updateButton butt" value="Update reservation" (click)="updateReservation()" type="submit">
+                  <input class="updateButton butt" value="Update reservation" (click)="updateReservationById(reservaId)" type="submit">
                 </div>
               </div>
             </div>
-            <!--<div *ngFor="let reserva of reservas" class="resultDiv">
-    <p class="result">{{reserva | json}}</p>
-  </div>-->
+            <div class="resultDiv">
+              <p class="result">{{updateThisReservation | json}}</p>
+            </div>
           </div>
         </li>
         <li>

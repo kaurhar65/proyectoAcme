@@ -37,6 +37,7 @@
               #officeList
               (change)="onOfficeSelected(officeList.value)"
               name="officeList"
+              required
             >
               <option selected value="any">Any office</option>
               <optgroup *ngFor="let city of cities" label="{{ city.name }}">
