@@ -396,26 +396,21 @@ public class ReservationController : ControllerBase
     [Route("UpdateReservation")]
     public async Task<IActionResult> UpdateReservation(Reservation reservationToUpdate)
     {
-        //Reservation? originalReservation = await _context.Reservations.FindAsync(
-        //    reservationToUpdate.Id
-        //);
-
-
-        //if (
-        //    (
-        //        await _authorizationService.AuthorizeAsync(
-        //            User,
-        //            reservationToUpdate,
-        //            "ReservationPolicy"
-        //        )
-        //    ).Succeeded
-        //)
-        //{
+        if (
+            (
+                await _authorizationService.AuthorizeAsync(
+                    User,
+                    reservationToUpdate,
+                    "ReservationPolicy"
+                )
+            ).Succeeded
+        )
+        {
             _context.Reservations.Update(reservationToUpdate);
             await _context.SaveChangesAsync();
             return NoContent();
-        //}
-        //;
+        }
+        ;
 
         return Forbid();
     }
