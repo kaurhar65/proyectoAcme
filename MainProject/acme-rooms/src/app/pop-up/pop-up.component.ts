@@ -34,7 +34,6 @@ export class PopUpComponent {
       )
       .subscribe({
         next: (response) => {
-          alert('Niceeeeee');
           alert(`${JSON.stringify(response)}`);
         },
 
