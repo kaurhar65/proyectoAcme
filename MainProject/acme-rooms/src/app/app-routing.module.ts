@@ -18,9 +18,11 @@ import { AdminUserComponent } from './admin-user/admin-user.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { NoReservaComponent } from 'src/app/no-reserva/no-reserva.component';
 import { AllRoomsComponent } from './all-rooms/all-rooms.component';
+import { ViewAllComponent } from './view-all/view-all.component';
 
 // Define las rutas
 const routes: Routes = [
+  { path: 'all-rooms', component: ViewAllComponent },
   { path: 'hello-user', component: HelloUserComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: MainpageComponent},
