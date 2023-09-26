@@ -29,6 +29,8 @@ public class AuthenticationController : ControllerBase
         _configuration = configuration;
     }
 
+    // public async Task<IActionResult> IsAdmin()
+
     private JwtSecurityToken GetToken(List<Claim> authClaims)
     {
         var authSigningKey = new SymmetricSecurityKey(
@@ -77,7 +79,8 @@ public class AuthenticationController : ControllerBase
                     //expiration = token.ValidTo
                     expiration = 60,
                     userId = user.Id,
-                    email = user.Email
+                    email = user.Email,
+                    claims = userRoles.ToArray()
                 }
             );
         }

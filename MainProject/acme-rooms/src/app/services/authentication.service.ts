@@ -26,6 +26,7 @@ export class AuthenticationService {
     localStorage.setItem('expiration', JSON.stringify(expiration.valueOf()));
     localStorage.setItem('userId', authenticationResult.userId);
     localStorage.setItem('email', email);
+    localStorage.setItem('claims', authenticationResult.claims);
     this.userService.setUserName(email);
     //alert(localStorage.getItem('userId'));
     alert(JSON.stringify(authenticationResult));
