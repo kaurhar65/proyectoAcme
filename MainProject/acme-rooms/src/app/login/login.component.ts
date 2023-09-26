@@ -29,7 +29,12 @@ export class LoginComponent {
   }
 
   goToHome() {
-    this.router.navigate(['home']);
+    if (localStorage.getItem('claims')?.includes("Admin")) { 
+    //if ("Admin" in localStorage.getItem('claims') as String[]) {
+      this.router.navigate(['adminProfile']);
+    } else {
+      this.router.navigate(['home']);
+    }
   }
 
   login() {
