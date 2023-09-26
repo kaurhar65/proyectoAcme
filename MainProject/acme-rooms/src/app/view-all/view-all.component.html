@@ -1,1 +1,12 @@
-<p>view-all works!</p>
+<app-navbar titulo="Find your country"></app-navbar>
+<div id="home">
+  <div class="superiorHome">
+    <h3>All Rooms!</h3>
+  </div>
+  <div id="roomList">
+    <div *ngFor="let room of rooms.slice(0,6)" class="roomCard">
+      <img src="{{room.img}}" alt="{{room.name}}.png">
+      <p class="roomTitle"> {{room.id}}. {{room.name}} </p>
+    </div>
+  </div>
+</div>
