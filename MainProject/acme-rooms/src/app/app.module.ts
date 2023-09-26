@@ -30,6 +30,7 @@ import { AdminAdministratorComponent } from './admin-administrator/admin-adminis
 import { AdminUserComponent } from './admin-user/admin-user.component';
 import { NoReservaComponent } from './no-reserva/no-reserva.component';
 import { AllRoomsComponent } from './all-rooms/all-rooms.component';
+import { ViewAllComponent } from './view-all/view-all.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AllRoomsComponent } from './all-rooms/all-rooms.component';
     AdminAdministratorComponent,
     AdminUserComponent,
     NoReservaComponent,
-    AllRoomsComponent
+    AllRoomsComponent,
+    ViewAllComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

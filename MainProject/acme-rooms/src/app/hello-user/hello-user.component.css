@@ -22,6 +22,7 @@
   width: 25vw;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .picture {
@@ -38,7 +39,7 @@
 }
 
 .img {
-  border: 1px dotted;
+  /*border: 1px dotted;*/
   margin: 10px;
   height: 30ex;
   width: 30ex;
@@ -97,7 +98,7 @@ select {
   width: 80vw;
   display: flex;
   flex-direction: column;
-  height: 35vh;
+  justify-content: center;
 }
 
 .cajaSave {
@@ -110,7 +111,12 @@ select {
   margin: 5px 15px;
   width: 150px;
 }
-
+.cajaIzq {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    justify-content: space-around;
+}
 .cajaDatos {
   display: flex;
   flex-direction: column;
