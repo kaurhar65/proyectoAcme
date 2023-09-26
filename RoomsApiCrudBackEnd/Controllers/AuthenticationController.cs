@@ -29,8 +29,6 @@ public class AuthenticationController : ControllerBase
         _configuration = configuration;
     }
 
-    // public async Task<IActionResult> IsAdmin()
-
     private JwtSecurityToken GetToken(List<Claim> authClaims)
     {
         var authSigningKey = new SymmetricSecurityKey(
