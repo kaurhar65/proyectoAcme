@@ -23,6 +23,8 @@
   justify-content: space-between;
   margin: 0% 5% 2% 5%;
   padding: 1% 4%;
+  /*box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;*/
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .subGeneral {
@@ -52,43 +54,45 @@
   flex-direction: column;
   justify-content: center;
 }
-button {
-    margin: 15px;
-    border: 1px solid black;
-}
+
 h1 {
-    font-weight: bolder;
+  font-weight: bolder;
 }
-@media (max-width: 600px) { 
+
+@media (max-width: 600px) {
 
   .imagen {
     display: none;
   }
+}
 
+.generalLeft p {
+  font-weight: normal;
 }
-.generalLeft p{
-    font-weight: normal;
-}
+
 .generalCenter p {
   font-weight: bold;
 }
 
 
-  .generalRight button {
-    display: flex;
-    padding: 5px 20px;
-    text-align: center;
-    letter-spacing: 2px;
-    border: 0.5px solid black;
-    outline: none;
-    font-weight:normal;
-  }
+.generalRight > button {
+  margin: 15px;
+  border: 1px solid black;
+  display: flex;
+  padding: 5px 20px;
+  text-align: center;
+  letter-spacing: 2px;
+  border: 0.5px solid black;
+  outline: none;
+  font-weight: normal;
+  box-shadow: 3px 3px #C3cbcb;
+}
 
-    .generalRight button:hover {
-      color: rgb(7, 2, 14);
-      box-shadow: 0 3px 10px rgb(150, 147, 147);
-      transition: all 0.2s ease;
-      border: none;
-      outline: none;
-      font-weight: bold;
-    }
+  .generalRight > button:hover {
+    color: black;
+    background-color: #C3cbcb;
+    transition: all 0.2s ease;
+    /*border: none;*/
+    outline: none;
+    border: 1px solid black;
+  }
