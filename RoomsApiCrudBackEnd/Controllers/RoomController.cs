@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RoomsApiCrudIdentity.Data;
 using RoomsApiCrudIdentity.Entities;
+using RoomsApiCrudIdentity.Models;
 
 // using RoomsApiCrudIdentity.Models; commented out because we'll need it when we bring Admin roles back in
 
@@ -112,6 +113,63 @@ public class RoomController : ControllerBase
         {
             return NotFound();
         }
+        return Ok(result);
+    }
+
+    [HttpGet]
+    [Route("GetAllRoomExtendedDTOs")]
+    public async Task<IActionResult> GetAllRoomExtendedDTOs()
+    {
+        var result = await _context.Rooms
+            .Join(
+                _context.Offices,
+                room => room.OfficeId,
+                office => office.Id,
+                (room, office) => new { Room = room, Office = office }
+            )
+            .Join(
+                _context.Cities,
+                officeRoom => officeRoom.Office.CityId,
+                city => city.Id,
+                (officeRoom, city) =>
+                    new
+                    {
+                        Room = officeRoom.Room,
+                        Office = officeRoom.Office,
+                        City = city
+                    }
+            )
+            .Join(
+                _context.Countries,
+                cityOfficeRoom => cityOfficeRoom.City.CountryId,
+                country => country.Id,
+                (cityOfficeRoom, country) =>
+                    new
+                    {
+                        Room = cityOfficeRoom.Room,
+                        Office = cityOfficeRoom.Office,
+                        City = cityOfficeRoom.City,
+                        Country = country
+                    }
+            )
+            .Select(
+                countryCityOfficeRoom =>
+                    new RoomExtendedDTO
+                    {
+                        Id = countryCityOfficeRoom.Room.Id,
+                        Name = countryCityOfficeRoom.Room.Name,
+                        Capacity = countryCityOfficeRoom.Room.Capacity,
+                        OfficeName = countryCityOfficeRoom.Office.Name,
+                        CityName = countryCityOfficeRoom.City.Name,
+                        CountryName = countryCityOfficeRoom.Country.Name,
+                    }
+            )
+            .ToListAsync();
+        if (!result.Any())
+        {
+            return NotFound();
+        }
+
         return Ok(result);
     }
 
