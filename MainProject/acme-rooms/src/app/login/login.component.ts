@@ -17,7 +17,6 @@ import { UserServiceService } from 'src/app/user.service.service';
 export class LoginComponent {
   user = {
     email: '',
-    //userName: "",
     password: '',
   };
   constructor(
@@ -30,7 +29,6 @@ export class LoginComponent {
 
   goToHome() {
     if (localStorage.getItem('claims')?.includes("Admin")) { 
-    //if ("Admin" in localStorage.getItem('claims') as String[]) {
       this.router.navigate(['adminProfile']);
     } else {
       this.router.navigate(['home']);
@@ -38,7 +36,6 @@ export class LoginComponent {
   }
 
   login() {
-    //alert(`${this.user.userName} and ${this.user.password}`),
     this.authenticationService
       .login(this.user.email, this.user.password)
       .subscribe({
