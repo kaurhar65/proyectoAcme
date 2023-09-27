@@ -54,6 +54,7 @@ export const apiUrls = {
     getRoomsByCountryId: "GetRoomsByCountryId",
     getRoomsByCityId: "GetRoomsByCityId",
     getRoomsByOfficeId: "GetRoomsByOfficeId",
+    getAllRoomExtendedDTOs: "GetAllRoomExtendedDTOs",
     createRoom: "CreateRoom",
     updateRoom: "UpdateRoom",
     deleteRoom: "DeleteRoom"

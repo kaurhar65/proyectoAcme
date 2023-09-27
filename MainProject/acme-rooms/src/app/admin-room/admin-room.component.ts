@@ -14,6 +14,7 @@ export class AdminRoomComponent {
   roomName = "xxxx"
   roomId = 1
   roomOfficeId = 16
+  roomCapacity = 1
 
   /*crud */
   rooms: (Room[]) = []
@@ -26,6 +27,7 @@ export class AdminRoomComponent {
     this.requestService.post(`${environment.apiUrl}${apiControllers.room}${apiUrls.room.createRoom}`,
       {
         "Name": this.roomName,
+        "Capacity": this.roomCapacity,
         "OfficeId": this.roomOfficeId
       })
       .subscribe({
@@ -45,6 +47,7 @@ export class AdminRoomComponent {
             return {
               id: room.id,
               name: room.name,
+              capacity: room.capacity,
               officeId: room.officeId
             };
           });
@@ -58,6 +61,7 @@ export class AdminRoomComponent {
           this.rooms = [{
             id: fetchedRoom.id,
             name: fetchedRoom.name,
+            capacity: fetchedRoom.capacity,
             officeId: fetchedRoom.officeId,
           }];
         },
@@ -71,6 +75,7 @@ export class AdminRoomComponent {
           this.oldRoom = {
             id: fetchedRoom.id,
             name: fetchedRoom.name,
+            capacity: fetchedRoom.capacity,
             officeId: fetchedRoom.officeId,
           };
         },
@@ -81,6 +86,7 @@ export class AdminRoomComponent {
         {
           "Id": this.roomId,
           "Name": this.roomName,
+          "Capacity": this.roomCapacity,
           "OfficeId": this.roomOfficeId
         }).subscribe({
           next() {
@@ -96,6 +102,7 @@ export class AdminRoomComponent {
           this.updatedRoom = {
             id: fetchedRoom.id,
             name: fetchedRoom.name,
+            capacity: fetchedRoom.capacity,
             officeId: fetchedRoom.officeId,
           };
         },
