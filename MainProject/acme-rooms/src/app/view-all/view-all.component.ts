@@ -13,5 +13,6 @@ import { Room } from '../models/room';
   styleUrls: ['./view-all.component.css']
 })
 export class ViewAllComponent {
-
+  rooms: any[] = [];
+  countries: any[] = [];
 }
