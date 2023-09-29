@@ -1,12 +1,17 @@
 <app-navbar titulo="Find your country"></app-navbar>
 <div id="home">
-  <div class="superiorHome">
-    <h3 routerLink="/all-rooms">All Rooms!</h3>
-  </div>
-  <div id="roomList">
-    <!--<div *ngFor="let room of rooms.slice(0,6)" class="roomCard">
-    <img src="{{room.img}}" alt="{{room.name}}.png">
-    <p class="roomTitle"> {{room.id}}. {{room.name}} </p>
-  </div>-->
-  </div>
+    <div class="superiorHome">
+        <h3>All Rooms</h3>
+    </div>
+    <div id="container">
+        <div *ngFor="let pais of countryKeys" id="cajaPais">
+            <h2>{{pais}}</h2>
+            <div class="pais">                
+                <div *ngFor="let room of roomDTOsByCountry[pais]" id="roomCard">
+                    <img src="https://i.pinimg.com/736x/61/30/e3/6130e3adf957d8c9f43d48fa194c5274.jpg" alt="{{room.name}}" >
+                    <p class="roomTitle">{{room.name}} {{room.cityName}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

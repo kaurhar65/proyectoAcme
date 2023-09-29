@@ -22,7 +22,7 @@ import { ViewAllComponent } from './view-all/view-all.component';
 
 // Define las rutas
 const routes: Routes = [
-  { path: 'all-rooms', component: ViewAllComponent },
+  { path: 'view-all-rooms', component: ViewAllComponent },
   { path: 'hello-user', component: HelloUserComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: MainpageComponent},
