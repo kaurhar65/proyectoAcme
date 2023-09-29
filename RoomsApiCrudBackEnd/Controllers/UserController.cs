@@ -41,7 +41,7 @@ public class UserController : ControllerBase
         return Ok(await _userManager.FindByEmailAsync(email));
     }
 
-    [HttpPost]
+    [HttpPut]
     [Route("UpdateUser")]
     public async Task<IActionResult> UpdateUser(UserModel model)
     {

@@ -122,17 +122,28 @@ select {
   flex-direction: column;
   padding-left: 10%;
   height: 80%;
+  position:relative;
 }
 
   .cajaDatos div {
     height: 100%;
   }
 
+
 input {
   background-color: #e8e8e8;
   border: none;
   height: 28px;
   width: 80%;
+}
+
+.cajaDatos i {
+  position: absolute;
+  font-size: 18px;
+  padding-top: 4px;
+  background-color: #e8e8e8;
+  width:25px;
+  height:28px;
 }
 
   input:focus {
@@ -214,8 +225,6 @@ input {
   }
 
   .save {
-    margin: 15px;
-    width: 150px;
     background-color: transparent;
     font-weight: bold;
     color: black;
@@ -225,4 +234,7 @@ input {
       background-color: whitesmoke;
       color: black;
     }
+
+
+
 }
