@@ -49,7 +49,7 @@ export class NavbarComponent implements OnInit {
     return true;
   }
 
-  changeDisplay() {
+  changeDisplay() { /*esto esta deshabilitado desde html: line 14 --> (click)="changeDisplay()" */
     this.isOpen = !this.isOpen;
     if (this.isOpen == true) {
       document.getElementById('homeTitle')?.classList.add('opened');
@@ -63,7 +63,9 @@ export class NavbarComponent implements OnInit {
         ?.classList.remove('underline-animation-black');
     }
   }
-
+  goToAllRooms() {
+    this.router.navigate(['view-all-rooms']);
+  }
   ngOnInit(): void {
     this.crudService.get(`${environment.apiUrl}${apiControllers.country}${apiUrls.country.getAllCountries}`)
       .subscribe({next: (countries:any) => {
