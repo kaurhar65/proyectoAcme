@@ -17,8 +17,15 @@ export class HelloUserComponent {
   phone: string = "hay que revisar esto";
 
   currentPassword: string = "";
+
   newPassword: string = "";
   confirmPassword: string = "";
+
+  currentEmail: string = "";
+  newEmail: string = "";
+  confirmEmail: string = "";
+
+  newPhone: string = "";
 
   constructor(private requestService: RequestService, private userServiceService: UserServiceService) {
     this.userName = localStorage.getItem('userName')!;
@@ -56,6 +63,7 @@ export class HelloUserComponent {
   }
 
   public changePassword() {
+    alert("holi");
     this.requestService
       .put(
         `${environment.apiUrl}${apiControllers.user}${apiUrls.user.updatePassword}`,

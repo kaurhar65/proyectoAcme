@@ -27,6 +27,8 @@ export class AuthenticationService {
     localStorage.setItem('userId', authenticationResult.userId);
     localStorage.setItem('email', email);
     localStorage.setItem('claims', authenticationResult.claims);
+    localStorage.setItem('phoneNumber', authenticationResult.phoneNumber);
+    /*alert(localStorage.getItem('phoneNumber'));*/
     this.userService.setUserName(email);
     //alert(JSON.stringify(authenticationResult));
     //alert(JSON.stringify(authenticationResult.claims));
