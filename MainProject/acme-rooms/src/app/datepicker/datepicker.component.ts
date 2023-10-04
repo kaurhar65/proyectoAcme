@@ -47,10 +47,9 @@ export class DatepickerComponent {
       LockPlugin: {
         minDate: new Date(),
         filter: (date, picked) => {
-          if (date instanceof DateTime) {
-            return this.disabledDates.includes(date);
-          }
-          return false;
+          return date instanceof DateTime
+            ? this.disabledDates.includes(date)
+            : false;
         },
       },
     });
