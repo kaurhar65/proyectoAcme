@@ -42,7 +42,6 @@ export class DatepickerComponent {
       element: document.getElementById('datepicker')!,
       css: [
         'https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.css',
-        'https://easepick.com/css/demo_hotelcal.css',
       ],
       plugins: ['LockPlugin'],
       LockPlugin: {
