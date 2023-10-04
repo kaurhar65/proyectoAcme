@@ -35,7 +35,9 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 // handcoded Identity API
 builder.Services
-    .AddIdentity<IdentityUser, IdentityRole>()
+    .AddIdentity<IdentityUser, IdentityRole>(options => {
+        options.User.AllowedUserNameCharacters = null;
+    })
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders()
     .AddRoles<IdentityRole>();

@@ -4,8 +4,8 @@
       <div class="container">
         <form>
           <i class="fas fa-search"></i>
-          <input type="text" placeholder="Search by ID/City/Country">
-          <button type="submit"> Search </button>
+          <input type="text" placeholder="Search by ID/City/Country" [(ngModel)] = "userSearch">
+          <button (click)="filtrar()"> Search </button>
         </form>
         <a class="underline-animation" href="https://www.google.com/search"> Need help? </a>
       </div>

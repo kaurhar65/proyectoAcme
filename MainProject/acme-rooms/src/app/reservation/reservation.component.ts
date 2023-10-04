@@ -1,11 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RequestService } from '../services/request.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import {
-  environment,
-  apiControllers,
-  apiUrls,
-} from '../../environments/environment';
+import { environment, apiControllers, apiUrls} from '../../environments/environment';
 import { Reservation } from 'src/app/models/reservation';
 import { ReservationExtendedDTO } from '../models/reservation-extended-dto';
 import { HttpParams } from '@angular/common/http';
@@ -21,13 +17,11 @@ export class ReservationComponent {
   llistaReservas!: ReservationExtendedDTO[];
   currentUserId: string = '';
   showNoReserva: boolean = true;
+  userSearch: string = '';
 
-  constructor(
-    private authenticationService: AuthenticationService,
-    private requestService: RequestService
+  constructor(private authenticationService: AuthenticationService,private requestService: RequestService
   ) {
     this.idUsuario();
-
     this.getReservas();
   }
 
@@ -50,16 +44,14 @@ export class ReservationComponent {
       .subscribe({
         next: (fetchedReservations: ReservationExtendedDTO[]) => {
           const currentDate = dayjs(undefined, 'YYYY-MM-DD');
-
-          this.llistaReservas = fetchedReservations.filter(
-            (reservation) => {
-              // alert(`${reservation.date} AND ${dayjs(reservation.date)} AND ${currentDate.toString()}`);
-              return (
-                dayjs(reservation.date).isSame(currentDate, 'date') ||
-                dayjs(reservation.date).isAfter(currentDate, 'date')
-              );
-            }
-            // reservation.date === currentDate
+          this.llistaReservas = fetchedReservations.filter((reservation) => {
+            return (
+              dayjs(reservation.date).isSame(currentDate, 'date') ||
+              dayjs(reservation.date).isAfter(currentDate, 'date')
+            );
+          });
+          this.llistaReservas.sort((a, b) =>
+            new Date(a.date).getTime() - new Date(b.date).getTime()
           );
         },
 
@@ -68,4 +60,11 @@ export class ReservationComponent {
         }
       });
   }
+
+
+  filtrar() {
+
+  }
+
+
 }
