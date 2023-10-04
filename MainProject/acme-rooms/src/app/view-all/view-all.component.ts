@@ -187,7 +187,10 @@ export class ViewAllComponent {
 
           );
           this.countryKeys = Object.keys(this.roomDTOsByCountry);
-          alert(JSON.stringify(this.roomDTOsByCountry));
+          /*alert(JSON.stringify(this.roomDTOsByCountry));*/
+        },
+        error: (err: Error) => {
+          console.log(err.message);
         },
       });
   }

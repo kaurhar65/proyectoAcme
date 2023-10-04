@@ -29,20 +29,19 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 10px; /*pendiente ajustar espaciado*/
+  justify-content: center;
 }
-
 .imagen {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .img {
   /*border: 1px dotted;*/
   margin: 10px;
-  height: 30ex;
-  width: 30ex;
+  height: 15ex;
+  width: 15ex;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,104 +51,125 @@
   background-repeat: no-repeat;
   background-position: center;
   overflow: hidden;
+  border: black 1px solid;
 }
 
-.changePic {
-  width: 150px;
+.cajaIzq {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 80%;
 }
-
-button {
-  background-color: #ffff;
-  border: 1px solid gray;
-  height: 28px;
-  width: 80%;
-  color: black;
-}
-
-  button:hover {
-    background-color: whitesmoke;
-  }
 
 .idioma {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 50%; /*comparte la otra mitad de la caja con .picture*/
-}
-
-p {
-  margin: 0;
-  padding: 10px 0px 5px 0px;
-  font-weight: bold;
 }
 
 .lang {
   width: 150px;
 }
-
+.cajaInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 select {
   background-color: #e8e8e8;
   border: none;
   height: 28px;
   width: 80%;
 }
-
+.container {
+    display: flex;
+    justify-content: center;
+}
 .derecha {
-  width: 80vw;
+  width: 60vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
-
-.cajaSave {
-  display: flex;
-  justify-content: right;
-  margin: 30px;
-}
-
-.save {
-  margin: 5px 15px;
-  width: 150px;
-}
-.cajaIzq {
+.izquierda {
+    width: auto;
     display: flex;
     flex-direction: column;
-    height: 80%;
-    justify-content: space-around;
+    justify-content: center;
 }
+
 .cajaDatos {
   display: flex;
-  flex-direction: column;
-  padding-left: 10%;
-  height: 80%;
-  position:relative;
+  flex-direction: row;
+  padding: 0% 10%;
+  height: 40%;
+  justify-content:space-between;
+}
+p {
+    padding: 0;
+    margin: 5px 0px;
+}
+h1 {
+  color: #c20000;
+  font-size: 50px;
 }
 
-  .cajaDatos div {
-    height: 100%;
+/*ACCORDION change*/
+.cajaAccordion {
+    padding: 0% 10%;
+    height: 60%;
+}
+#accordion {
+  width: 100%;
+  margin: 20px auto;
+  padding: 0px;
+}
+
+#accordion li {
+  list-style: none;
+  width: 100%;
+  margin-bottom: 10px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid;
+}
+  #accordion li .accLabel {
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    color: black;
   }
+    #accordion li .accLabel span {
+      transform: rotate(90deg);
+      font-size: 20px;
+      color: #333;
+    }
 
-
-input {
-  background-color: #e8e8e8;
-  border: none;
-  height: 28px;
-  width: 80%;
+#accordion .accLabel + input[type="radio"] {
+  display: none;
 }
 
-.cajaDatos i {
-  position: absolute;
-  font-size: 18px;
-  padding-top: 4px;
-  background-color: #e8e8e8;
-  width:25px;
-  height:28px;
+#accordion .content {
+  padding: 0 10px;
+  line-height: 26px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s;
+  transition: max-height 0.5s;
 }
 
-  input:focus {
-    outline: 2px solid #836563;
-  }
+#accordion .accLabel + input[type="radio"]:checked + .content {
+  max-height: fit-content;
+}
 
+.agrupador {
+    display: flex;
+    flex-direction: row;
+}
 @media (max-width: 800px) {
   .container {
     display: flex;

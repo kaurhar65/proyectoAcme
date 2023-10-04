@@ -47,7 +47,7 @@ export class LoginComponent {
           }
         },
         error(err: Error) {
-          alert(err.message);
+          console.log(err.message);
         },
       });
   }

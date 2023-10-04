@@ -24,18 +24,8 @@ import { HttpParams } from '@angular/common/http';
   styleUrls: ['./reservas.component.css'],
 })
 export class ReservasComponent implements OnInit {
-  /*public country: Country;
-  public city: City;
-  public office: Office;
-  public room: Room;*/
+
   public reservationRegistrationForm: ReservationRegistrationForm;
-  /*reserva = {
-    "userId": localStorage.getItem("userId"),
-    "roomId": 0,
-    "date": dayjs().get('year') + "-" + (dayjs().get('month') + 1 as number) + "-" + dayjs().get('date'),
-    "startTime": dayjs().add(60, 'minutes').get('hour') + ":" + dayjs().get('minutes'),
-    "endTime": dayjs().add(120, 'minutes').get('hour') + ":" + dayjs().get('minutes')
-  }*/
   selection: {
     country: 'any' | number;
     office: 'any' | number;
@@ -49,8 +39,6 @@ export class ReservasComponent implements OnInit {
   cities: City[] = [];
   offices: Office[] = [];
   rooms: Room[] = [];
-  //@ViewChild('roomList') roomList!: ElementRef;
-  //roomList: number = 0;
 
   constructor(private requestService: RequestService) {
     this.reservationRegistrationForm = new ReservationRegistrationForm();
@@ -79,23 +67,22 @@ export class ReservasComponent implements OnInit {
       )
       .subscribe({
         next: (response: object) => {
-          alert(JSON.stringify(response));
+          /*alert(JSON.stringify(response));*/
         },
         error: (err: Error) => {
-          alert(err.message);
+          console.log(err.message);
         },
       });
   }
 
   validateReservation(): void {
     this.reservationRegistrationForm.userId = localStorage.getItem('userId')! as string;
-    alert(JSON.stringify(this.reservationRegistrationForm));
+    /*alert(JSON.stringify(this.reservationRegistrationForm));*/
     this.postReservation();
   }
 
   onCountrySelected(id: string): void {
-    alert(id);
-    //if (this.selection.country === 'any') {
+    /*alert(id);*/
     if (id === 'any') {
       this.requestService
         .get(
@@ -104,7 +91,7 @@ export class ReservasComponent implements OnInit {
         .subscribe({
           next: (cities: City[]) => {
             this.cities = cities;
-            alert(JSON.stringify(cities));
+            /*alert(JSON.stringify(cities));*/
           },
         });
       this.requestService
@@ -116,7 +103,7 @@ export class ReservasComponent implements OnInit {
             this.offices = offices;
           },
           error(err: Error) {
-            alert(err.message);
+            console.log(err.message);
           },
         });
       this.selection.office = 'any';
@@ -132,7 +119,7 @@ export class ReservasComponent implements OnInit {
             this.cities = cities;
           },
           error(err: Error) {
-            alert(err.message);
+            console.log(err.message);
           },
         });
       this.requestService
@@ -145,7 +132,7 @@ export class ReservasComponent implements OnInit {
             this.offices = offices;
           },
           error(err: Error) {
-            alert(err.message);
+            console.log(err.message);
           },
         });
     }
@@ -171,7 +158,6 @@ export class ReservasComponent implements OnInit {
           `${environment.apiUrl}${apiControllers.room}${apiUrls.room.getRoomsByOfficeId}`,
           new HttpParams().append('officeId', id)
         )
-        //.pipe(toArray())
         .subscribe({
           next: (rooms: Room[]) => {
             this.rooms = rooms;
@@ -184,6 +170,6 @@ export class ReservasComponent implements OnInit {
 
   onRoomSelected(id: string): void {
     this.reservationRegistrationForm.roomId = parseInt(id);
-    alert(`${this.reservationRegistrationForm.roomId}`);
+    /*alert(`${this.reservationRegistrationForm.roomId}`);*/
   }
 }
