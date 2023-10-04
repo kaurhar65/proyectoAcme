@@ -1,56 +1,99 @@
 <app-navbar titulo="Hello, {{userName}}!"></app-navbar>
 <div class="cajaFondo">
-  <div class="container">
-    <div class="izquierda">
-      <div class="cajaIzq">
-        <div class="picture">
-          <div class="imagen"><div class="img"><img src="https://cdn-icons-png.flaticon.com/512/1010/1010039.png" title="loro iconos" width="200"></div></div>
-          <!--<button class="changePic" onlick="changeImage();">Change picture</button>-->
+    <div class="container">
+        <!--<div class="izquierda">
+            <div class="cajaIzq">
+                <div class="picture">
+                    <div class="imagen"><div class="img"><img src="https://cdn-icons-png.flaticon.com/512/1010/1010039.png" title="loro iconos" width="200"></div></div>
+                    <!--<button class="changePic" onlick="changeImage();">Change picture</button>-->
+                <!--</div>
+                <div class="idioma">
+                    <div class="cajaIdioma">
+                        <p>Language</p>
+                        <select name="lang" class="lang">
+                            <option>English</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <div class="derecha">
+            <div class="cajaDatos">
+                <div class="cajaInfo">
+                    <div class="name">
+                        <h1><b>{{userName}}</b></h1>
+                    </div>
+                    <div class="info">
+                        <p>{{email}}</p>
+                        <p>{{phone}}</p>
+                    </div>
+                </div>
+                <div class="imagen">
+                    <div class="picture">
+                        <div class="imag"><div class="img"><img src="https://cdn-icons-png.flaticon.com/512/1010/1010039.png" title="loro iconos" width="100"></div></div>
+                        <!--<button class="changePic" onlick="changeImage();">Change picture</button>-->
+                    </div>
+                </div>
+            </div>
+            <div class="cajaAccordion">
+                <ul id="accordion">
+                    <li>
+                        <label class="accLabel" for="first">Change Password <span>&#x3e;</span></label>
+                        <input class="accInput" type="radio" name="accordion" id="first" />
+                        <div class="content">
+                            <div class="box">
+                                <div class="agrupador">
+                                    <label class="textLabel">Current password: </label>
+                                    <input class="text" [(ngModel)]="currentPassword" type="text" name="countryName" id="changePass" />
+                                </div>
+                                <div class="agrupador">
+                                    <label class="textLabel">New password: </label>
+                                    <input class="text" [(ngModel)]="newPassword" type="text" name="countryName" id="changePass" />
+                                </div>
+                                <div class="agrupador">
+                                    <label class="textLabel">Confirm new password: </label>
+                                    <input class="text" [(ngModel)]="confirmPassword" type="text" name="countryName" id="changePass" />
+                                </div>
+                                <input class="changePass butt" value="Add new country" (keydown.enter)="changePassword()" (click)="changePassword()" type="submit">
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <label class="accLabel" for="second">Change Email <span>&#x3e;</span></label>
+                        <input class="accInput" type="radio" name="accordion" id="second" />
+                        <div class="content">
+                            <div class="box">
+                                <div class="agrupador">
+                                    <label class="textLabel">Current Email: </label>
+                                    <input class="text" [(ngModel)]="currentPassword" type="text" name="countryName" id="changePass" />
+                                </div>
+                                <div class="agrupador">
+                                    <label class="textLabel">New Email: </label>
+                                    <input class="text" [(ngModel)]="currentPassword" type="text" name="countryName" id="changePass" />
+                                </div>
+                                <div class="agrupador">
+                                    <label class="textLabel">Confirm new Email: </label>
+                                    <input class="text" [(ngModel)]="currentPassword" type="text" name="countryName" id="changePass" />
+                                </div>
+                                <input class="changePass butt" value="Add new country" (keydown.enter)="changePassword()" (click)="changePassword()" type="submit">
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <label class="accLabel" for="third">Update Phone number <span>&#x3e;</span></label>
+                        <input class="accInput" type="radio" name="accordion" id="third" />
+                        <div class="content">
+                            <div class="box">
+                                <div class="agrupador">
+                                    <label class="textLabel">Phone number: </label>
+                                    <input class="text" [(ngModel)]="phone" type="text" name="updatePhone" id="updatePhone" />
+                                </div>
+                                <input class="changePass butt" value="Add new country" (keydown.enter)="updatePhone()" (click)="updatePhone()" type="submit">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="idioma">
-          <div class="cajaIdioma">
-            <p>Language</p>
-            <select name="lang" class="lang">
-              <option>English</option>
-            </select>
-          </div>
-        </div>
-      </div>
     </div>
-    <div class="derecha">
-      
-      <div class="cajaDatos">
-        <div class="name">
-          <p>Full name</p>
-          <input type="text" id="input" class="inputName" [(ngModel)]="userName">
-          <button (click)="mensaje()" class="icon-button">
-            <i class='bx bx-edit'></i>
-          </button>
-        </div>
-
-        <div class="email">
-          <p>Current email</p>
-          <input type="email" id="input" class="inputEmail" value="{{email}}">
-          <i class='bx bx-edit'></i>
-        </div>
-
-        <div class="password">
-          <p>Password</p>
-          <input type="password" id="input" class="inputPassword" placeholder="***********">
-          <i class='bx bx-edit'></i>
-        </div>
-
-        <div class="phone">
-          <p>Phone number</p>
-          <input type="text" id="input" class="inputPhone" placeholder="+1(555)125-4567">
-          <i class='bx bx-edit'></i>
-        </div>
-
-        <div class="cajaSave">
-          <button (click)="modifyUser()" class="save">Save Changes</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
 </div>
