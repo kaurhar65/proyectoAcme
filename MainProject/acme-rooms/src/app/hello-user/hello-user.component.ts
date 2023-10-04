@@ -14,11 +14,16 @@ import { FormsModule } from '@angular/forms';
 export class HelloUserComponent {
   userName: string = "";
   email: string = "";
+  phone: string = "hay que revisar esto";
 
-  constructor(private requestService: RequestService,
-    private userServiceService: UserServiceService) {
+  currentPassword: string = "";
+  newPassword: string = "";
+  confirmPassword: string = "";
+
+  constructor(private requestService: RequestService, private userServiceService: UserServiceService) {
     this.userName = localStorage.getItem('userName')!;
     this.email = localStorage.getItem('email')!;
+    /*this.phone = localStorage.getItem('phoneNumber')!;*/
   }
 
   public mensaje() {
@@ -48,5 +53,31 @@ export class HelloUserComponent {
           alert(`${JSON.stringify(err)}`);
         },
       });
+  }
+
+  public changePassword() {
+    this.requestService
+      .put(
+        `${environment.apiUrl}${apiControllers.user}${apiUrls.user.updatePassword}`,
+        {
+          id: localStorage.getItem('userId'),
+          currentPassword: this.currentPassword,
+          newPassword: this.newPassword,
+          newPasswordConfirmation: this.confirmPassword
+        }
+      )
+      .subscribe({
+        next: (response) => {
+          alert(`${JSON.stringify(response)}`);
+
+        },
+
+        error: (err: Error) => {
+          alert(`${JSON.stringify(err)}`);
+        },
+      });
+  }
+  public updatePhone() {
+    alert("update Phone");
   }
 }

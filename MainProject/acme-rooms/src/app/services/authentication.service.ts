@@ -28,8 +28,8 @@ export class AuthenticationService {
     localStorage.setItem('email', email);
     localStorage.setItem('claims', authenticationResult.claims);
     this.userService.setUserName(email);
-    alert(JSON.stringify(authenticationResult));
-    alert(JSON.stringify(authenticationResult.claims));
+    //alert(JSON.stringify(authenticationResult));
+    //alert(JSON.stringify(authenticationResult.claims));
   }
 
   public login(email: string, password: string): Observable<any> {
