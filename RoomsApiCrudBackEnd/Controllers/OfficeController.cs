@@ -25,17 +25,13 @@ public class OfficeController : ControllerBase
 
     [HttpGet]
     [Route("GetAllOffices")]
-    public async Task<IActionResult> GetAllOffices()
-    {
-        return Ok(await _context.Offices.ToListAsync());
-    }
+    public async Task<IActionResult> GetAllOffices() =>
+        Ok(await _context.Offices.ToListAsync());
 
     [HttpGet]
     [Route("GetOfficeById")]
-    public async Task<IActionResult> GetOfficeById(int id)
-    {
-        return Ok(await _context.Offices.FindAsync(id));
-    }
+    public async Task<IActionResult> GetOfficeById(int id) =>
+        Ok(await _context.Offices.FindAsync(id));
 
     [HttpGet]
     [Route("GetOfficesByCityId")]

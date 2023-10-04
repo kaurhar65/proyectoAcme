@@ -26,17 +26,13 @@ public class RoomController : ControllerBase
 
     [HttpGet]
     [Route("GetAllRooms")]
-    public async Task<IActionResult> GetAllRooms()
-    {
-        return Ok(await _context.Rooms.ToListAsync());
-    }
+    public async Task<IActionResult> GetAllRooms() =>
+        Ok(await _context.Rooms.ToListAsync());
 
     [HttpGet]
     [Route("GetRoomById")]
-    public async Task<IActionResult> GetRoomById(int id)
-    {
-        return Ok(await _context.Rooms.FindAsync(id));
-    }
+    public async Task<IActionResult> GetRoomById(int id) =>
+        Ok(await _context.Rooms.FindAsync(id));
 
     [HttpGet]
     [Route("GetRoomsByOfficeId")]
