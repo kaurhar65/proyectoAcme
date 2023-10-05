@@ -30,7 +30,7 @@ export class AuthenticationService {
     localStorage.setItem('phoneNumber', authenticationResult.phoneNumber);
     /*alert(localStorage.getItem('phoneNumber'));*/
     this.userService.setUserName(email);
-    //alert(JSON.stringify(authenticationResult));
+    /*alert(JSON.stringify(authenticationResult));*/
     //alert(JSON.stringify(authenticationResult.claims));
   }
 

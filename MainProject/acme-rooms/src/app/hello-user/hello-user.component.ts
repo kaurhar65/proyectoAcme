@@ -4,6 +4,7 @@ import { Observable } from 'node_modules/rxjs';
 import { environment, apiControllers, apiUrls } from 'src/environments/environment';
 import { UserServiceService } from 'src/app/user.service.service';
 import { FormsModule } from '@angular/forms';
+import { HttpParams } from '@angular/common/http';
 
 
 @Component({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
 export class HelloUserComponent {
   userName: string = "";
   email: string = "";
-  phone: string = "hay que revisar esto";
+  phone = localStorage.getItem('phoneNumber');
+  userId = localStorage.getItem('userId');
 
   currentPassword: string = "";
 
@@ -30,7 +32,7 @@ export class HelloUserComponent {
   constructor(private requestService: RequestService, private userServiceService: UserServiceService) {
     this.userName = localStorage.getItem('userName')!;
     this.email = localStorage.getItem('email')!;
-    /*this.phone = localStorage.getItem('phoneNumber')!;*/
+    this.phone = localStorage.getItem('phoneNumber')!;
   }
 
   public mensaje() {
@@ -39,7 +41,6 @@ export class HelloUserComponent {
 
   public modifyUser(): void {
     /*update database*/
-    alert(`${JSON.stringify(this.userName)}`);
     this.requestService
       .put(
         `${environment.apiUrl}${apiControllers.user}${apiUrls.user.updateUser}`,
@@ -51,41 +52,89 @@ export class HelloUserComponent {
       )
       .subscribe({
         next: (response) => {          
-          alert(`${JSON.stringify(response)}`);
+          console.log(`${JSON.stringify(response)}`);
           this.userServiceService.setUserName(this.email);
-
         },
 
         error: (err: Error) => {
-          alert(`${JSON.stringify(err)}`);
+          console.log(`${JSON.stringify(err)}`);
         },
       });
   }
 
   public changePassword() {
-    alert("holi");
     this.requestService
       .put(
-        `${environment.apiUrl}${apiControllers.user}${apiUrls.user.updatePassword}`,
-        {
-          id: localStorage.getItem('userId'),
+        `${environment.apiUrl}${apiControllers.user}${apiUrls.user.updatePassword}?id=${this.userId}`,
+        {         
           currentPassword: this.currentPassword,
           newPassword: this.newPassword,
           newPasswordConfirmation: this.confirmPassword
         }
       )
       .subscribe({
-        next: (response) => {
-          alert(`${JSON.stringify(response)}`);
+        next: (response: any) => {
+          console.log(`${JSON.stringify(response)}`);
 
         },
 
         error: (err: Error) => {
-          alert(`${JSON.stringify(err)}`);
+          console.log(`${JSON.stringify(err)}`);
         },
       });
   }
+  public changeEmail() {
+    //if (checkPassword(this.currentPassword)) {  //crear al back checkPassword(param)
+
+    //  this.requestService
+    //    .put(
+    //      `${environment.apiUrl}${apiControllers.user}${apiUrls.user.updateUser}`,
+    //      {
+    //        userName: this.userName,
+    //        phone: this.phone,
+    //        email: this.newEmail
+    //      }
+    //    )
+    //    .subscribe({
+    //      next: (response: any) => {
+    //        console.log(`${JSON.stringify(response)}`);
+
+    //      },
+
+    //      error: (err: Error) => {
+    //        alert(`${JSON.stringify(err)}`);
+    //      },
+    //    });
+
+    //} else {
+    //  alert("Try again");
+    //}
+  }
   public updatePhone() {
-    alert("update Phone");
+    //if (checkPassword(this.currentPassword)) {  //crear al back checkPassword(param)
+
+    //  this.requestService
+    //    .put(
+    //      `${environment.apiUrl}${apiControllers.user}${apiUrls.user.updateUser}`,
+    //      {
+    //        userName: this.userName,
+    //        phone: this.phone,
+    //        email: this.email
+    //      }
+    //    )
+    //    .subscribe({
+    //      next: (response: any) => {
+    //        console.log(`${JSON.stringify(response)}`);
+
+    //      },
+
+    //      error: (err: Error) => {
+    //        alert(`${JSON.stringify(err)}`);
+    //      },
+    //    });
+
+    //} else {
+    //  alert("Try again");
+    //}
   }
 }
