@@ -22,8 +22,7 @@ public class UserController : ControllerBase
 
     [HttpGet]
     [Route("GetAllUsers")]
-    public async Task<IActionResult> GetAllUsers() =>
-        Ok(await _userManager.Users.ToListAsync());
+    public async Task<IActionResult> GetAllUsers() => Ok(await _userManager.Users.ToListAsync());
 
     [HttpGet]
     [Route("GetUserById")]
@@ -105,4 +104,9 @@ public class UserController : ControllerBase
             }
         );
     }
+
+    [Route("CheckPassword")]
+    [HttpGet]
+    public async Task<IActionResult> CheckPassword(string userId, string password) =>
+        Ok(await _userManager.CheckPasswordAsync(await _userManager.GetUserAsync(User), password));
 }
