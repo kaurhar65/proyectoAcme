@@ -107,6 +107,6 @@ public class UserController : ControllerBase
 
     [Route("CheckPassword")]
     [HttpGet]
-    public async Task<IActionResult> CheckPassword(string userId, string password) =>
+    public async Task<IActionResult> CheckPassword(string password) =>
         Ok(await _userManager.CheckPasswordAsync(await _userManager.GetUserAsync(User), password));
 }
