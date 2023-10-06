@@ -78,6 +78,7 @@ public class AuthenticationController : ControllerBase
                     expiration = 60,
                     userId = user.Id,
                     email = user.Email,
+                    phoneNumber = user.PhoneNumber,
                     claims = userRoles.ToArray()
                 }
             );

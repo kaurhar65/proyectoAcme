@@ -70,7 +70,7 @@ public class UserController : ControllerBase
     }
 
     [Route("UpdatePassword")]
-    [HttpPost]
+    [HttpPut]
     public async Task<IActionResult> UpdatePassword(string id, UpdatePasswordModel model)
     {
         if (model.NewPassword == model.NewPasswordConfirmation)
