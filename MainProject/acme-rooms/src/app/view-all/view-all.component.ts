@@ -151,9 +151,10 @@ export class ViewAllComponent {
   ];
   roomDTOsByCountry: { [country: string]: RoomExtendedDTO[] } = {};
   countryKeys: string[] = [];
+  userInput: string = "";
 
   constructor(private requestService: RequestService) {
-    this.getAllRooms();    
+    this.getAllRooms();
   }
 
 
@@ -165,16 +166,6 @@ export class ViewAllComponent {
       .subscribe({
         next: (fetchedRoomDTOs: RoomExtendedDTO[]) => {
           this.rooms = fetchedRoomDTOs;
-          //fetchedRoomDTOs.map((room: RoomExtendedDTO): any => {
-          //return {
-          //  id: room.id,
-          //  name: room.name,
-          //  capacity: room.capacity,
-          //  officeName: room.officeName,
-          //  cityName: room.cityName,
-          //  countryName: room.countryName,
-          //};
-          //})
           this.roomDTOsByCountry = fetchedRoomDTOs.reduce(
 
             (accumulatorObject: { [country: string]: RoomExtendedDTO[] }, room: RoomExtendedDTO) => {
@@ -189,9 +180,44 @@ export class ViewAllComponent {
           this.countryKeys = Object.keys(this.roomDTOsByCountry);
           /*alert(JSON.stringify(this.roomDTOsByCountry));*/
         },
+
+        complete: () => {
+          this.filterRoom();
+        },
         error: (err: Error) => {
           console.log(err.message);
         },
       });
+
+
+
+  }
+  public filterRoom(): void {
+    //if (this.valorInput === "") {
+    if (this.userInput === "") {
+      return;
+    } else {
+      this.rooms = ([] as RoomExtendedDTO[])
+        .concat(
+          this.rooms.filter((roomDTO) =>
+            roomDTO.name.toLowerCase().startsWith(this.userInput.toLowerCase())
+          )
+        )
+        .concat(//office
+          this.rooms.filter((roomDTO) =>
+            roomDTO.officeName.toLowerCase().startsWith(this.userInput.toLowerCase())
+          )
+        )
+        .concat(//city
+          this.rooms.filter((roomDTO) =>
+            roomDTO.cityName.toLowerCase().startsWith(this.userInput.toLowerCase())
+          )
+        )
+        .concat(//country
+          this.rooms.filter((roomDTO) =>
+            roomDTO.countryName.toLowerCase().startsWith(this.userInput.toLowerCase())
+          )
+        );
+    }
   }
 }

@@ -1,12 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import {
-  Component,
-  Input,
-  ElementRef,
-  Renderer2,
-  ViewChild,
-  Output,
-  EventEmitter
+import { Component, Input, ElementRef, Renderer2, ViewChild, Output, EventEmitter
 } from '@angular/core';
 import { RequestService } from '../services/request.service';
 import { ReservationExtendedDTO } from '../models/reservation-extended-dto';

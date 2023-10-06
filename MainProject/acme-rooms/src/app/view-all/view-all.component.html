@@ -1,8 +1,12 @@
 <app-navbar titulo="Find your country"></app-navbar>
 <div id="home">
-    <div class="superiorHome">
-        <h3>All Rooms</h3>
-    </div>
+  <div class="superiorHome">
+    <h3>All Rooms</h3>
+    <form name="searchForm">
+      <input type="text" placeholder="Search by ID/City/Country" [(ngModel)]="userInput" name="userInput" (keyup)="getAllRooms()">
+      <i class="fas fa-search"></i>
+    </form>
+  </div>
     <div id="container">
         <div *ngFor="let pais of countryKeys" id="cajaPais">
             <h2>Rooms in {{pais}}</h2>
