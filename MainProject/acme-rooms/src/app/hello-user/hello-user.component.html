@@ -1,4 +1,5 @@
-<app-navbar titulo="Hello, {{userName}}!"></app-navbar>
+<!--<app-navbar titulo="Hello, {{userName}}!"></app-navbar>-->
+<app-navbar titulo="Welcome!"></app-navbar>
 <div class="cajaFondo">
     <div class="container">
         <!--<div class="izquierda">
@@ -6,7 +7,7 @@
                 <div class="picture">
                     <div class="imagen"><div class="img"><img src="https://cdn-icons-png.flaticon.com/512/1010/1010039.png" title="loro iconos" width="200"></div></div>
                     <!--<button class="changePic" onlick="changeImage();">Change picture</button>-->
-                <!--</div>
+        <!--</div>
                 <div class="idioma">
                     <div class="cajaIdioma">
                         <p>Language</p>
@@ -41,20 +42,28 @@
                         <label class="accLabel" for="first">Change Password <span>&#x3e;</span></label>
                         <input class="accInput" type="radio" name="accordion" id="first" />
                         <div class="content">
-                            <div class="box">
-                                <div class="agrupador">
-                                    <label class="textLabel">Current password: </label>
-                                    <input class="text" [(ngModel)]="currentPassword" type="text" name="countryName" id="changePass" />
+                            <div class="cont">
+                                <div class="box">
+                                    <div class="agrupador">
+                                        <label class="textLabel">Current password: *</label>
+                                        <input class="text" [(ngModel)]="currentPassword" type="password" name="password" id="changePass" />
+                                    </div>
+                                    <div class="agrupador">
+                                        <label class="textLabel">New password: </label>
+                                        <input class="text" [(ngModel)]="newPassword" type="password" name="password" id="changePass" />
+                                    </div>
+                                    <div class="agrupador">
+                                        <label class="textLabel">Confirm new password: </label>
+                                        <input class="text" [(ngModel)]="confirmPassword" type="password" name="password" id="changePass" />
+                                    </div>
+                                    <!--<input class="changePass butt" value="Change password" (keydown.enter)="changePassword()" (click)="changePassword()" type="submit">-->
+
                                 </div>
-                                <div class="agrupador">
-                                    <label class="textLabel">New password: </label>
-                                    <input class="text" [(ngModel)]="newPassword" type="text" name="countryName" id="changePass" />
+                                <div class="butt">
+                                    <button class="changePass butt" (keydown.enter)="changePassword()" (click)="changePassword()" type="submit">
+                                        <span>Save</span>
+                                    </button>
                                 </div>
-                                <div class="agrupador">
-                                    <label class="textLabel">Confirm new password: </label>
-                                    <input class="text" [(ngModel)]="confirmPassword" type="text" name="countryName" id="changePass" />
-                                </div>
-                                <input class="changePass butt" value="Add new country" (keydown.enter)="changePassword()" (click)="changePassword()" type="submit">
                             </div>
                         </div>
                     </li>
@@ -62,20 +71,31 @@
                         <label class="accLabel" for="second">Change Email <span>&#x3e;</span></label>
                         <input class="accInput" type="radio" name="accordion" id="second" />
                         <div class="content">
-                            <div class="box">
-                                <div class="agrupador">
-                                    <label class="textLabel">Current Email: </label>
-                                    <input class="text" [(ngModel)]="currentPassword" type="text" name="countryName" id="changePass" />
+                            <div class="cont">
+                                <div class="box">
+                                    <div class="agrupador">
+                                        <label class="textLabel">Current Email: </label>
+                                        <input class="text" [(ngModel)]="currentEmail" type="text" name="email" id="changePass" />
+                                    </div>
+                                    <div class="agrupador">
+                                        <label class="textLabel">New Email: </label>
+                                        <input class="text" [(ngModel)]="newEmail" type="text" name="email" id="changePass" />
+                                    </div>
+                                    <div class="agrupador">
+                                        <label class="textLabel">Confirm new Email: </label>
+                                        <input class="text" [(ngModel)]="confirmEmail" type="text" name="email" id="changePass" required />
+                                    </div>
+                                    <div class="agrupador">
+                                        <label class="textLabel">Password: *</label>
+                                        <input class="text" [(ngModel)]="currentPassword" type="password" name="password" id="changePass" required />
+                                    </div>
+                                    <!--<input class="changePass butt" value="Add new country" (keydown.enter)="changePassword()" (click)="changePassword()" type="submit">-->
                                 </div>
-                                <div class="agrupador">
-                                    <label class="textLabel">New Email: </label>
-                                    <input class="text" [(ngModel)]="currentPassword" type="text" name="countryName" id="changePass" />
+                                <div class="butt">
+                                    <button class="changeEmail butt" (keydown.enter)="changeEmail()" (click)="changeEmail()" type="submit">
+                                        <span>Save</span>
+                                    </button>
                                 </div>
-                                <div class="agrupador">
-                                    <label class="textLabel">Confirm new Email: </label>
-                                    <input class="text" [(ngModel)]="currentPassword" type="text" name="countryName" id="changePass" />
-                                </div>
-                                <input class="changePass butt" value="Add new country" (keydown.enter)="changePassword()" (click)="changePassword()" type="submit">
                             </div>
                         </div>
                     </li>
@@ -83,12 +103,23 @@
                         <label class="accLabel" for="third">Update Phone number <span>&#x3e;</span></label>
                         <input class="accInput" type="radio" name="accordion" id="third" />
                         <div class="content">
-                            <div class="box">
-                                <div class="agrupador">
-                                    <label class="textLabel">Phone number: </label>
-                                    <input class="text" [(ngModel)]="phone" type="text" name="updatePhone" id="updatePhone" />
+                            <div class="cont">
+                                <div class="box">
+                                    <div class="agrupador">
+                                        <label class="textLabel">Your new phone number: </label>
+                                        <input class="text" [(ngModel)]="newPhone" type="text" name="updatePhone" id="updatePhone" />
+                                    </div>
+                                    <div class="agrupador">
+                                        <label class="textLabel">Password: *</label>
+                                        <input class="text" [(ngModel)]="currentPassword" type="password" name="password" id="changePass" required />
+                                    </div>
+                                    <!--<input class="changePass butt" value="Add new country" (keydown.enter)="updatePhone()" (click)="updatePhone()" type="submit">-->
                                 </div>
-                                <input class="changePass butt" value="Add new country" (keydown.enter)="updatePhone()" (click)="updatePhone()" type="submit">
+                                <div class="butt">
+                                    <button class="changePass butt" (keydown.enter)="updatePhone()" (click)="updatePhone()" type="submit">
+                                        <span>Save</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </li>

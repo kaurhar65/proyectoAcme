@@ -25,21 +25,21 @@
                 <div class="agrCol agrAdd">
                   <div class="agrupador agr2">
                     <label class="textLabel">User name: </label>
-                    <input class="text" [(ngModel)]="userName" type="text" name="userName" id="userName" />
+                    <input class="text" [(ngModel)]="formUser.name" type="text" name="formUser.name" id="userName" />
                   </div>
                   <div class="agrupador agr2">
                     <label class="textLabel">User email: </label>
-                    <input class="text" [(ngModel)]="userEmail" type="text" name="userEmail" id="userEmail" />
+                    <input class="text" [(ngModel)]="formUser.email" type="text" name="formUser.email" id="userEmail" />
                   </div>
                   <div class="agrupador agr2">
                     <label class="textLabel">User password: </label>
-                    <input class="text" [(ngModel)]="userPassword" type="text" name="userPassword" id="userPassword" />
+                    <input class="text" [(ngModel)]="formUser.password" type="text" name="formUser.password" id="userPassword" />
                   </div>
                 </div>
                 <div class="agrCol agrAdd">
                   <div class="agrupador agr2">
                     <label class="textLabel">User phone: </label>
-                    <input class="text" [(ngModel)]="userPhone" type="text" name="userPhone" id="userPhone" />
+                    <input class="text" [(ngModel)]="formUser.phone" type="text" name="formUser.phone" id="userPhone" />
                   </div>
                   <div class="agrupador agr2">
                     <label class="textLabel">Profile picture: </label>
@@ -67,8 +67,8 @@
                 <input class="getButton butt" value="Get all" (click)="getAllUsers()" type="button">
               </div>
             </div>
-            <div  class="resultDiv">
-              <p class="result"></p>
+            <div *ngFor="let user of users" class="resultDiv">
+                <p class="result">{{user | json}}</p>
             </div>
           </div>
         </li>
@@ -81,25 +81,25 @@
                 <div class="agrCol">
                   <div class="agrupador agr2">
                     <label class="textLabel">User id: </label>
-                    <input class="text" [(ngModel)]="userId" type="text" name="userId" id="userId" />
+                    <input class="text" [(ngModel)]="updatedUser.id" type="text" name="userId" id="userId" />
                   </div>
                   <div class="agrupador agr2">
                     <label class="textLabel">Name: </label>
-                    <input class="text" [(ngModel)]="userName" type="text" name="userName" id="userName" />
+                    <input class="text" [(ngModel)]="updatedUser.name" type="text" name="userName" id="userName" />
                   </div>
                   <div class="agrupador agr2">
                     <label class="textLabel">Password: </label>
-                    <input class="text" [(ngModel)]="userPassword" type="text" name="userPassword" id="userPassword" />
+                    <input class="text" [(ngModel)]="updatedUser.password" type="text" name="userPassword" id="userPassword" />
                   </div>
                 </div>
                 <div class="agrCol">
                   <div class="agrupador agr2">
                     <label class="textLabel">Phone: </label>
-                    <input class="text" [(ngModel)]="userPhone" type="text" name="userPhone" id="userPhone" />
+                    <input class="text" [(ngModel)]="updatedUser.phone" type="text" name="userPhone" id="userPhone" />
                   </div>
                   <div class="agrupador agr2">
                     <label class="textLabel">Profile picture: </label>
-                    <input class="text" [(ngModel)]="userPic" type="text" name="userPic" id="userPic" />
+                    <!--<input class="text" [(ngModel)]="updatedUser." type="text" name="userPic" id="userPic" />-->
                   </div>
                 </div>
                 <div class="agrupador agrCol bot">

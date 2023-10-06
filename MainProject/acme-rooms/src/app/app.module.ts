@@ -28,6 +28,7 @@ import { AdminUserComponent } from './admin-user/admin-user.component';
 import { NoReservaComponent } from './no-reserva/no-reserva.component';
 import { AllRoomsComponent } from './all-rooms/all-rooms.component';
 import { ViewAllComponent } from './view-all/view-all.component';
+import { DatepickerComponent } from './datepicker/datepicker.component';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { ViewAllComponent } from './view-all/view-all.component';
     NoReservaComponent,
     AllRoomsComponent,
     ViewAllComponent,
+    DatepickerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

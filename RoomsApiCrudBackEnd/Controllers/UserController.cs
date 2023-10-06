@@ -22,24 +22,17 @@ public class UserController : ControllerBase
 
     [HttpGet]
     [Route("GetAllUsers")]
-    public async Task<IActionResult> GetAllUsers()
-    {
-        return Ok(await _userManager.Users.ToListAsync());
-    }
+    public async Task<IActionResult> GetAllUsers() => Ok(await _userManager.Users.ToListAsync());
 
     [HttpGet]
     [Route("GetUserById")]
-    public async Task<IActionResult> GetUserById(string id)
-    {
-        return Ok(await _userManager.FindByIdAsync(id));
-    }
+    public async Task<IActionResult> GetUserById(string id) =>
+        Ok(await _userManager.FindByIdAsync(id));
 
     [HttpGet]
     [Route("GetUserByEmail")]
-    public async Task<IActionResult> GetUserByEmail(string email)
-    {
-        return Ok(await _userManager.FindByEmailAsync(email));
-    }
+    public async Task<IActionResult> GetUserByEmail(string email) =>
+        Ok(await _userManager.FindByEmailAsync(email));
 
     [HttpPut]
     [Route("UpdateUser")]
@@ -77,7 +70,7 @@ public class UserController : ControllerBase
     }
 
     [Route("UpdatePassword")]
-    [HttpPost]
+    [HttpPut]
     public async Task<IActionResult> UpdatePassword(string id, UpdatePasswordModel model)
     {
         if (model.NewPassword == model.NewPasswordConfirmation)
@@ -111,4 +104,9 @@ public class UserController : ControllerBase
             }
         );
     }
+
+    [Route("CheckPassword")]
+    [HttpGet]
+    public async Task<IActionResult> CheckPassword(string password) =>
+        Ok(await _userManager.CheckPasswordAsync(await _userManager.GetUserAsync(User), password));
 }

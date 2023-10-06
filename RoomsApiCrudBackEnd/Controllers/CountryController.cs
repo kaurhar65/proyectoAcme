@@ -24,17 +24,13 @@ public class CountryController : ControllerBase
 
     [HttpGet]
     [Route("GetAllCountries")]
-    public async Task<IActionResult> GetAllCountries()
-    {
-        return Ok(await _context.Countries.ToListAsync());
-    }
+    public async Task<IActionResult> GetAllCountries() =>
+        Ok(await _context.Countries.ToListAsync());
 
     [HttpGet]
     [Route("GetCountryById")]
-    public async Task<IActionResult> GetCountryById(int id)
-    {
-        return Ok(await _context.Countries.FindAsync(id));
-    }
+    public async Task<IActionResult> GetCountryById(int id) =>
+        Ok(await _context.Countries.FindAsync(id));
 
     // [Authorize(Roles = UserRoles.Admin)]
     [HttpPost]

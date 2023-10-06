@@ -90,10 +90,10 @@ form {
 .pais #roomCard {
   font-size: 2.5vw;
   width: 22%;
-  height: 32%;
 }
 #roomCard {
     position:relative;
+    height: 50%;
 }
 /*Hover salas info*/
 .overlay {

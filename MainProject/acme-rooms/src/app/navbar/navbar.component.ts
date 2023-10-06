@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
   }
 
   showButton(titulo: string) {
-    if (titulo.includes('Hello') || titulo.includes('Make a') || titulo.includes('Find your country') || titulo.includes('My reservations')) {
+    if (titulo.includes('Hello') || titulo.includes('Make a') || titulo.includes('Find your country') || titulo.includes('My reservations') || titulo.includes('Welcome')) {
       return true;
     }
 

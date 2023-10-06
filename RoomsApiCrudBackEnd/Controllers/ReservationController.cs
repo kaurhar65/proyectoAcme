@@ -31,17 +31,13 @@ public class ReservationController : ControllerBase
     // [Authorize(Roles = "Admin")]
     [HttpGet]
     [Route("GetAllReservations")]
-    public async Task<IActionResult> GetAllReservations()
-    {
-        return Ok(await _context.Reservations.ToListAsync());
-    }
+    public async Task<IActionResult> GetAllReservations() =>
+        Ok(await _context.Reservations.ToListAsync());
 
     [HttpGet]
     [Route("GetReservationById")]
-    public async Task<IActionResult> GetReservationById(int id)
-    {
-        return Ok(await _context.Reservations.FindAsync(id));
-    }
+    public async Task<IActionResult> GetReservationById(int id) =>
+        Ok(await _context.Reservations.FindAsync(id));
 
     [HttpGet]
     [Route("GetReservationsByRoomId")]

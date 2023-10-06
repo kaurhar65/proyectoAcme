@@ -25,17 +25,13 @@ public class CityController : ControllerBase
 
     [HttpGet]
     [Route("GetAllCities")]
-    public async Task<IActionResult> GetAllCities()
-    {
-        return Ok(await _context.Cities.ToListAsync());
-    }
+    public async Task<IActionResult> GetAllCities() =>
+        Ok(await _context.Cities.ToListAsync());
 
     [HttpGet]
     [Route("GetCityById")]
-    public async Task<IActionResult> GetCityById(int id)
-    {
-        return Ok(await _context.Cities.FindAsync(id));
-    }
+    public async Task<IActionResult> GetCityById(int id) =>
+        Ok(await _context.Cities.FindAsync(id));
 
     [HttpGet]
     [Route("GetCitiesByCountryId")]
