@@ -2,17 +2,17 @@
   <app-navbar titulo="My reservations"></app-navbar>
   <div class="principal">
       <div class="container">
-        <form>
+        <form name="searchForm">
           <i class="fas fa-search"></i>
-          <input type="text" placeholder="Search by ID/City/Country">
-          <button type="submit"> Search </button>
+          <input type="text" placeholder="Search by ID/City/Country" (keyup)="getReservas()" [(ngModel)]="valorInput" name="valorInput">
+          <button>Search</button>
         </form>
         <a class="underline-animation" href="https://www.google.com/search"> Need help? </a>
       </div>
 
-    <div *ngIf="!showNoReserva; else noReserva">
+    <div *ngIf="!showNoReservaComponent; else noReserva">
       <div *ngFor="let reservation of llistaReservas">
-        <app-reserve-list [reservation]="reservation" (getReservas)="getReservas()"></app-reserve-list>
+          <app-reserve-list [reservation]="reservation" ></app-reserve-list>     
       </div>
     </div>
     <ng-template #noReserva>
