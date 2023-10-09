@@ -6,6 +6,7 @@ import {
   environment,
   apiControllers,
   apiUrls,
+  localizacionUrls,
 } from '../../environments/environment';
 import { OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -47,7 +48,7 @@ export class ReservasComponent implements OnInit {
   ngOnInit(): void {
     this.requestService
       .get(
-        `${environment.apiUrl}${apiControllers.country}${apiUrls.country.getAllCountries}`
+        `${environment.localizacionUrls}${apiControllers.country}${localizacionUrls.country.getAllCountries}`
       )
       //.pipe(toArray())
       .subscribe({
@@ -86,7 +87,7 @@ export class ReservasComponent implements OnInit {
     if (id === 'any') {
       this.requestService
         .get(
-          `${environment.apiUrl}${apiControllers.city}${apiUrls.city.getAllCities}`
+          `${environment.localizacionUrls}${apiControllers.city}${localizacionUrls.city.getAllCities}`
         )
         .subscribe({
           next: (cities: City[]) => {
@@ -96,7 +97,7 @@ export class ReservasComponent implements OnInit {
         });
       this.requestService
         .get(
-          `${environment.apiUrl}${apiControllers.office}${apiUrls.office.getAllOffices}`
+          `${environment.localizacionUrls}${apiControllers.office}${localizacionUrls.office.getAllOffices}`
         )
         .subscribe({
           next: (offices: Office[]) => {
@@ -111,7 +112,7 @@ export class ReservasComponent implements OnInit {
     } else {
       this.requestService
         .get(
-          `${environment.apiUrl}${apiControllers.city}${apiUrls.city.getCitiesByCountryId}`,
+          `${environment.localizacionUrls}${apiControllers.city}${localizacionUrls.city.getCitiesByCountryId}`,
           new HttpParams().append('countryId', id)
         )
         .subscribe({
@@ -124,7 +125,7 @@ export class ReservasComponent implements OnInit {
         });
       this.requestService
         .get(
-          `${environment.apiUrl}${apiControllers.office}${apiUrls.office.getOfficesByCountryId}`,
+          `${environment.localizacionUrls}${apiControllers.office}${localizacionUrls.office.getOfficesByCountryId}`,
           new HttpParams().append('countryId', id)
         )
         .subscribe({
@@ -142,7 +143,7 @@ export class ReservasComponent implements OnInit {
     if (id === 'any') {
       this.requestService
         .get(
-          `${environment.apiUrl}${apiControllers.room}${apiUrls.room.getAllRooms}`
+          `${environment.localizacionUrls}${apiControllers.room}${localizacionUrls.room.getAllRooms}`
         )
         //.pipe(toArray())
         .subscribe({
@@ -155,7 +156,7 @@ export class ReservasComponent implements OnInit {
     } else {
       this.requestService
         .get(
-          `${environment.apiUrl}${apiControllers.room}${apiUrls.room.getRoomsByOfficeId}`,
+          `${environment.localizacionUrls}${apiControllers.room}${localizacionUrls.room.getRoomsByOfficeId}`,
           new HttpParams().append('officeId', id)
         )
         .subscribe({

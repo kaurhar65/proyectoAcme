@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { RequestService } from '../services/request.service';
-import { apiControllers, apiUrls, environment } from 'src/environments/environment';
+import { apiControllers, apiUrls, environment, localizacionUrls } from 'src/environments/environment';
 import { HttpParams } from '@angular/common/http';
 
 @Component({
@@ -18,10 +18,10 @@ export class AllRoomsComponent {
   allRoomsInfo:allRoomsInfo[]= [];
 
   ngOnInit(): void {
-    this.crudService.get(`${environment.apiUrl}${apiControllers.country}${apiUrls.country.getAllCountries}`)
+    this.crudService.get(`${environment.localizacionUrls}${apiControllers.country}${localizacionUrls.country.getAllCountries}`)
       .subscribe({next: (countries:any) => {
         countries.forEach((country:any) => {
-          this.crudService.get(`${environment.apiUrl}${apiControllers.office}${apiUrls.office.getOfficesByCountryId}`, new HttpParams().append('countryId', country.id))
+          this.crudService.get(`${environment.localizacionUrls}${apiControllers.office}${localizacionUrls.office.getOfficesByCountryId}`, new HttpParams().append('countryId', country.id))
             .subscribe({next:(officesResponse:any) => {
               let allRooms = new allRoomsInfo(country.id, country.name, officesResponse);
               this.allRoomsInfo.push(allRooms);
