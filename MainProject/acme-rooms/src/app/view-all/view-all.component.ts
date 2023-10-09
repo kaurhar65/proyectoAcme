@@ -4,6 +4,7 @@ import {
   environment,
   apiControllers,
   apiUrls,
+  localizacionUrls,
 } from '../../environments/environment';
 import { Room } from '../models/room';
 import { RoomExtendedDTO } from '../models/room-extended-dto';
@@ -161,7 +162,7 @@ export class ViewAllComponent {
   getAllRooms(): void {
     this.requestService
       .get(
-        `${environment.apiUrl}${apiControllers.room}${apiUrls.room.getAllRoomExtendedDTOs}`
+        `${environment.localizacionUrls}${apiControllers.room}${localizacionUrls.room.getAllRoomExtendedDTOs}`
       )
       .subscribe({
         next: (fetchedRoomDTOs: RoomExtendedDTO[]) => {

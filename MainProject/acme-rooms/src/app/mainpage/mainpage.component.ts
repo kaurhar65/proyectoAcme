@@ -4,6 +4,7 @@ import {
   environment,
   apiControllers,
   apiUrls,
+  localizacionUrls,
 } from '../../environments/environment';
 import { Room } from '../models/room';
 
@@ -156,7 +157,7 @@ export class MainpageComponent {
   getRooms(): void {
     this.requestService
       .get(
-        `${environment.apiUrl}${apiControllers.room}${apiUrls.room.getAllRooms}`
+        `${environment.localizacionUrls}${apiControllers.room}${localizacionUrls.room.getAllRooms}`
       )
       //.pipe(toArray())
       .subscribe({

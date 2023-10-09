@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RequestService } from 'src/app/services/request.service';
-import { environment, apiControllers, apiUrls } from 'src/environments/environment';
+import { environment, apiControllers, apiUrls, localizacionUrls } from 'src/environments/environment';
 import { HttpParams } from '@angular/common/http';
 import { Country } from 'src/app/models/country';
 
@@ -26,7 +26,7 @@ export class AdminCountryComponent {
   addCountry() {
     alert(this.countryName);
     if (this.countryName !== null || this.countryName !== undefined || this.countryName !== '') {
-      this.requestService.post(`${environment.apiUrl}${apiControllers.country}${apiUrls.country.createCountry}`,
+      this.requestService.post(`${environment.apiUrl}${apiControllers.country}${localizacionUrls.country.createCountry}`,
         {
           "Name": this.countryName
         })
@@ -48,7 +48,7 @@ export class AdminCountryComponent {
     alert(this.countryId);
     this.requestService
       .get(
-        `${environment.apiUrl}${apiControllers.country}${apiUrls.country.getAllCountries}`)
+        `${environment.apiUrl}${apiControllers.country}${localizacionUrls.country.getAllCountries}`)
       .subscribe({
         next: (fetchedCountries: any[]) => {
           this.countries = fetchedCountries.map((country: any): any => {
@@ -63,7 +63,7 @@ export class AdminCountryComponent {
   }
   getCountryById(id:number) {
     this.requestService
-      .get(`${environment.apiUrl}${apiControllers.country}${apiUrls.country.getCountryById}`,
+      .get(`${environment.localizacionUrls}${apiControllers.country}${localizacionUrls.country.getCountryById}`,
         new HttpParams().append('id', id))
       .subscribe({
         next: (fetchedCountry: any) => {
@@ -77,7 +77,7 @@ export class AdminCountryComponent {
   updateCountry() {
     /* getting old info*/
     this.requestService
-      .get(`${environment.apiUrl}${apiControllers.country}${apiUrls.country.getCountryById}`,
+      .get(`${environment.apiUrl}${apiControllers.country}${localizacionUrls.country.getCountryById}`,
         new HttpParams().append('id', this.countryId))
       .subscribe({
         next: (fetchedCountry: any) => {
@@ -91,7 +91,7 @@ export class AdminCountryComponent {
 
     /*update database*/
     this.requestService
-      .put(`${environment.apiUrl}${apiControllers.country}${apiUrls.country.updateCountry}`
+      .put(`${environment.apiUrl}${apiControllers.country}${localizacionUrls.country.updateCountry}`
         , {
           "Id": this.countryId,
           "Name": this.countryName
@@ -109,7 +109,7 @@ export class AdminCountryComponent {
   deleteCountry(id: number) {
     alert(this.countryId);
     this.requestService
-      .delete(`${environment.apiUrl}${apiControllers.country}${apiUrls.country.deleteCountry}`,
+      .delete(`${environment.apiUrl}${apiControllers.country}${localizacionUrls.country.deleteCountry}`,
         new HttpParams().append('id', `${id}`))
       .subscribe({ });
   }
