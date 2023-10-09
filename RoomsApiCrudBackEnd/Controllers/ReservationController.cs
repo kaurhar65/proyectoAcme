@@ -11,7 +11,7 @@ using RoomsApiCrudIdentity.Entities;
 
 namespace RoomsApiCrudIdentity.Controllers;
 
-[Authorize]
+//[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class ReservationController : ControllerBase
