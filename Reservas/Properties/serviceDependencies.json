@@ -5,13 +5,7 @@
     },
     "mssql1": {
       "type": "mssql",
-      "connectionId": "ConnectionStrings:ReservasContext",
-      "dynamicId": null
-    },
-    "mssql2": {
-      "type": "mssql",
-      "connectionId": "ReservasContext",
-      "dynamicId": null
+      "connectionId": "ConnectionStrings:ReservasContext"
     }
   }
 }
