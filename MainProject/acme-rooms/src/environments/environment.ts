@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   //apiUrl: 'http://localhost:44406',
   apiUrl: 'https://localhost:7270/api/',
+  localizacionUrls: 'https://localhost:7287/api/',
 };
 
 export const apiControllers = {
@@ -19,12 +20,7 @@ export const apiControllers = {
   lockedDate: 'LockedDate/',
 };
 
-export const apiUrls = {
-  authentication: {
-    login: 'Login',
-    register: 'Register',
-    registerAdmin: 'RegisterAdmin',
-  },
+export const localizacionUrls = {
   country: {
     getAllCountries: 'GetAllCountries',
     getCountryById: 'GetCountryById',
@@ -60,6 +56,48 @@ export const apiUrls = {
     updateRoom: 'UpdateRoom',
     deleteRoom: 'DeleteRoom',
   },
+}
+export const apiUrls = {
+  authentication: {
+    login: 'Login',
+    register: 'Register',
+    registerAdmin: 'RegisterAdmin',
+  },
+  //country: {
+  //  getAllCountries: 'GetAllCountries',
+  //  getCountryById: 'GetCountryById',
+  //  createCountry: 'CreateCountry',
+  //  updateCountry: 'UpdateCountry',
+  //  deleteCountry: 'DeleteCountry',
+  //},
+  //city: {
+  //  getAllCities: 'GetAllCities',
+  //  getCityById: 'GetCityById',
+  //  getCitiesByCountryId: 'GetCitiesByCountryId',
+  //  createCity: 'CreateCity',
+  //  updateCity: 'UpdateCity',
+  //  deleteCity: 'DeleteCity',
+  //},
+  //office: {
+  //  getAllOffices: 'GetAllOffices',
+  //  getOfficeById: 'GetOfficeById',
+  //  getOfficesByCountryId: 'GetOfficesByCountryId',
+  //  getOfficesByCityId: 'GetOfficesByCityId',
+  //  createOffice: 'CreateOffice',
+  //  updateOffice: 'UpdateOffice',
+  //  deleteOffice: 'DeleteOffice',
+  //},
+  //room: {
+  //  getAllRooms: 'GetAllRooms',
+  //  getRoomById: 'GetRoomById',
+  //  getRoomsByCountryId: 'GetRoomsByCountryId',
+  //  getRoomsByCityId: 'GetRoomsByCityId',
+  //  getRoomsByOfficeId: 'GetRoomsByOfficeId',
+  //  getAllRoomExtendedDTOs: 'GetAllRoomExtendedDTOs',
+  //  createRoom: 'CreateRoom',
+  //  updateRoom: 'UpdateRoom',
+  //  deleteRoom: 'DeleteRoom',
+  //},
   reservation: {
     getAllReservations: 'GetAllReservations',
     getReservationById: 'GetReservationById',

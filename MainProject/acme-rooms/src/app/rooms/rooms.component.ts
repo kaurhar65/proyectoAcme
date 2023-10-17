@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { RequestService } from '../services/request.service';
-import { apiControllers, apiUrls, environment } from 'src/environments/environment';
+import { apiControllers, apiUrls, environment, localizacionUrls } from 'src/environments/environment';
 
 @Component({
   selector: 'app-rooms',
@@ -19,12 +19,12 @@ export class RoomsComponent implements OnInit {
   
   ngOnInit(): void {
     let officeName = "";
-    this.crudService.get(`${environment.apiUrl}${apiControllers.room}${apiUrls.room.getAllRooms}`)
+    this.crudService.get(`${environment.localizacionUrls}${apiControllers.room}${localizacionUrls.room.getAllRooms}`)
     .subscribe({next: (response: any) => {
       // let allRooms: Room[] = [];
       response.forEach((room: any) => {
         let officeName = "";
-        this.crudService.get(`${environment.apiUrl}${apiControllers.office}${apiUrls.office.getOfficeById}`, 
+        this.crudService.get(`${environment.localizacionUrls}${apiControllers.office}${localizacionUrls.office.getOfficeById}`, 
           new HttpParams().append('id', room.officeId))
           .subscribe({next: (office: any) => {
             officeName = office.name;

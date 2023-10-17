@@ -3,13 +3,6 @@
     "secrets1": {
       "type": "secrets.user"
     },
-    "mssql1": {
-      "serviceConnectorResourceId": "",
-      "secretStore": "LocalSecretsFile",
-      "resourceId": null,
-      "type": "mssql.local",
-      "connectionId": "ConnectionString:localizacionDB"
-    },
     "mssql2": {
       "type": "mssql.local",
       "connectionId": "ConnectionStrings:LocalizacionesContext"
