@@ -17,3 +17,4 @@ namespace Reservas.Data
         public DbSet<Reservas.Entities.Reservation> Reservations { get; set; } = default!;
     }
 }
+ 
