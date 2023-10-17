@@ -198,6 +198,7 @@ export class ViewAllComponent {
     if (this.userInput === "") {
       return;
     } else {
+      alert(this.userInput);
       this.rooms = ([] as RoomExtendedDTO[])
         .concat(
           this.rooms.filter((roomDTO) =>

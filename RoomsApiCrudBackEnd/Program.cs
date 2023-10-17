@@ -20,6 +20,7 @@ ConfigurationManager configuration = builder.Configuration;
 var connectionString =
     builder.Configuration.GetConnectionString("RoomsApiCrudConn")
     ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
 builder.Services.AddDbContext<ApplicationDbContext>(
     options => options.UseSqlServer(connectionString)
 );
