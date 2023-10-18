@@ -19,12 +19,12 @@ export class RoomsComponent implements OnInit {
   
   ngOnInit(): void {
     let officeName = "";
-    this.crudService.get(`${environment.localizacionUrls}${apiControllers.room}${localizacionUrls.room.getAllRooms}`)
+    this.crudService.get(`${environment.localizacionApiUrl}${apiControllers.room}${localizacionUrls.room.getAllRooms}`)
     .subscribe({next: (response: any) => {
       // let allRooms: Room[] = [];
       response.forEach((room: any) => {
         let officeName = "";
-        this.crudService.get(`${environment.localizacionUrls}${apiControllers.office}${localizacionUrls.office.getOfficeById}`, 
+        this.crudService.get(`${environment.localizacionApiUrl}${apiControllers.office}${localizacionUrls.office.getOfficeById}`, 
           new HttpParams().append('id', room.officeId))
           .subscribe({next: (office: any) => {
             officeName = office.name;

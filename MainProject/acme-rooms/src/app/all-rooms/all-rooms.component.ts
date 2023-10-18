@@ -18,10 +18,10 @@ export class AllRoomsComponent {
   allRoomsInfo:allRoomsInfo[]= [];
 
   ngOnInit(): void {
-    this.crudService.get(`${environment.localizacionUrls}${apiControllers.country}${localizacionUrls.country.getAllCountries}`)
+    this.crudService.get(`${environment.localizacionApiUrl}${apiControllers.country}${localizacionUrls.country.getAllCountries}`)
       .subscribe({next: (countries:any) => {
         countries.forEach((country:any) => {
-          this.crudService.get(`${environment.localizacionUrls}${apiControllers.office}${localizacionUrls.office.getOfficesByCountryId}`, new HttpParams().append('countryId', country.id))
+          this.crudService.get(`${environment.localizacionApiUrl}${apiControllers.office}${localizacionUrls.office.getOfficesByCountryId}`, new HttpParams().append('countryId', country.id))
             .subscribe({next:(officesResponse:any) => {
               let allRooms = new allRoomsInfo(country.id, country.name, officesResponse);
               this.allRoomsInfo.push(allRooms);

@@ -67,12 +67,12 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['view-all-rooms']);
   }
   ngOnInit(): void {
-    this.crudService.get(`${environment.localizacionUrls}${apiControllers.country}${localizacionUrls.country.getAllCountries}`)
+    this.crudService.get(`${environment.localizacionApiUrl}${apiControllers.country}${localizacionUrls.country.getAllCountries}`)
       .subscribe({next: (countries:any) => {
         countries.forEach((country:any) => {
           console.log(country);
           let offices = [];
-          this.crudService.get(`${environment.localizacionUrls}${apiControllers.office}${localizacionUrls.office.getOfficesByCountryId}`, new HttpParams().append('countryId', country.id))
+          this.crudService.get(`${environment.localizacionApiUrl}${apiControllers.office}${localizacionUrls.office.getOfficesByCountryId}`, new HttpParams().append('countryId', country.id))
             .subscribe({next: (officesResponse:any) => {
               console.table(officesResponse);
               let newInfo = new NavbarInfo(country.id,country.name,officesResponse);
