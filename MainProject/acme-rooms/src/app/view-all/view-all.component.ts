@@ -162,7 +162,7 @@ export class ViewAllComponent {
   getAllRooms(): void {
     this.requestService
       .get(
-        `${environment.localizacionUrls}${apiControllers.room}${localizacionUrls.room.getAllRoomExtendedDTOs}`
+        `${environment.localizacionApiUrl}${apiControllers.room}${localizacionUrls.room.getAllRoomExtendedDTOs}`
       )
       .subscribe({
         next: (fetchedRoomDTOs: RoomExtendedDTO[]) => {
