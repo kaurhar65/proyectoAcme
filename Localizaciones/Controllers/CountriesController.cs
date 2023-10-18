@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Localizaciones.Data;
 using Localizaciones.Entities;
+using Microsoft.AspNetCore.Cors;
 
 namespace Localizaciones.Controllers;
 
-    //[Authorize]
+//[Authorize]
+    [EnableCors("MyCorsPolicy")]
     [ApiController]
     [Route("api/[controller]")]
     public class CountriesController : Controller
