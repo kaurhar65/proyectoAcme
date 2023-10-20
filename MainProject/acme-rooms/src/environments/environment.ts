@@ -11,10 +11,10 @@ export const environment = {
 
 export const apiControllers = {
   authentication: 'Authentication/',
-  country: 'Country/',
-  city: 'City/',
-  office: 'Office/',
-  room: 'Room/',
+  country: 'Countries/',
+  city: 'Cities/',
+  office: 'Offices/',
+  room: 'Rooms/',
   reservation: 'Reservation/',
   user: 'User/',
   lockedDate: 'LockedDate/',
