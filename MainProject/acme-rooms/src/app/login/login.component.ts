@@ -42,7 +42,7 @@ export class LoginComponent {
         next: (response: any) => {
           //alert(JSON.stringify(response));
           if (response['token']) {
-            alert(`You have successfully logged in as ${this.user.email}.`);
+            //alert(`You have successfully logged in as ${this.user.email}.`);
             this.goToHome();
           }
         },
