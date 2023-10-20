@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LockedDates", "LockedDates.csproj", "{FF067883-09C7-48CF-A0CF-890460E7EC8F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF067883-09C7-48CF-A0CF-890460E7EC8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF067883-09C7-48CF-A0CF-890460E7EC8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF067883-09C7-48CF-A0CF-890460E7EC8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF067883-09C7-48CF-A0CF-890460E7EC8F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {02D3AFDA-F753-4E72-A0D9-F55A7D0A33E8}
+	EndGlobalSection
+EndGlobal

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Reservas.Controllers
+namespace LockedDates.Controllers
 {
     [ApiController]
     [Route("[controller]")]

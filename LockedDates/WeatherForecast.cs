@@ -1,4 +1,4 @@
-namespace Localizaciones
+namespace LockedDates
 {
     public class WeatherForecast
     {
