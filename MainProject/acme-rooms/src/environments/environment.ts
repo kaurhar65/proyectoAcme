@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   //apiUrl: 'http://localhost:44406',
   apiUrl: 'https://localhost:7270/api/',
-  localizacionUrls: 'https://localhost:7287/api/',
+  localizacionApiUrl: 'https://localhost:7287/api/',
 };
 
 export const apiControllers = {

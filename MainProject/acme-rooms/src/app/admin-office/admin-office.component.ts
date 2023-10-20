@@ -21,7 +21,7 @@ export class AdminOfficeComponent {
   updatedOffice: (Office) = new Office()
 
   addOffice() {
-    this.requestService.post(`${environment.localizacionUrls}${apiControllers.office}${localizacionUrls.office.createOffice}`,
+    this.requestService.post(`${environment.localizacionApiUrl}${apiControllers.office}${localizacionUrls.office.createOffice}`,
       {
         "Name": this.officeName,
         "CityId": this.officeCityId
@@ -36,7 +36,7 @@ export class AdminOfficeComponent {
       });
   }
   getAllOffices() {
-    this.requestService.get(`${environment.localizacionUrls}${apiControllers.office}${localizacionUrls.office.getAllOffices}`)
+    this.requestService.get(`${environment.localizacionApiUrl}${apiControllers.office}${localizacionUrls.office.getAllOffices}`)
       .subscribe({
         next: (fetchedOffices: any[]) => {
           this.offices = fetchedOffices.map((office: any): any => {
@@ -50,7 +50,7 @@ export class AdminOfficeComponent {
       });    
   }
   getOfficeById(id: number) {
-    this.requestService.get(`${environment.localizacionUrls}${apiControllers.office}${localizacionUrls.office.getOfficeById}`, new HttpParams().append("id", id))
+    this.requestService.get(`${environment.localizacionApiUrl}${apiControllers.office}${localizacionUrls.office.getOfficeById}`, new HttpParams().append("id", id))
       .subscribe({
         next: (fetchedOffice: any) => {
           this.offices = [{
@@ -64,7 +64,7 @@ export class AdminOfficeComponent {
   updateOffice(id: number) {
     /* getting old info*/
     this.requestService
-      .get(`${environment.localizacionUrls}${apiControllers.office}${localizacionUrls.office.getOfficeById}`, new HttpParams().append("id", id))
+      .get(`${environment.localizacionApiUrl}${apiControllers.office}${localizacionUrls.office.getOfficeById}`, new HttpParams().append("id", id))
       .subscribe({
         next: (fetchedOffice: any) => {
           this.oldOffice = {
@@ -76,7 +76,7 @@ export class AdminOfficeComponent {
       });
     /*update database*/
     this.requestService
-      .put(`${environment.localizacionUrls}${apiControllers.office}${localizacionUrls.office.updateOffice}`,
+      .put(`${environment.localizacionApiUrl}${apiControllers.office}${localizacionUrls.office.updateOffice}`,
         {
           "Id": this.officeId,
           "Name": this.officeName,
@@ -90,7 +90,7 @@ export class AdminOfficeComponent {
         });
     /*Get country with new info*/
     this.requestService
-      .get(`${environment.localizacionUrls}${apiControllers.office}${localizacionUrls.office.getOfficeById}`, new HttpParams().append("id", id))
+      .get(`${environment.localizacionApiUrl}${apiControllers.office}${localizacionUrls.office.getOfficeById}`, new HttpParams().append("id", id))
       .subscribe({
         next: (fetchedOffice: any) => {
           this.updatedOffice = {
@@ -104,7 +104,7 @@ export class AdminOfficeComponent {
   deleteOffice() {
     alert(this.officeId);
     this.requestService
-      .delete(`${environment.localizacionUrls}${apiControllers.office}${localizacionUrls.office.deleteOffice}`,
+      .delete(`${environment.localizacionApiUrl}${apiControllers.office}${localizacionUrls.office.deleteOffice}`,
       new HttpParams().append('id', `${this.officeId.toString()}`))
       .subscribe({});
   }

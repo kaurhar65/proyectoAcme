@@ -48,7 +48,7 @@ export class AdminCountryComponent {
     alert(this.countryId);
     this.requestService
       .get(
-        `${environment.apiUrl}${apiControllers.country}${localizacionUrls.country.getAllCountries}`)
+        `${environment.localizacionApiUrl}${apiControllers.country}${localizacionUrls.country.getAllCountries}`)
       .subscribe({
         next: (fetchedCountries: any[]) => {
           this.countries = fetchedCountries.map((country: any): any => {
@@ -63,7 +63,7 @@ export class AdminCountryComponent {
   }
   getCountryById(id:number) {
     this.requestService
-      .get(`${environment.localizacionUrls}${apiControllers.country}${localizacionUrls.country.getCountryById}`,
+      .get(`${environment.localizacionApiUrl}${apiControllers.country}${localizacionUrls.country.getCountryById}`,
         new HttpParams().append('id', id))
       .subscribe({
         next: (fetchedCountry: any) => {
@@ -77,7 +77,7 @@ export class AdminCountryComponent {
   updateCountry() {
     /* getting old info*/
     this.requestService
-      .get(`${environment.apiUrl}${apiControllers.country}${localizacionUrls.country.getCountryById}`,
+      .get(`${environment.localizacionApiUrl}${apiControllers.country}${localizacionUrls.country.getCountryById}`,
         new HttpParams().append('id', this.countryId))
       .subscribe({
         next: (fetchedCountry: any) => {
@@ -91,7 +91,7 @@ export class AdminCountryComponent {
 
     /*update database*/
     this.requestService
-      .put(`${environment.apiUrl}${apiControllers.country}${localizacionUrls.country.updateCountry}`
+      .put(`${environment.localizacionApiUrl}${apiControllers.country}${localizacionUrls.country.updateCountry}`
         , {
           "Id": this.countryId,
           "Name": this.countryName
@@ -109,7 +109,7 @@ export class AdminCountryComponent {
   deleteCountry(id: number) {
     alert(this.countryId);
     this.requestService
-      .delete(`${environment.apiUrl}${apiControllers.country}${localizacionUrls.country.deleteCountry}`,
+      .delete(`${environment.localizacionApiUrl}${apiControllers.country}${localizacionUrls.country.deleteCountry}`,
         new HttpParams().append('id', `${id}`))
       .subscribe({ });
   }

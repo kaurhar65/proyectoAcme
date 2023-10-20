@@ -157,7 +157,7 @@ export class MainpageComponent {
   getRooms(): void {
     this.requestService
       .get(
-        `${environment.localizacionUrls}${apiControllers.room}${localizacionUrls.room.getAllRooms}`
+        `${environment.localizacionApiUrl}${apiControllers.room}${localizacionUrls.room.getAllRooms}`
       )
       //.pipe(toArray())
       .subscribe({
